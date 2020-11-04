@@ -5,7 +5,25 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="EcsStartup.cs" t="Include" />
+          <e p="Common" t="Include">
+            <e p="BaseStartUp.cs" t="Include" />
+            <e p="Components" t="Include">
+              <e p="LogComponent.cs" t="Include" />
+            </e>
+            <e p="Enums" t="Include">
+              <e p="LogLevel.cs" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="LogModel.cs" t="Include" />
+            </e>
+            <e p="Systems" t="Include">
+              <e p="LogSystem.cs" t="Include" />
+              <e p="TestSystem.cs" t="Include" />
+            </e>
+          </e>
+          <e p="VillageScheme" t="Include">
+            <e p="VillageSchemeStartUp.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
