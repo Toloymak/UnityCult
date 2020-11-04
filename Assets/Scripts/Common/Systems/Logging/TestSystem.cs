@@ -1,14 +1,11 @@
 ﻿using Common.Components;
 using Common.Enums;
-using Common.Models;
 using Leopotam.Ecs;
-using UnityEngine;
 
-namespace Common.Systems
+namespace Common.Systems.Logging
 {
     public class TestSystem : IEcsSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
-        private EcsWorld _world = null;
         private EcsFilter<LogComponent> _logComponentSystem = null;
 
         private LogComponent _logComponent;

@@ -5,7 +5,7 @@ using Common.Enums;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Common.Systems
+namespace Common.Systems.Logging
 {
     public class LogSystem: IEcsSystem, IEcsRunSystem, IEcsPreInitSystem
     {
