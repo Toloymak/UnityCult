@@ -5,6 +5,7 @@ namespace VillageScheme
 {
     public class VillageSchemeStartUp : BaseStartUp
     {
+
         protected override void AddSystems(EcsSystems systems)
         {
         }

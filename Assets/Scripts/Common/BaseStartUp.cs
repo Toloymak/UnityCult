@@ -1,5 +1,6 @@
-﻿using Common.Systems;
+﻿using Common.Storages;
 using Common.Systems.Logging;
+using Common.Systems.Village;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Common
     {
         EcsWorld _world;
         EcsSystems _systems;
-
+        
         public void Start()
         {
             // void can be switched to IEnumerator for support coroutines.
@@ -52,7 +53,8 @@ namespace Common
         {
             systems
                .Add(new LogSystem())
-               .Add(new TestSystem());
+               .Add(new TestSystem())
+               .Add(new FieldControlSystem());
         }
         
         private void AddCommonServices(EcsSystems systems)

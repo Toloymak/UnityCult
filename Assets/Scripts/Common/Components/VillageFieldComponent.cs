@@ -4,6 +4,6 @@ namespace Common.Components
 {
     public class VillageFieldComponent
     {
-        public FieldModel<BuildingModel> FieldModel { get; set; }
+        public FieldModel<DistrictCellModel> FieldModel { get; set; }
     }
 }

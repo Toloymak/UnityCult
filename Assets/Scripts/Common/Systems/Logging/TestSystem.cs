@@ -4,16 +4,15 @@ using Leopotam.Ecs;
 
 namespace Common.Systems.Logging
 {
-    public class TestSystem : IEcsSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
+    public class TestSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
         private EcsFilter<LogComponent> _logComponentSystem = null;
-
-        private LogComponent _logComponent;
-
+        
         public void Init()
         {
-            _logComponent = _logComponentSystem.Get1[0];
-            _logComponent.AddLog(LogLevel.Debug, "Run Init");
+            SetLogComponent(_logComponentSystem);
+            
+            LogComponent.AddLog(LogLevel.Debug, "Run Init");
         }
 
         public void Run()
@@ -22,7 +21,7 @@ namespace Common.Systems.Logging
 
         public void Destroy()
         {
-            _logComponent.AddLog(LogLevel.Debug, "Run Destroy");
+            LogComponent.AddLog(LogLevel.Debug, "Run Destroy");
         }
     }
 }

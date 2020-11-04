@@ -8,7 +8,7 @@ namespace Common.Models
     {
         public IList<IList<T>> Matrix { get; set; }
 
-        public FieldModel(int rowCount, int columnCount)
+        public FieldModel(int rowCount, int columnCount, Func<T> createStrategy)
         {
             Matrix = new List<IList<T>>();
             
@@ -18,7 +18,7 @@ namespace Common.Models
                 
                 for (int j = 0; j < columnCount; j++)
                 {
-                    row.Add(null);
+                    row.Add(createStrategy.Invoke());
                 }
                 
                 Matrix.Add(row);

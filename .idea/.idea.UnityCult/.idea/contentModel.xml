@@ -11,15 +11,30 @@
               <e p="LogComponent.cs" t="Include" />
               <e p="VillageFieldComponent.cs" t="Include" />
             </e>
+            <e p="Consts" t="Include">
+              <e p="ObjectGroups.cs" t="Include" />
+            </e>
             <e p="Enums" t="Include">
               <e p="LogLevel.cs" t="Include" />
+              <e p="UiActionType.cs" t="Include" />
+            </e>
+            <e p="GameTypes" t="Include">
+              <e p="DistrictType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
-              <e p="BuildingModel.cs" t="Include" />
+              <e p="DistrictCellModel.cs" t="Include" />
               <e p="FieldModel.cs" t="Include" />
               <e p="LogModel.cs" t="Include" />
+              <e p="UIActionModel.cs" t="Include" />
+            </e>
+            <e p="MonoBehaviorScripts" t="Include">
+              <e p="ClickHandler.cs" t="Include" />
+            </e>
+            <e p="Storages" t="Include">
+              <e p="UiEventStorage.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">
+              <e p="BaseSystem.cs" t="Include" />
               <e p="Logging" t="Include">
                 <e p="LogSystem.cs" t="Include" />
                 <e p="TestSystem.cs" t="Include" />
