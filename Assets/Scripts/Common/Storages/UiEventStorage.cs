@@ -2,6 +2,7 @@
 using System.Linq;
 using Common.Enums;
 using Common.Models;
+using UnityEngine;
 
 namespace Common.Storages
 {
@@ -19,7 +20,7 @@ namespace Common.Storages
             return ClickEvents[groupName];
         }
 
-        public static void AddAction(string groupName, string name, UiActionType type = UiActionType.Click)
+        public static void AddAction(string groupName, string name, GameObject gameObject, UiActionType type)
         {
             if (!ClickEvents.ContainsKey(groupName))
                 ClickEvents.Add(groupName, new HashSet<UIActionModel>());
@@ -27,10 +28,10 @@ namespace Common.Storages
             if (ClickEvents[groupName].Any(x => x.ObjectName == name && x.Type == type))
                 RemoveClick(groupName, name, type);
             
-            ClickEvents[groupName].Add(new UIActionModel(name, type));
+            ClickEvents[groupName].Add(new UIActionModel(name, type, gameObject));
         }
 
-        public static void RemoveClick(string groupName, string name, UiActionType type = UiActionType.Click)
+        public static void RemoveClick(string groupName, string name, UiActionType type)
         {
             if (!ClickEvents.ContainsKey(groupName))
                 ClickEvents.Add(groupName, new HashSet<UIActionModel>());

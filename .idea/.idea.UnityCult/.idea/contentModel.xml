@@ -6,29 +6,39 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Common" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="DistrictDescriptionAttribute.cs" t="Include" />
+            </e>
             <e p="BaseStartUp.cs" t="Include" />
             <e p="Components" t="Include">
               <e p="LogComponent.cs" t="Include" />
               <e p="VillageFieldComponent.cs" t="Include" />
             </e>
             <e p="Consts" t="Include">
+              <e p="ComponentPrefabNames.cs" t="Include" />
               <e p="ObjectGroups.cs" t="Include" />
             </e>
             <e p="Enums" t="Include">
               <e p="LogLevel.cs" t="Include" />
               <e p="UiActionType.cs" t="Include" />
             </e>
+            <e p="extensions" t="Include">
+              <e p="DistrictExtensions.cs" t="Include" />
+              <e p="TransformExtensions.cs" t="Include" />
+            </e>
             <e p="GameTypes" t="Include">
               <e p="DistrictType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
+              <e p="BuildingActionItem.cs" t="Include" />
               <e p="DistrictCellModel.cs" t="Include" />
               <e p="FieldModel.cs" t="Include" />
               <e p="LogModel.cs" t="Include" />
               <e p="UIActionModel.cs" t="Include" />
             </e>
-            <e p="MonoBehaviorScripts" t="Include">
-              <e p="ClickHandler.cs" t="Include" />
+            <e p="Services" t="Include">
+              <e p="BuildingAndUpdateMenuSystem.cs" t="Include" />
+              <e p="FieldService.cs" t="Include" />
             </e>
             <e p="Storages" t="Include">
               <e p="UiEventStorage.cs" t="Include" />

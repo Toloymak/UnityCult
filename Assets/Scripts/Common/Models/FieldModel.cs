@@ -47,6 +47,11 @@ namespace Common.Models
             return GetRow(rowNumber)[columnNumber];
         }
 
+        public IEnumerable<T> GetEnumerable()
+        {
+            return Matrix.SelectMany(x => x);
+        }
+
         private void CheckRowNumber(int number)
         {
             if (number >= Matrix.Count)

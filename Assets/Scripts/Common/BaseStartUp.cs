@@ -1,4 +1,5 @@
-﻿using Common.Storages;
+﻿using Common.Services;
+using Common.Storages;
 using Common.Systems.Logging;
 using Common.Systems.Village;
 using Leopotam.Ecs;
@@ -59,6 +60,9 @@ namespace Common
         
         private void AddCommonServices(EcsSystems systems)
         {
+            systems
+               .Inject(new FieldService())
+               .Inject(new BuildingAndUpdateMenuSystem());
         }
         
         protected virtual void AddSystems(EcsSystems systems)

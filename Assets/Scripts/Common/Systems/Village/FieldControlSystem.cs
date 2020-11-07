@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
+using Common.GameTypes;
 using Common.Models;
+using Common.Services;
 using Common.Storages;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Common.Systems.Village
 {
@@ -15,74 +19,60 @@ namespace Common.Systems.Village
     {
         private EcsWorld _ecsWorld = null;
         private EcsFilter<LogComponent> _logComponentFilter = null;
+
+        private FieldService _fieldService = null;
+        private BuildingAndUpdateMenuSystem _buildingAndUpdateMenuSystem = null;
+        
+        private const int RowCount = 10;
+        private const int ColumnCount = 10;
         
         public void Init()
         {
+            if (_fieldGroup == null)
+                _fieldGroup = UiEventStorage.GetGroup(ObjectGroups.FieldGroup);
+            
             SetLogComponent(_logComponentFilter);
             
             var villageEntity = _ecsWorld.NewEntity();
             var villageFieldComponent = villageEntity.Set<VillageFieldComponent>();
 
-            CreateVillageField(villageFieldComponent);
+            _fieldService.CreateVillageField(villageFieldComponent, RowCount, ColumnCount);
 
             LogComponent.AddLog(LogLevel.Debug, "Village matrix has been created");
         }
-
-        
-        private const int RowCount = 10;
-        private const int ColumnCount = 10;
-        private const string ComponentsVillageCell = "Components/VillageCell";
-
-        private static void CreateVillageField(VillageFieldComponent villageFieldComponent)
-        {
-            villageFieldComponent.FieldModel = new FieldModel<DistrictCellModel>(
-                RowCount,
-                ColumnCount,
-                () => new DistrictCellModel());
-
-            var filedPanel = GameObject.Find("Fields");
-            var grid = filedPanel.GetComponent<GridLayoutGroup>();
-            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            grid.constraintCount = ColumnCount;
-
-            for (var i = 0; i < filedPanel.transform.childCount; i++)
-            {
-                var child = filedPanel.transform.GetChild(i);
-                Object.Destroy(child.gameObject);
-            }
-
-            var cellPrefab = Resources.Load(ComponentsVillageCell);
-
-            for (int row = 0; row < RowCount; row++)
-            {
-                for (int column = 0; column < ColumnCount; column++)
-                {
-                    var cellModel = villageFieldComponent.FieldModel.GetItem(row, column);
-                    
-                    var newCell = Object.Instantiate(cellPrefab, filedPanel.transform);
-                    newCell.name = $"area_{row}_{column}";
-
-                    var cell = GameObject.Find(newCell.name);
-                    cell.transform.GetChild(0).GetComponent<Text>().text = $"{row}_{column}";
-                    cellModel.GameObject = cell;
-                }
-            }
-        }
-
 
         private HashSet<UIActionModel> _fieldGroup;
         
         public void Run()
         {
-            if (_fieldGroup == null)
-                _fieldGroup = UiEventStorage.GetGroup(ObjectGroups.FieldGroup);
+            PrepareFieldClicks();
+        }
 
+        private void PrepareFieldClicks()
+        {
             while (_fieldGroup.Any())
             {
                 var action = _fieldGroup.First();
-                
-                LogComponent.AddLog($"{action.ObjectName } has been clicked");
-                UiEventStorage.RemoveClick(ObjectGroups.FieldGroup, action.ObjectName, UiActionType.Click);
+
+                switch (action.Type)
+                {
+                    case UiActionType.Click:
+                        break;
+                    case UiActionType.Selected:
+                        _buildingAndUpdateMenuSystem.FillBuildingOrUpdateList(new List<BuildingActionItem>()
+                        {
+                            new BuildingActionItem(){DistrictType = DistrictType.Administration},
+                            new BuildingActionItem(){DistrictType = DistrictType.Arena},
+                            new BuildingActionItem(){DistrictType = DistrictType.Factory},
+                        });
+                        break;
+                    case UiActionType.Unselected:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                UiEventStorage.RemoveClick(ObjectGroups.FieldGroup, action.ObjectName, action.Type);
             }
         }
     }
