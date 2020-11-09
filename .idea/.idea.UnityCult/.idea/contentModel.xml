@@ -17,6 +17,7 @@
             <e p="Consts" t="Include">
               <e p="ComponentPrefabNames.cs" t="Include" />
               <e p="ObjectGroups.cs" t="Include" />
+              <e p="UiObjectNames.cs" t="Include" />
             </e>
             <e p="Enums" t="Include">
               <e p="LogLevel.cs" t="Include" />
@@ -30,6 +31,7 @@
               <e p="DistrictType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
+              <e p="ActionModel.cs" t="Include" />
               <e p="BuildingActionItem.cs" t="Include" />
               <e p="DistrictCellModel.cs" t="Include" />
               <e p="FieldModel.cs" t="Include" />
@@ -39,17 +41,23 @@
             <e p="Services" t="Include">
               <e p="BuildingAndUpdateMenuSystem.cs" t="Include" />
               <e p="FieldService.cs" t="Include" />
+              <e p="UiPefabStore.cs" t="Include" />
+              <e p="UiStoreService.cs" t="Include" />
             </e>
             <e p="Storages" t="Include">
               <e p="UiEventStorage.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">
+              <e p="Actions" t="Include">
+                <e p="ActionMenuControlSystem.cs" t="Include" />
+              </e>
               <e p="BaseSystem.cs" t="Include" />
               <e p="Logging" t="Include">
                 <e p="LogSystem.cs" t="Include" />
                 <e p="TestSystem.cs" t="Include" />
               </e>
               <e p="Village" t="Include">
+                <e p="BuildingMenuControlSystem.cs" t="Include" />
                 <e p="FieldControlSystem.cs" t="Include" />
               </e>
             </e>

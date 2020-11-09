@@ -1,5 +1,6 @@
 ﻿using Common.Services;
 using Common.Storages;
+using Common.Systems.Actions;
 using Common.Systems.Logging;
 using Common.Systems.Village;
 using Leopotam.Ecs;
@@ -55,12 +56,16 @@ namespace Common
             systems
                .Add(new LogSystem())
                .Add(new TestSystem())
-               .Add(new FieldControlSystem());
+               .Add(new FieldControlSystem())
+               .Add(new BuildingMenuControlSystem())
+               .Add(new ActionMenuControlSystem());
         }
         
         private void AddCommonServices(EcsSystems systems)
         {
             systems
+               .Inject(new UiStoreService())
+               .Inject(new UiPrefabStoreService())
                .Inject(new FieldService())
                .Inject(new BuildingAndUpdateMenuSystem());
         }

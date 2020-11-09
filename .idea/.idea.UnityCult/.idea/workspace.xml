@@ -23,37 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f1c2107-41af-4fd4-97ff-7d0322242425" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Attributes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/DistrictDescriptionAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/DistrictDescriptionAttribute.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Extensions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Extensions/DistrictExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Extensions/DistrictExtensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Extensions/TransformExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Extensions/TransformExtensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildingActionItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildingActionItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/FieldService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/FieldService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/ActionModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/ActionModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPefabStore.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPefabStore.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Components/VillageCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Components/VillageCell.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Enums/UiActionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Enums/UiActionType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/DistrictType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/DistrictType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Models/DistrictCellModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/DistrictCellModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Models/FieldModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/FieldModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Models/UIActionModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/UIActionModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/MonoBehaviorScripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/MonoBehaviorScripts/ClickHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/MonoBehaviorScripts/ClickHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Storages/UiEventStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Storages/UiEventStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,31 +53,20 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B70370F7-C0E5-48A9-AC87-525F3ABD0EF9/23/94ed706b/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4CC8EC07-5538-4164-96E5-DB5D391208AC/97/aa47916e/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CCA6AAD9-5367-40B0-B8F6-D5E69E079EB4/76/179ba253/IEcsInitSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4CC8EC07-5538-4164-96E5-DB5D391208AC/a1/2f9dce93/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4CC8EC07-5538-4164-96E5-DB5D391208AC/ce/177b2d38/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3098FA7A-3974-4E6E-B5AF-DB646B956ADF/c0/e4059cbe/EcsSystems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.leopotam.ecs@98267cd08e/src/EcsSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/0c/10492fbe/MemberInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/0c/10492fbe/MemberInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/StartUp.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/VillageScheme/BaseStartUp.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/InfoLogSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Enums/LogLevel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/LogModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/LogComponent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/TestSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/LogSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/LogSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/VillageFiledComponent.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/MatrixModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildiongModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildingModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/VillageFieldComponent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/BuildingTypes.cs" />
@@ -120,15 +96,28 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/FieldService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildindActionItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/NameAttribute.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/DistrictDescriptionAttribute.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/DistrictType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/DistrictExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Extensions/DistrictExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/BuildingActionItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenyControlSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Storages/UiObjectManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/Ui/UiComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/Ui/ActionListComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/Ui/BuildActionComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/Ui/FieldComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ObjectNames.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPefabStore.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/ActionModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" />
       </list>
     </option>
   </component>
@@ -159,10 +148,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3704">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12124">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3704" />
+      <option name="pid" value="12124" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -182,6 +171,7 @@
       <workItem from="1604479808613" duration="91000" />
       <workItem from="1604484592218" duration="15882000" />
       <workItem from="1604752763888" duration="8095000" />
+      <workItem from="1604938571693" duration="5530000" />
     </task>
     <servers />
   </component>
@@ -211,54 +201,54 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="463" height="464" key="DebuggerActiveHint/0.0.3440.1400@0.0.3440.1400" timestamp="1604761540944" />
-    <state width="837" height="518" key="GridCell.Tab.0.bottom" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.0.bottom" timestamp="1604943431952">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.0.center" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431952" />
+    <state width="837" height="518" key="GridCell.Tab.0.center" timestamp="1604943431951">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.0.left" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431951" />
+    <state width="837" height="518" key="GridCell.Tab.0.left" timestamp="1604943431951">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.0.right" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431951" />
+    <state width="837" height="518" key="GridCell.Tab.0.right" timestamp="1604943431951">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.1.bottom" timestamp="1604761844775">
+    <state width="837" height="518" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431951" />
+    <state width="837" height="518" key="GridCell.Tab.1.bottom" timestamp="1604943436833">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844775" />
-    <state width="837" height="518" key="GridCell.Tab.1.center" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604943436833" />
+    <state width="837" height="518" key="GridCell.Tab.1.center" timestamp="1604943436833">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.1.left" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604943436833" />
+    <state width="837" height="518" key="GridCell.Tab.1.left" timestamp="1604943436833">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.1.right" timestamp="1604761844774">
+    <state width="837" height="518" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604943436833" />
+    <state width="837" height="518" key="GridCell.Tab.1.right" timestamp="1604943436833">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844774" />
-    <state width="837" height="518" key="GridCell.Tab.2.bottom" timestamp="1604761844775">
+    <state width="837" height="518" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604943436833" />
+    <state width="837" height="518" key="GridCell.Tab.2.bottom" timestamp="1604943431800">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844775" />
-    <state width="837" height="518" key="GridCell.Tab.2.center" timestamp="1604761844775">
+    <state width="837" height="518" key="GridCell.Tab.2.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431800" />
+    <state width="837" height="518" key="GridCell.Tab.2.center" timestamp="1604943431799">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844775" />
-    <state width="837" height="518" key="GridCell.Tab.2.left" timestamp="1604761844775">
+    <state width="837" height="518" key="GridCell.Tab.2.center/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431799" />
+    <state width="837" height="518" key="GridCell.Tab.2.left" timestamp="1604943431799">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844775" />
-    <state width="837" height="518" key="GridCell.Tab.2.right" timestamp="1604761844775">
+    <state width="837" height="518" key="GridCell.Tab.2.left/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431799" />
+    <state width="837" height="518" key="GridCell.Tab.2.right" timestamp="1604943431800">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="837" height="518" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604761844775" />
+    <state width="837" height="518" key="GridCell.Tab.2.right/0.0.3440.1400@0.0.3440.1400" timestamp="1604943431800" />
     <state x="2414" y="401" key="RiderGenerateDialog" timestamp="1604475542320">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -276,30 +266,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs</url>
-          <line>53</line>
-          <properties documentPath="C:\Home\UnityCult\Assets\Scripts\Common\Systems\Village\FieldControlSystem.cs" initialLine="103">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs</url>
+          <line>19</line>
+          <properties documentPath="C:\Home\UnityCult\Assets\Scripts\Common\Systems\Actions\ActionMenuControlSystem.cs" initialLine="19">
             <startOffsets>
-              <option value="1591" />
+              <option value="530" />
             </startOffsets>
             <endOffsets>
-              <option value="1592" />
+              <option value="531" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuSystem.cs</url>
-          <line>29</line>
-          <properties documentPath="C:\Home\UnityCult\Assets\Scripts\Common\Services\BuildingAndUpdateMenuSystem.cs" initialLine="19">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Common/Extensions/TransformExtensions.cs</url>
+          <line>7</line>
+          <properties documentPath="C:\Home\UnityCult\Assets\Scripts\Common\Extensions\TransformExtensions.cs" initialLine="7">
             <startOffsets>
-              <option value="826" />
+              <option value="179" />
             </startOffsets>
             <endOffsets>
-              <option value="827" />
+              <option value="180" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
