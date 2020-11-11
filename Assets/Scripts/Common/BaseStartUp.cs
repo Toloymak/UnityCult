@@ -2,6 +2,7 @@
 using Common.Storages;
 using Common.Systems.Actions;
 using Common.Systems.Logging;
+using Common.Systems.Resources;
 using Common.Systems.Village;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -58,7 +59,8 @@ namespace Common
                .Add(new TestSystem())
                .Add(new FieldControlSystem())
                .Add(new BuildingMenuControlSystem())
-               .Add(new ActionMenuControlSystem());
+               .Add(new ActionMenuControlSystem())
+               .Add(new ResourceSystem());
         }
         
         private void AddCommonServices(EcsSystems systems)
@@ -67,7 +69,8 @@ namespace Common
                .Inject(new UiStoreService())
                .Inject(new UiPrefabStoreService())
                .Inject(new FieldService())
-               .Inject(new BuildingAndUpdateMenuSystem());
+               .Inject(new BuildingAndUpdateMenuSystem())
+               .Inject(new ResourceService());
         }
         
         protected virtual void AddSystems(EcsSystems systems)

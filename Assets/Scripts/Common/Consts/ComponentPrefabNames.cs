@@ -4,5 +4,7 @@
     {
         public const string VillageCell = "Components/VillageCell";
         public const string ListItem = "Components/ListItem";
+        public const string ResourceName = "Components/ResourceName";
+        public const string ResourceValue = "Components/ResourceValue";
     }
 }
