@@ -1,13 +1,12 @@
-﻿using Common.Components;
+﻿using Business.Enums;
+using Common.Components;
 using Common.Consts;
 using Common.Enums;
-using Common.Extensions;
+using Common.Models.Dtos;
 using Common.Services;
-using Common.Storages;
+using Common.TypeExtensions;
 using Leopotam.Ecs;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using UnityEngine.UI;
 
 namespace Common.Systems.Resources
 {
@@ -42,12 +41,12 @@ namespace Common.Systems.Resources
             var resourceName = UnityEngine.Resources.Load(ComponentPrefabNames.ResourceName);
             var resourceValue = UnityEngine.Resources.Load(ComponentPrefabNames.ResourceValue);
 
-            var resourceDependeces = new ResourceService.ResourceDependences()
+            var resourceDependeces = new LabelCreateDto()
             {
                 EcsWorld = _ecsWorld,
-                ResourcePanel = resourcePanel,
-                ResourceNamePrefab = resourceName,
-                ResourceValuePrefab = resourceValue
+                ParentObject = resourcePanel,
+                LabelNamePrefab = resourceName,
+                LabelValuePrefab = resourceValue
             };
             
             _energy = _resourceService.AddResource(ResourceType.Energy, resourceDependeces);

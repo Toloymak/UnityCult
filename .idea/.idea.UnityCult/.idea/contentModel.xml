@@ -5,9 +5,21 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Business" t="Include">
+            <e p="Enums" t="Include">
+              <e p="DistrictType.cs" t="Include" />
+              <e p="ResourceType.cs" t="Include" />
+            </e>
+            <e p="extensions" t="Include">
+              <e p="DistrictExtensions.cs" t="Include" />
+              <e p="ResourceTypeExtensions.cs" t="Include" />
+            </e>
+          </e>
           <e p="Common" t="Include">
             <e p="Attributes" t="Include">
               <e p="DistrictDescriptionAttribute.cs" t="Include" />
+              <e p="ResourceDescriptionAttribute.cs" t="Include" />
+              <e p="ResourcePropertyAttribute.cs" t="Include" />
             </e>
             <e p="BaseStartUp.cs" t="Include" />
             <e p="Components" t="Include">
@@ -22,20 +34,15 @@
             </e>
             <e p="Enums" t="Include">
               <e p="LogLevel.cs" t="Include" />
-              <e p="ResourceType.cs" t="Include" />
               <e p="UiActionType.cs" t="Include" />
-            </e>
-            <e p="extensions" t="Include">
-              <e p="DistrictExtensions.cs" t="Include" />
-              <e p="TransformExtensions.cs" t="Include" />
-            </e>
-            <e p="GameTypes" t="Include">
-              <e p="DistrictType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
               <e p="ActionModel.cs" t="Include" />
               <e p="BuildingActionItem.cs" t="Include" />
               <e p="DistrictCellModel.cs" t="Include" />
+              <e p="Dtos" t="Include">
+                <e p="LabelCreateDto.cs" t="Include" />
+              </e>
               <e p="FieldModel.cs" t="Include" />
               <e p="LogModel.cs" t="Include" />
               <e p="UIActionModel.cs" t="Include" />
@@ -66,6 +73,10 @@
                 <e p="BuildingMenuControlSystem.cs" t="Include" />
                 <e p="FieldControlSystem.cs" t="Include" />
               </e>
+            </e>
+            <e p="TypeExtensions" t="Include">
+              <e p="EnumExtensions.cs" t="Include" />
+              <e p="TransformExtensions.cs" t="Include" />
             </e>
           </e>
           <e p="VillageScheme" t="Include">

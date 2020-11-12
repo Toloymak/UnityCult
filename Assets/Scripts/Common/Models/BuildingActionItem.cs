@@ -1,4 +1,4 @@
-﻿using Common.GameTypes;
+﻿using Business.Enums;
 
 namespace Common.Models
 {

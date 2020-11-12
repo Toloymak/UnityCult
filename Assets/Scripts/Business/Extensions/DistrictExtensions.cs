@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+using Business.Enums;
 using Common.Attributes;
-using Common.GameTypes;
-using JetBrains.Annotations;
+using Common.TypeExtensions;
 
-namespace Common.Extensions
+namespace Business.Extensions
 {
     public static class DistrictExtensions
     {
         public static string GetName(this DistrictType districtType)
         {
-            var attribute = districtType.GetDescriptionAttribute();
+            var attribute = districtType.GetAttribute<DistrictType, DistrictDescriptionAttribute>();
 
             return attribute == null 
                 ? districtType.ToString() 
@@ -20,7 +18,7 @@ namespace Common.Extensions
         
         public static string GetDescription(this DistrictType districtType)
         {
-            var attribute = districtType.GetDescriptionAttribute();
+            var attribute = districtType.GetAttribute<DistrictType, DistrictDescriptionAttribute>();
 
             return attribute == null 
                 ? string.Empty 
@@ -30,16 +28,6 @@ namespace Common.Extensions
         public static IList<(string, int)> GetPrices(this DistrictType districtType)
         {
             return new List<(string, int)>();
-        }
-
-        private static DistrictDescriptionAttribute GetDescriptionAttribute(this DistrictType districtType)
-        {
-            var attribute = typeof(DistrictType)
-               .GetMember(districtType.ToString())
-               .FirstOrDefault()
-              ?.GetCustomAttribute(typeof(DistrictDescriptionAttribute));
-
-            return (DistrictDescriptionAttribute) attribute;
         }
     }
 }

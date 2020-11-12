@@ -2,9 +2,9 @@
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
-using Common.Extensions;
 using Common.Models;
 using Common.Storages;
+using Common.TypeExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,6 +1,6 @@
 ﻿using Common.Attributes;
 
-namespace Common.GameTypes
+namespace Business.Enums
 {
     public enum DistrictType
     {

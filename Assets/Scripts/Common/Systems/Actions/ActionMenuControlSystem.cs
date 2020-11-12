@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Common.Components;
-using Common.Extensions;
 using Common.Models;
 using Common.Services;
+using Common.TypeExtensions;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;

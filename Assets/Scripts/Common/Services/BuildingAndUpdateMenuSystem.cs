@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.Extensions;
 using Common.Consts;
-using Common.Extensions;
 using Common.Models;
+using Common.TypeExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;

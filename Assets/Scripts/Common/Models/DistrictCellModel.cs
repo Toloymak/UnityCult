@@ -1,4 +1,4 @@
-﻿using Common.GameTypes;
+﻿using Business.Enums;
 using UnityEngine;
 
 namespace Common.Models
