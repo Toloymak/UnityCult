@@ -1,4 +1,4 @@
-﻿using Common.Attributes;
+﻿using Business.Attributes;
 
 namespace Business.Enums
 {

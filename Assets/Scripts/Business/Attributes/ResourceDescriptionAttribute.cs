@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Attributes
+namespace Business.Attributes
 {
     public class ResourceDescriptionAttribute : Attribute
     {

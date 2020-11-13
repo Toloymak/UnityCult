@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Business.Attributes;
 using Business.Enums;
-using Common.Attributes;
 using Common.TypeExtensions;
 
 namespace Business.Extensions
@@ -25,9 +26,13 @@ namespace Business.Extensions
                 : attribute.Description;
         }
         
-        public static IList<(string, int)> GetPrices(this DistrictType districtType)
+        public static IEnumerable<(ResourceType, int)> GetPrices(this DistrictType districtType)
         {
-            return new List<(string, int)>();
+            var attributes = districtType.GetAttributes<DistrictType, DistrictPriceAttribute>();
+
+            return attributes == null
+                ? new (ResourceType, int)[]{}
+                : attributes.Select(x => (x.ResourceType, x.Price));
         }
     }
 }

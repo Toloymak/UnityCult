@@ -18,6 +18,13 @@ namespace Common.Services
             _itemPrefab == null
                 ? _itemPrefab = Resources.Load(ComponentPrefabNames.ListItem)
                 : _itemPrefab;
+
+        private Object _priceItem;
+
+        private Object PriceItem =>
+            _priceItem == null
+                ? _priceItem = Resources.Load(ComponentPrefabNames.PriceItem)
+                : _priceItem;
         
         public void FillBuildingOrUpdateList(IList<BuildingActionItem> buildingActionItems, UiStoreService uiStoreService)
         {
@@ -33,9 +40,18 @@ namespace Common.Services
                     buildingActionItem.DistrictType.GetName();
                 itemGameObject.transform.Find("Description").GetComponent<Text>().text = buildingActionItem
                    .DistrictType.GetDescription();
-                
-                
-                itemGameObject.transform.Find("Prices").Find("Text").GetComponent<Text>().text = "-";
+
+                var priceListGameObject = itemGameObject.transform.Find(UiObjectNames.PriceItemInListItem);
+                priceListGameObject.transform.DeleteAllChildren();
+
+                foreach (var price in buildingActionItem.DistrictType.GetPrices())
+                {
+                    var newPrice = (GameObject) Object.Instantiate(PriceItem, priceListGameObject.transform);
+                    
+                    newPrice.transform.Find("Name").GetComponent<Text>().text = price.Item1.GetShortName();
+                    newPrice.transform.Find("Value").GetComponent<Text>().text = price.Item2.ToString();
+                }
+                // itemGameObject.transform.Find("Prices").Find("Text").GetComponent<Text>().text = "-";
             }
             
         }

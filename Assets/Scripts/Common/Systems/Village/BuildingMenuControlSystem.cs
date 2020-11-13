@@ -64,6 +64,7 @@ namespace Common.Systems.Village
                 new BuildingActionItem() {DistrictType = DistrictType.Administration},
                 new BuildingActionItem() {DistrictType = DistrictType.Arena},
                 new BuildingActionItem() {DistrictType = DistrictType.Factory},
+                new BuildingActionItem() {DistrictType = DistrictType.Alchemy},
             };
     }
 }

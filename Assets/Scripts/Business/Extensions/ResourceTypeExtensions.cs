@@ -1,5 +1,5 @@
-﻿using Business.Enums;
-using Common.Attributes;
+﻿using Business.Attributes;
+using Business.Enums;
 using Common.TypeExtensions;
 
 namespace Business.Extensions
