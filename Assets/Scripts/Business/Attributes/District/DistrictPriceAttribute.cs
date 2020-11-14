@@ -1,7 +1,7 @@
 ﻿using System;
 using Business.Enums;
 
-namespace Business.Attributes
+namespace Business.Attributes.District
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class DistrictPriceAttribute : Attribute

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Business.Attributes
+namespace Business.Attributes.District
 {
     public class DistrictDescriptionAttribute : Attribute
     {
