@@ -40,14 +40,16 @@ namespace Common.Services
                     cellModel.Name = newCell.name;
 
                     var cell = GameObject.Find(newCell.name);
-                    cell.transform.GetChild(0).GetComponent<Text>().text = $"{row}_{column}";
-
-
+                    cell.transform.Find("Number").GetComponent<Text>().text = $"{row}_{column}";
+                    
                     var toggleEvent = new Toggle.ToggleEvent();
                     toggleEvent.AddListener(value =>
                         {
-                            UiEventStorage.AddAction(ObjectGroups.FieldGroup, newCell.name, cell,
+                            UiEventStorage.AddAction(ObjectGroups.FieldGroup,
+                                newCell.name,
+                                cell,
                                 value ? UiActionType.Selected : UiActionType.Unselected);
+                            
                             var togglesForDisabling = villageFieldComponent.FieldModel.GetEnumerable()
                                .Where(x => x.Name != newCell.name)
                                .Select(x => x.GameObject)

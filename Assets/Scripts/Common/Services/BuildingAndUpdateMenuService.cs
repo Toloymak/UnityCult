@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 
 namespace Common.Services
 {
-    public class BuildingAndUpdateMenuSystem
+    public class BuildingAndUpdateMenuService
     {
         private Object _itemPrefab;
 
@@ -51,9 +51,7 @@ namespace Common.Services
                     newPrice.transform.Find("Name").GetComponent<Text>().text = price.Item1.GetShortName();
                     newPrice.transform.Find("Value").GetComponent<Text>().text = price.Item2.ToString();
                 }
-                // itemGameObject.transform.Find("Prices").Find("Text").GetComponent<Text>().text = "-";
             }
-            
         }
     }
 }

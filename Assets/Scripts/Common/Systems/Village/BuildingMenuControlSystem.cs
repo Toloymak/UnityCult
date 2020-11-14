@@ -14,7 +14,7 @@ namespace Common.Systems.Village
 {
     public class BuildingMenuControlSystem : BaseSystem, IEcsRunSystem, IEcsInitSystem
     {
-        private BuildingAndUpdateMenuSystem _buildingAndUpdateMenuSystem = null;
+        private BuildingAndUpdateMenuService _buildingAndUpdateMenuService = null;
         private EcsFilter<LogComponent> _logComponentFilter = null;
 
         private UiStoreService _uiStoreService = null;
@@ -45,7 +45,7 @@ namespace Common.Systems.Village
                     case UiActionType.Click:
                         break;
                     case UiActionType.Selected:
-                        _buildingAndUpdateMenuSystem
+                        _buildingAndUpdateMenuService
                            .FillBuildingOrUpdateList(GetTestBuildingActionItems, _uiStoreService);
                         break;
                     case UiActionType.Unselected:

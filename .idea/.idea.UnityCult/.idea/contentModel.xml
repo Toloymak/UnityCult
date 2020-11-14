@@ -64,7 +64,7 @@
               <e p="UIActionModel.cs" t="Include" />
             </e>
             <e p="Services" t="Include">
-              <e p="BuildingAndUpdateMenuSystem.cs" t="Include" />
+              <e p="BuildingAndUpdateMenuService.cs" t="Include" />
               <e p="FieldService.cs" t="Include" />
               <e p="ResourceService.cs" t="Include" />
               <e p="UiPefabStore.cs" t="Include" />
