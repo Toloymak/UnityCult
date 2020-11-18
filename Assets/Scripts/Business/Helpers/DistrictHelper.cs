@@ -4,6 +4,7 @@ using System.Linq;
 using Business.Enums;
 using Business.Extensions;
 using Business.Models;
+using Common.Models;
 using Common.TypeExtensions;
 
 namespace Business.Helpers
@@ -24,17 +25,24 @@ namespace Business.Helpers
 
             foreach (var district in allDistricts)
             {
-                district.Children = allDistricts.Where(x =>
-                        x.Object.BuildingType == DistrictBuildingType.Upgrade
-                     && x.Object.Parent.HasValue
-                     && x.Object.Parent.Value == district.Object.DistrictType
-                     || x.Object.BuildingType == DistrictBuildingType.District
-                     && x.Object.RequiredDistricts.Any(d => d == district.Object.DistrictType))
+                var children = allDistricts.Where(x =>
+                                                      x.Object.BuildingType == DistrictBuildingType.Upgrade
+                                                   && x.Object.Parent.HasValue
+                                                   && x.Object.Parent.Value == district.Object.DistrictType
+                                                   || x.Object.BuildingType == DistrictBuildingType.District
+                                                   && x.Object.RequiredDistricts.Any(d => d == district.Object
+                                                         .DistrictType))
                    .ToList();
+                district.Children = children;
+
+                foreach (var child in children)
+                {
+                    child.Parent = district;
+                }
             }
 
             rootLeaf.Children = allDistricts
-               .Where(x => !x.Object.RequiredDistricts.Any() && !x.Object.Parent.HasValue)
+               .Where(x => !x.Object.RequiredDistricts.Any() && x.Parent == null)
                .ToList();
 
             return rootLeaf;
@@ -64,6 +72,69 @@ namespace Business.Helpers
 
                 result += GetString(child, deep + 1, prepared);
                 prepared.Add(child.Object);
+            }
+
+            return result;
+        }
+
+        private Leaf<DistrictModel> Find(Leaf<DistrictModel> leaf, DistrictType type)
+        {
+            if (leaf.Object.DistrictType == type)
+                return leaf;
+            
+            foreach (var child in leaf.Children)
+            {
+                var result = Find(child, type);
+                if (result != null)
+                    return result;
+            }
+
+            return null;
+        }
+
+        public IList<BuildingActionItem> GetAvailableBuildings(DistrictType districtOnCell,
+                                                                IEnumerable<DistrictType> existingBuildings)
+        {
+            var root = GetRootLeafOfBuildingTree();
+
+            var t1 = GetList(root)
+               .Where(x => x.Object != null)
+               .Where(x => x.Parent.Object == null);
+            
+            var t2 = GetList(root)
+               .Where(x => x.Object != null)
+               .Where(x => x.Object.BuildingType == DistrictBuildingType.Upgrade &&
+                       x.Parent.Object.DistrictType == districtOnCell);
+            
+            var t3 = GetList(root)
+               .Where(x => x.Object != null)
+               .Where(x => x.Object.BuildingType == DistrictBuildingType.District &&
+                      existingBuildings.Contains(x.Parent.Object.DistrictType));
+
+            var listOfLeaf = GetList(root)
+               .Where(x => x.Parent != null)
+               .Where(x => x.Parent.Object == null
+                       || x.Object.BuildingType == DistrictBuildingType.Upgrade &&
+                          x.Parent.Object.DistrictType == districtOnCell
+                       || x.Object.BuildingType == DistrictBuildingType.District &&
+                          existingBuildings.Contains(x.Parent.Object.DistrictType));
+
+            return listOfLeaf.Select(x => new BuildingActionItem()
+                {
+                    DistrictType = x.Object.DistrictType
+                })
+               .ToList();
+        }
+
+        private List<Leaf<DistrictModel>> GetList(Leaf<DistrictModel> currentLeaf)
+        {
+            var result = new List<Leaf<DistrictModel>>();
+            
+            result.Add(currentLeaf);
+
+            foreach (var child in currentLeaf.Children)
+            {
+                result.AddRange(GetList(child));
             }
 
             return result;

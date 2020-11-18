@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Business.Enums;
 using Business.Extensions;
+using Business.Helpers;
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
@@ -52,8 +53,9 @@ namespace Common.Systems.Village
                         break;
                     case UiActionType.Selected:
                         _buildingAndUpdateMenuService
-                           .FillBuildingOrUpdateList(GetTestBuildingActionItems,
-                                                     _uiStoreService, 
+                           .FillBuildingOrUpdateList(new DistrictHelper().GetAvailableBuildings(DistrictType.None,
+                                                         new[] {DistrictType.None}),
+                                                     _uiStoreService,
                                                      _resourceComponents);
                         break;
                     case UiActionType.Unselected:
@@ -65,14 +67,5 @@ namespace Common.Systems.Village
                 UiEventStorage.RemoveClick(ObjectGroups.FieldGroup, action.ObjectName, action.Type);
             }
         }
-
-        private List<BuildingActionItem> GetTestBuildingActionItems =>
-            new List<BuildingActionItem>()
-            {
-                new BuildingActionItem() {DistrictType = DistrictType.Administration},
-                new BuildingActionItem() {DistrictType = DistrictType.Arena},
-                new BuildingActionItem() {DistrictType = DistrictType.Factory},
-                new BuildingActionItem() {DistrictType = DistrictType.Alchemy},
-            };
     }
 }
