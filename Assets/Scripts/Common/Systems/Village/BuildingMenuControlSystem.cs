@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Business.Enums;
+using Business.Extensions;
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
@@ -16,10 +17,12 @@ namespace Common.Systems.Village
     {
         private BuildingAndUpdateMenuService _buildingAndUpdateMenuService = null;
         private EcsFilter<LogComponent> _logComponentFilter = null;
+        private EcsFilter<ResourceComponent> _resourceComponentFilter = null;
 
         private UiStoreService _uiStoreService = null;
 
-        private HashSet<UIActionModel> _fieldGroup;
+        private HashSet<UIActionModel> _fieldUiActionGroup;
+        private IDictionary<ResourceType, ResourceComponent> _resourceComponents;
 
         public void Init()
         {
@@ -28,17 +31,20 @@ namespace Common.Systems.Village
 
         public void Run()
         {
-            if (_fieldGroup == null)
-                _fieldGroup = UiEventStorage.GetGroup(ObjectGroups.FieldGroup);
+            if (_fieldUiActionGroup == null)
+                _fieldUiActionGroup = UiEventStorage.GetGroup(ObjectGroups.FieldGroup);
+
+            if (_resourceComponents == null && _resourceComponentFilter != null)
+                _resourceComponents = _resourceComponentFilter.ToDictionary();
             
             ProcessFieldClicks();
         }
 
         private void ProcessFieldClicks()
         {
-            while (_fieldGroup.Any())
+            while (_fieldUiActionGroup.Any())
             {
-                var action = _fieldGroup.First();
+                var action = _fieldUiActionGroup.First();
 
                 switch (action.Type)
                 {
@@ -46,7 +52,9 @@ namespace Common.Systems.Village
                         break;
                     case UiActionType.Selected:
                         _buildingAndUpdateMenuService
-                           .FillBuildingOrUpdateList(GetTestBuildingActionItems, _uiStoreService);
+                           .FillBuildingOrUpdateList(GetTestBuildingActionItems,
+                                                     _uiStoreService, 
+                                                     _resourceComponents);
                         break;
                     case UiActionType.Unselected:
                         break;

@@ -29,7 +29,7 @@ namespace Business.Extensions
                 : attribute.Description;
         }
         
-        public static IEnumerable<(ResourceType, int)> GetPrices(this DistrictType districtType)
+        public static IEnumerable<(ResourceType type, int value)> GetPrices(this DistrictType districtType)
         {
             var attributes = districtType.GetAttributes<DistrictType, DistrictPriceAttribute>();
 

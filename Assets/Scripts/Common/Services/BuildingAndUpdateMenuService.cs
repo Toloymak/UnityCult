@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.Enums;
 using Business.Extensions;
+using Common.Components;
 using Common.Consts;
 using Common.Models;
 using Common.TypeExtensions;
@@ -26,21 +28,26 @@ namespace Common.Services
                 ? _priceItem = Resources.Load(ComponentPrefabNames.PriceItem)
                 : _priceItem;
         
-        public void FillBuildingOrUpdateList(IList<BuildingActionItem> buildingActionItems, UiStoreService uiStoreService)
+        public void FillBuildingOrUpdateList(IList<BuildingActionItem> buildingActionItems,
+                                             UiStoreService uiStoreService,
+                                             IDictionary<ResourceType, ResourceComponent> resourceComponents)
+        
         {
             uiStoreService.BuildActionList.transform.DeleteAllChildren();
 
             foreach (var buildingActionItem in buildingActionItems)
             {
-                var newCell = Object.Instantiate(ItemPrefab, uiStoreService.BuildActionList.transform);
-                newCell.name = $"buildingActionItem_{buildingActionItem.DistrictType.ToString()}_{Guid.NewGuid()}";
-
-                var itemGameObject = GameObject.Find(newCell.name);
+                var itemGameObject = (GameObject) Object.Instantiate(ItemPrefab, uiStoreService.BuildActionList.transform);
+                itemGameObject.name = $"buildingActionItem_{buildingActionItem.DistrictType.ToString()}_{Guid.NewGuid()}";
+                
                 itemGameObject.transform.Find("Name").GetComponent<Text>().text =
                     buildingActionItem.DistrictType.GetName();
                 itemGameObject.transform.Find("Description").GetComponent<Text>().text = buildingActionItem
                    .DistrictType.GetDescription();
 
+                var isEnoughMoney = buildingActionItem.IsEnoughResources(resourceComponents);
+                itemGameObject.GetComponent<Button>().interactable = isEnoughMoney;
+                
                 var priceListGameObject = itemGameObject.transform.Find(UiObjectNames.PriceItemInListItem);
                 priceListGameObject.transform.DeleteAllChildren();
 
