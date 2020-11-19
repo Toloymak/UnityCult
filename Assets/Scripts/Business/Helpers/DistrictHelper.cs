@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Business.Enums;
 using Business.Extensions;
 using Business.Models;
@@ -34,17 +35,20 @@ namespace Business.Helpers
                                                          .DistrictType))
                    .ToList();
                 district.Children = children;
-
-                foreach (var child in children)
-                {
-                    child.Parent = district;
-                }
             }
 
             rootLeaf.Children = allDistricts
                .Where(x => !x.Object.RequiredDistricts.Any() && x.Parent == null)
                .ToList();
 
+            foreach (var district in allDistricts)
+            {
+                foreach (var child in district.Children)
+                {
+                    child.Parent = district;
+                }
+            }
+            
             return rootLeaf;
         }
 
@@ -97,23 +101,12 @@ namespace Business.Helpers
         {
             var root = GetRootLeafOfBuildingTree();
 
-            var t1 = GetList(root)
-               .Where(x => x.Object != null)
-               .Where(x => x.Parent.Object == null);
+            var list = GetList(root);
             
-            var t2 = GetList(root)
-               .Where(x => x.Object != null)
-               .Where(x => x.Object.BuildingType == DistrictBuildingType.Upgrade &&
-                       x.Parent.Object.DistrictType == districtOnCell);
-            
-            var t3 = GetList(root)
-               .Where(x => x.Object != null)
-               .Where(x => x.Object.BuildingType == DistrictBuildingType.District &&
-                      existingBuildings.Contains(x.Parent.Object.DistrictType));
 
-            var listOfLeaf = GetList(root)
-               .Where(x => x.Parent != null)
-               .Where(x => x.Parent.Object == null
+            var listOfLeaf = list
+               .Where(x => x.Object != null)
+               .Where(x => x.Parent?.Object == null
                        || x.Object.BuildingType == DistrictBuildingType.Upgrade &&
                           x.Parent.Object.DistrictType == districtOnCell
                        || x.Object.BuildingType == DistrictBuildingType.District &&
