@@ -10,16 +10,20 @@ namespace Business.Enums
         EliteResidential = 100,
         School = 200,
         Library = 300,
+        
         [DistrictDescription("Arena", "Your warriors can get here a honor and an experience!")]
         [DistrictPrice(ResourceType.OrdinarySoulStone, 100)]
-        [RequiredDistricts(Alchemy)]
         Arena = 400,
-        [RequiredDistricts(Arena)]
+        [DistrictBuildingType(DistrictBuildingType.Upgrade, Arena)]
+        [DistrictPrice(ResourceType.OrdinarySoulStone, 1000)]
         Arena2 = 410,
-        [RequiredDistricts(Arena2)]
+        [DistrictBuildingType(DistrictBuildingType.Upgrade, Arena2)]
+        [DistrictPrice(ResourceType.OrdinarySoulStone, 10000)]
         Arena3 = 420,
-        [RequiredDistricts(Arena3)]
+        [DistrictBuildingType(DistrictBuildingType.Upgrade, Arena3)]
+        [DistrictPrice(ResourceType.GoodSoulStone, 1000)]
         Arena4 = 430,
+        
         [DistrictPrice(ResourceType.OrdinarySoulStone, 1000)]
         [DistrictPrice(ResourceType.MysticMetal, 500)]
         [DistrictDescription("Factory", "You can create here an equipment")]

@@ -36,7 +36,7 @@ namespace Common.Services
                     var cellModel = villageFieldComponent.FieldModel.GetItem(row, column);
 
                     var newCell = Object.Instantiate(cellPrefab, filedPanelGameObject.transform);
-                    newCell.name = $"area_{row}_{column}";
+                    newCell.name = $"{row}_{column}";
                     cellModel.Name = newCell.name;
 
                     var cell = GameObject.Find(newCell.name);

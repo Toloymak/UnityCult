@@ -37,10 +37,6 @@ namespace Business.Helpers
                 district.Children = children;
             }
 
-            rootLeaf.Children = allDistricts
-               .Where(x => !x.Object.RequiredDistricts.Any() && x.Parent == null)
-               .ToList();
-
             foreach (var district in allDistricts)
             {
                 foreach (var child in district.Children)
@@ -49,6 +45,10 @@ namespace Business.Helpers
                 }
             }
             
+            rootLeaf.Children = allDistricts
+               .Where(x => !x.Object.RequiredDistricts.Any() && x.Parent == null)
+               .ToList();
+
             return rootLeaf;
         }
 
@@ -99,18 +99,20 @@ namespace Business.Helpers
         public IList<BuildingActionItem> GetAvailableBuildings(DistrictType districtOnCell,
                                                                 IEnumerable<DistrictType> existingBuildings)
         {
-            var root = GetRootLeafOfBuildingTree();
-
-            var list = GetList(root);
-            
-
-            var listOfLeaf = list
+            var list = GetList(GetRootLeafOfBuildingTree())
                .Where(x => x.Object != null)
-               .Where(x => x.Parent?.Object == null
-                       || x.Object.BuildingType == DistrictBuildingType.Upgrade &&
-                          x.Parent.Object.DistrictType == districtOnCell
-                       || x.Object.BuildingType == DistrictBuildingType.District &&
-                          existingBuildings.Contains(x.Parent.Object.DistrictType));
+               .ToList();
+
+            var listOfLeaf =
+                districtOnCell == DistrictType.None
+                    ? list
+                       .Where(x => x.Parent?.Object == null)
+                    : list
+                       .Where(x => x.Parent?.Object != null)
+                       .Where(x => x.Object.BuildingType == DistrictBuildingType.Upgrade
+                               && x.Parent.Object.DistrictType == districtOnCell
+                               || x.Object.BuildingType == DistrictBuildingType.District
+                               && existingBuildings.Contains(x.Parent.Object.DistrictType));
 
             return listOfLeaf.Select(x => new BuildingActionItem()
                 {

@@ -30,7 +30,8 @@ namespace Common.Services
         
         public void FillBuildingOrUpdateList(IList<BuildingActionItem> buildingActionItems,
                                              UiStoreService uiStoreService,
-                                             IDictionary<ResourceType, ResourceComponent> resourceComponents)
+                                             IDictionary<ResourceType, ResourceComponent> resourceComponents,
+                                             DistrictCellModel districtCellModel)
         
         {
             uiStoreService.BuildActionList.transform.DeleteAllChildren();
@@ -46,7 +47,16 @@ namespace Common.Services
                    .DistrictType.GetDescription();
 
                 var isEnoughMoney = buildingActionItem.IsEnoughResources(resourceComponents);
-                itemGameObject.GetComponent<Button>().interactable = isEnoughMoney;
+                var button = itemGameObject.GetComponent<Button>();
+                button.interactable = isEnoughMoney;
+
+                var buttonEvent = new Button.ButtonClickedEvent();
+                buttonEvent.AddListener(() =>
+                {
+                    Build(districtCellModel, resourceComponents, buildingActionItem.DistrictType, uiStoreService);
+                });
+                
+                button.onClick = buttonEvent;
                 
                 var priceListGameObject = itemGameObject.transform.Find(UiObjectNames.PriceItemInListItem);
                 priceListGameObject.transform.DeleteAllChildren();
@@ -59,6 +69,24 @@ namespace Common.Services
                     newPrice.transform.Find("Value").GetComponent<Text>().text = price.Item2.ToString();
                 }
             }
+        }
+
+        public void Build(DistrictCellModel districtCellModel,
+                          IDictionary<ResourceType, ResourceComponent> resourceComponents,
+                          DistrictType districtType,
+                          UiStoreService uiStoreService)
+        {
+            var prices = districtType.GetPrices();
+            foreach (var price in prices)
+            {
+                resourceComponents[price.type].Count -= price.value;
+            }
+            
+            districtCellModel.Type = districtType;
+            Debug.Log($"District {districtType} on cell {districtCellModel.Name} was built");
+            
+            uiStoreService.BuildActionList.transform.DeleteAllChildren();
+            districtCellModel.GameObject.GetComponent<Toggle>().isOn = false;
         }
     }
 }

@@ -9,19 +9,19 @@ namespace Business.Attributes.District
         public DistrictBuildingType BuildingType { get; set; }
         public DistrictType Parent { get; set; }
 
-        public DistrictBuildingTypeAttribute(DistrictBuildingType type, DistrictType? parentDistrict)
+        public DistrictBuildingTypeAttribute(DistrictBuildingType type, DistrictType parentDistrict = DistrictType.None)
         {
             BuildingType = type;
 
             if (type == DistrictBuildingType.Upgrade)
             {
-                if (!parentDistrict.HasValue)
+                if (parentDistrict == DistrictType.None)
                 {
                     Debug.LogError("Upgrade district should have parent district");
                     return;
                 }
                 
-                Parent = parentDistrict.Value;
+                Parent = parentDistrict;
             }
         }
     }
