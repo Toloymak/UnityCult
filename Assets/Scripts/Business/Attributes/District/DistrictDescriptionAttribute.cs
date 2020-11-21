@@ -6,11 +6,13 @@ namespace Business.Attributes.District
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string TexturePath { get; set; }
 
-        public DistrictDescriptionAttribute(string name, string description)
+        public DistrictDescriptionAttribute(string name, string description, string texture = "")
         {
             Name = name;
             Description = description;
+            TexturePath = texture;
         }
         
         public DistrictDescriptionAttribute(string name)

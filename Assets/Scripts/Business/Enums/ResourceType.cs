@@ -5,7 +5,7 @@ namespace Business.Enums
     public enum ResourceType
     {
         [ResourceDescription("S", "Ordinary Stone")]
-        [ResourceProperty(1000)]
+        [ResourceProperty(1300)]
         OrdinarySoulStone,
         [ResourceDescription("GS", "Good Stone")]
         [ResourceProperty(0)]

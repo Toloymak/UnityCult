@@ -83,8 +83,17 @@ namespace Common.Services
             }
             
             districtCellModel.Type = districtType;
-            Debug.Log($"District {districtType} on cell {districtCellModel.Name} was built");
+
+            var texture = districtType.GetTexturePath();
+
+            if (!string.IsNullOrEmpty(texture))
+            {
+                var img = Resources.Load<Sprite>(texture);
+                districtCellModel.GetLogo.sprite = Object.Instantiate(img);
+            }
             
+            Debug.Log($"District {districtType} on cell {districtCellModel.Name} was built");
+
             uiStoreService.BuildActionList.transform.DeleteAllChildren();
             districtCellModel.GameObject.GetComponent<Toggle>().isOn = false;
         }

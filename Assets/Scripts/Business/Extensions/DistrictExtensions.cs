@@ -29,6 +29,15 @@ namespace Business.Extensions
                 : attribute.Description;
         }
         
+        public static string GetTexturePath(this DistrictType districtType)
+        {
+            var attribute = districtType.GetAttribute<DistrictType, DistrictDescriptionAttribute>();
+
+            return attribute == null || string.IsNullOrEmpty(attribute.TexturePath)
+                ? string.Empty 
+                : attribute.TexturePath;
+        }
+        
         public static IEnumerable<(ResourceType type, int value)> GetPrices(this DistrictType districtType)
         {
             var attributes = districtType.GetAttributes<DistrictType, DistrictPriceAttribute>();

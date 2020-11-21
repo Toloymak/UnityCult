@@ -1,5 +1,6 @@
 ﻿using Business.Attributes;
 using Business.Attributes.District;
+using Common.Consts;
 
 namespace Business.Enums
 {
@@ -11,7 +12,7 @@ namespace Business.Enums
         School = 200,
         Library = 300,
         
-        [DistrictDescription("Arena", "Your warriors can get here a honor and an experience!")]
+        [DistrictDescription("Arena", "Your warriors can get here a honor and an experience!", TextureNames.Arena)]
         [DistrictPrice(ResourceType.OrdinarySoulStone, 100)]
         Arena = 400,
         [DistrictBuildingType(DistrictBuildingType.Upgrade, Arena)]

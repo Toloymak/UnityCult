@@ -41,28 +41,48 @@ namespace Common.Services
 
                     var cell = GameObject.Find(newCell.name);
                     cell.transform.Find("Number").GetComponent<Text>().text = $"{row}_{column}";
+
+                    var currentToggle = cell.GetComponent<Toggle>();
                     
                     var toggleEvent = new Toggle.ToggleEvent();
                     toggleEvent.AddListener(value =>
                         {
-                            UiEventStorage.AddAction(ObjectGroups.FieldGroup,
-                                newCell.name,
-                                cell,
-                                value ? UiActionType.Selected : UiActionType.Unselected);
-                            
-                            var togglesForDisabling = villageFieldComponent.FieldModel.GetEnumerable()
-                               .Where(x => x.Name != newCell.name)
-                               .Select(x => x.GameObject)
-                               .Select(x => x.GetComponent<Toggle>());
-
-                            foreach (var toggle in togglesForDisabling)
+                            if (currentToggle.isOn)
                             {
-                                toggle.isOn = false;
+                                Debug.Log("On");
+
+                                UiEventStorage.AddAction(ObjectGroups.FieldGroup,
+                                                         newCell.name,
+                                                         cell,
+                                                         UiActionType.Selected);
+                            
+                                var togglesForDisabling = villageFieldComponent.FieldModel.GetEnumerable()
+                                   .Where(x => x.Name != newCell.name)
+                                   .Select(x => x.GameObject.GetComponent<Toggle>());
+                                
+                                foreach (var toggle in togglesForDisabling)
+                                {
+                                    toggle.isOn = false;
+                                    
+                                    var disabledToggleColor = toggle.colors;
+                                
+                                    disabledToggleColor.normalColor = Color.white;
+                                    disabledToggleColor.selectedColor = Color.white;
+
+                                    toggle.colors = disabledToggleColor;
+                                }
+                                
+                                var toggleColors = currentToggle.colors;
+                                
+                                toggleColors.normalColor = Color.green;
+                                toggleColors.selectedColor = Color.green;
+
+                                currentToggle.colors = toggleColors;
                             }
                         }
                     );
 
-                    cell.GetComponent<Toggle>().onValueChanged = toggleEvent;
+                    currentToggle.onValueChanged = toggleEvent;
 
                     cellModel.GameObject = cell;
                 }

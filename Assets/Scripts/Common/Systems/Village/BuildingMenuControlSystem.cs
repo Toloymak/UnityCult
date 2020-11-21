@@ -10,6 +10,7 @@ using Common.Enums;
 using Common.Models;
 using Common.Services;
 using Common.Storages;
+using Common.TypeExtensions;
 using Leopotam.Ecs;
 
 namespace Common.Systems.Village
