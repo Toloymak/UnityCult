@@ -24,6 +24,7 @@
               <e p="DistrictType.cs" t="Include" />
               <e p="ResearchType.cs" t="Include" />
               <e p="ResourceType.cs" t="Include" />
+              <e p="SkillType.cs" t="Include" />
             </e>
             <e p="extensions" t="Include">
               <e p="DistrictExtensions.cs" t="Include" />
@@ -35,6 +36,8 @@
             <e p="Models" t="Include">
               <e p="DistrictModel.cs" t="Include" />
               <e p="Leaf.cs" t="Include" />
+              <e p="SkillModel.cs" t="Include" />
+              <e p="UnitModel.cs" t="Include" />
             </e>
           </e>
           <e p="Common" t="Include">

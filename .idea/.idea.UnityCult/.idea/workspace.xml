@@ -23,19 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f1c2107-41af-4fd4-97ff-7d0322242425" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/TextureNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/TextureNames.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/SkillType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/SkillType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Components/VillageCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Components/VillageCell.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/District/DistrictDescriptionAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/District/DistrictDescriptionAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/DistrictType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/DistrictType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/ResourceType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Enums/ResourceType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Extensions/DistrictExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Extensions/DistrictExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Models/DistrictCellModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Models/DistrictCellModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/FieldService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/FieldService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,16 +61,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CDEC8475-F352-4A27-80F0-322B5E8BD8DA/c0/a4e23968/IMGUIContainer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2500DD07-8A54-4A69-B6C9-23861AF6CD15/75/3326a2b2/GUIUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/0c/10492fbe/MemberInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/ResourceDescriprionAttribute.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Attributes/ResourceDescriptionAttribute.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/BusinessExtensions/ResourceTypeExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/ResourceService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/GameTypes/ResourceType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Village.cs" />
@@ -123,6 +115,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/DistrictCellModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingAndUpdateMenuService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Enums/ResourceType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Enums/SkillType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs" />
       </list>
     </option>
   </component>
@@ -153,10 +148,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16084">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16084" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -187,6 +182,7 @@
       <workItem from="1605800642403" duration="856000" />
       <workItem from="1605887276340" duration="3650000" />
       <workItem from="1605957224294" duration="3265000" />
+      <workItem from="1606149137540" duration="1298000" />
     </task>
     <servers />
   </component>
