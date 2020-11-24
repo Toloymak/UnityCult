@@ -5,6 +5,7 @@
     <explicitIncludes>
       <Path>Library/PackageCache/com.leopotam.ecs-unityintegration@80a86e5bfa</Path>
       <Path>Library/PackageCache/com.leopotam.ecs@98267cd08e</Path>
+      <Path>Library/PackageCache/com.leopotam.globals@740d6ddbd9</Path>
       <Path>Library/PackageCache/com.unity.2d.animation@4.2.4</Path>
       <Path>Library/PackageCache/com.unity.2d.common@3.0.1</Path>
       <Path>Library/PackageCache/com.unity.2d.path@3.0.1</Path>

@@ -15,10 +15,9 @@ using Leopotam.Ecs;
 
 namespace Common.Systems.Village
 {
-    public class BuildingMenuControlSystem : BaseSystem, IEcsRunSystem, IEcsInitSystem
+    public class BuildingMenuControlSystem : BaseSystem, IEcsRunSystem
     {
         private BuildingAndUpdateMenuService _buildingAndUpdateMenuService = null;
-        private EcsFilter<LogComponent> _logComponentFilter = null;
         private EcsFilter<ResourceComponent> _resourceComponentFilter = null;
         private EcsFilter<VillageFieldComponent> _villageFiledComponentFilter = null;
 
@@ -27,11 +26,6 @@ namespace Common.Systems.Village
         private HashSet<UIActionModel> _fieldUiActionGroup;
         private IDictionary<ResourceType, ResourceComponent> _resourceComponents;
         private VillageFieldComponent _villageFieldComponent;
-
-        public void Init()
-        {
-            SetLogComponent(_logComponentFilter);
-        }
 
         public void Run()
         {

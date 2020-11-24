@@ -14,7 +14,6 @@ namespace Common.Systems.Resources
     {
         private EcsWorld _ecsWorld = null;
         private ResourceService _resourceService = null;
-        private EcsFilter<LogComponent> _logComponentFilter = null;
 
         private ResourceComponent _energy;
         private ResourceComponent _ordinarySoulStone;
@@ -25,7 +24,6 @@ namespace Common.Systems.Resources
         
         public void Init()
         {
-            SetLogComponent(_logComponentFilter);
             FillResourcePanel();
         }
 

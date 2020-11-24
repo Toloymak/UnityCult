@@ -7,22 +7,13 @@ using UnityEngine;
 
 namespace Common.Systems.Logging
 {
-    public class LogSystem: IEcsSystem, IEcsRunSystem, IEcsPreInitSystem
+    public class LogSystem: BaseSystem, IEcsRunSystem
     {
-        private EcsWorld _world = null;
-
-        private LogComponent _logComponent;
-
-        public void PreInit()
-        {
-            _logComponent = _world.NewEntity().Set<LogComponent>();
-        }
-
         public void Run()
         {
-            while (_logComponent.LogModels.Any())
+            while (LogService.LogModels.Any())
             {
-                var logModel = _logComponent.LogModels.First();
+                var logModel = LogService.LogModels.First();
                 
                 switch (logModel.Level)
                 {
@@ -48,7 +39,7 @@ namespace Common.Systems.Logging
                 if (logModel.Exception != null)
                     Debug.LogException(logModel.Exception);
 
-                _logComponent.LogModels.Remove(logModel);
+                LogService.LogModels.Remove(logModel);
             }
         }
     }

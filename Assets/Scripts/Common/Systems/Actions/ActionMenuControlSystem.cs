@@ -11,15 +11,11 @@ namespace Common.Systems.Actions
 {
     public class ActionMenuControlSystem : BaseSystem, IEcsInitSystem
     {
-        private EcsFilter<LogComponent> _logComponent = null;
-        
         private UiPrefabStoreService _uiPrefabStoreService = null;
         private UiStoreService _uiStoreService = null;
 
         public void Init()
-        {
-            SetLogComponent(_logComponent);
-
+        { 
             _uiStoreService.ActionList.transform.DeleteAllChildren();
             FillActionPanel();
         }

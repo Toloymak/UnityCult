@@ -8,31 +8,27 @@ namespace Common.Systems.Logging
 {
     public class TestSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
-        private EcsFilter<LogComponent> _logComponentSystem = null;
-        
         public void Init()
         {
-            SetLogComponent(_logComponentSystem);
-            
-            LogComponent.AddLog(LogLevel.Debug, "Run test init");
+            LogService.AddLog(LogLevel.Debug, "Run test init");
         }
 
-        private bool isFirstRun = true;
+        private bool _isFirstRun = true;
 
         public void Run()
         {
-            if (isFirstRun)
+            if (_isFirstRun)
             {
                 
-                LogComponent.AddLog("Test of building structure\n" + new DistrictHelper().GetTestStructure());
+                LogService.AddLog("Test of building structure\n" + new DistrictHelper().GetTestStructure());
             }
             
-            isFirstRun = false;
+            _isFirstRun = false;
         }
 
         public void Destroy()
         {
-            LogComponent.AddLog(LogLevel.Debug, "Run Destroy");
+            LogService.AddLog(LogLevel.Debug, "Run Destroy");
         }
     }
 }

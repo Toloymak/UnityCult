@@ -43,8 +43,9 @@
           <e p="Common" t="Include">
             <e p="BaseStartUp.cs" t="Include" />
             <e p="Components" t="Include">
-              <e p="LogComponent.cs" t="Include" />
+              <e p="LogService.cs" t="Include" />
               <e p="ResourceCompont.cs" t="Include" />
+              <e p="TimerComponent.cs" t="Include" />
               <e p="VillageFieldComponent.cs" t="Include" />
             </e>
             <e p="Consts" t="Include">
@@ -89,6 +90,9 @@
               </e>
               <e p="Resources" t="Include">
                 <e p="ResourceSystem.cs" t="Include" />
+              </e>
+              <e p="Timer" t="Include">
+                <e p="TimerSystem.cs" t="Include" />
               </e>
               <e p="Village" t="Include">
                 <e p="BuildingMenuControlSystem.cs" t="Include" />

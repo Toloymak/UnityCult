@@ -1,16 +1,13 @@
-﻿using System.Linq;
-using Common.Components;
+﻿using Common.Components;
 using Leopotam.Ecs;
+using LeopotamGroup.Globals;
 
 namespace Common.Systems
 {
     public abstract class BaseSystem: IEcsSystem
     {
-        protected LogComponent LogComponent;
+        private LogService _logService;
         
-        protected void SetLogComponent(EcsFilter<LogComponent> logFilter)
-        {
-            LogComponent = logFilter.Get1[0];
-        }
+        protected LogService LogService => _logService ?? (_logService = Service<LogService>.Get(true));
     }
 }

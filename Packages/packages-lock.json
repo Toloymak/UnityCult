@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "80a86e5bfa7d2e62266054f2ae62245dbbded863"
     },
+    "com.leopotam.globals": {
+      "version": "https://github.com/Leopotam/globals.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "740d6ddbd9ed39947f2153c63bc2654d04e5b8c8"
+    },
     "com.unity.2d.animation": {
       "version": "4.2.4",
       "depth": 0,
