@@ -11,6 +11,10 @@ namespace Common.Components
         private DateTime _lastStart;
 
         public bool IsActive => _isActive;
+        public TimeSpan TotalTime =>
+            _isActive
+                ? _timeBeforeStop + TimeFromLastStart
+                : _timeBeforeStop;
 
         public TimerComponent()
         {
@@ -20,7 +24,7 @@ namespace Common.Components
         public void Stop()
         {
             _isActive = false;
-            _timeBeforeStop += _lastStart - DateTime.Now;
+            _timeBeforeStop += TimeFromLastStart;
         }
 
         public void Start()
@@ -28,5 +32,7 @@ namespace Common.Components
             _isActive = true;
             _lastStart = DateTime.Now;
         }
+
+        private TimeSpan TimeFromLastStart => DateTime.Now - _lastStart;
     }
 }
