@@ -8,10 +8,11 @@ namespace Business.Enums
     {
         [Ignore]
         None = 0,
-        EliteResidential = 100,
+        [DistrictPrice(ResourceType.OrdinarySoulStone, 1000)]
+        Residential = 100,
+        EliteResidential = 110,
         School = 200,
         Library = 300,
-        
         [DistrictDescription("Arena", "Your warriors can get here a honor and an experience!", TextureNames.Arena)]
         [DistrictPrice(ResourceType.OrdinarySoulStone, 100)]
         Arena = 400,
@@ -24,7 +25,6 @@ namespace Business.Enums
         [DistrictBuildingType(DistrictBuildingType.Upgrade, Arena3)]
         [DistrictPrice(ResourceType.GoodSoulStone, 1000)]
         Arena4 = 430,
-        
         [DistrictPrice(ResourceType.OrdinarySoulStone, 1000)]
         [DistrictPrice(ResourceType.MysticMetal, 500)]
         [DistrictDescription("Factory", "You can create here an equipment")]
@@ -41,12 +41,19 @@ namespace Business.Enums
         Research = 800,
         [RequiredDistricts(Research, Alchemy)]
         Challenge = 900,
+        
+        [DistrictDescription("Base camp", "Here is living members of cult", maxCount: 1)]
+        Camp = 1000,
+        
         [DistrictDescription("Administration", "Service can help you with artifacts and issues sharing")]
-        Administration = 1000,
+        [DistrictBuildingType(DistrictBuildingType.Upgrade, Camp)]
+        [RequiredDistricts(Residential)]
+        [DistrictPrice(ResourceType.OrdinarySoulStone, 10000)]
+        Administration = 1010,
+        
         Issuance = 1100,
         Livestock = 1200,
         Storage = 1300,
         Meditation = 1400,
-        Residential = 1500,
     }
 }

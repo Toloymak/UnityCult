@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 
 namespace Common.Services
 {
-    public class BuildingAndUpdateMenuService
+    public class BuildingService
     {
         private Object _itemPrefab;
 
@@ -82,7 +82,16 @@ namespace Common.Services
                 resourceComponents[price.type].Count -= price.value;
             }
             
+            BuildFree(districtCellModel, districtType);
+
+            uiStoreService.BuildActionList.transform.DeleteAllChildren();
+            districtCellModel.GameObject.GetComponent<Toggle>().isOn = false;
+        }
+
+        public void BuildFree(DistrictCellModel districtCellModel, DistrictType districtType)
+        {
             districtCellModel.Type = districtType;
+            districtCellModel.GetName.text = districtType.GetName();
 
             var texture = districtType.GetTexturePath();
 
@@ -93,9 +102,6 @@ namespace Common.Services
             }
             
             Debug.Log($"District {districtType} on cell {districtCellModel.Name} was built");
-
-            uiStoreService.BuildActionList.transform.DeleteAllChildren();
-            districtCellModel.GameObject.GetComponent<Toggle>().isOn = false;
         }
     }
 }

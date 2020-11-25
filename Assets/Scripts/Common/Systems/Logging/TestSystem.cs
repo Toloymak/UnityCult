@@ -10,7 +10,6 @@ namespace Common.Systems.Logging
     {
         public void Init()
         {
-            LogService.AddLog(LogLevel.Debug, "Run test init");
         }
 
         private bool _isFirstRun = true;
@@ -19,8 +18,7 @@ namespace Common.Systems.Logging
         {
             if (_isFirstRun)
             {
-                
-                LogService.AddLog("Test of building structure\n" + new DistrictHelper().GetTestStructure());
+                // TestBuildingsStructure();
             }
             
             _isFirstRun = false;
@@ -28,7 +26,11 @@ namespace Common.Systems.Logging
 
         public void Destroy()
         {
-            LogService.AddLog(LogLevel.Debug, "Run Destroy");
+        }
+
+        private void TestBuildingsStructure()
+        {
+            LogService.AddLog("Test of building structure\n" + new DistrictHelper().GetTestStructure());
         }
     }
 }

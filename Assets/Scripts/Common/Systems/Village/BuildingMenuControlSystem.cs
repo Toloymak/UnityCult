@@ -17,7 +17,7 @@ namespace Common.Systems.Village
 {
     public class BuildingMenuControlSystem : BaseSystem, IEcsRunSystem
     {
-        private BuildingAndUpdateMenuService _buildingAndUpdateMenuService = null;
+        private BuildingService _buildingService = null;
         private EcsFilter<ResourceComponent> _resourceComponentFilter = null;
         private EcsFilter<VillageFieldComponent> _villageFiledComponentFilter = null;
 
@@ -52,10 +52,15 @@ namespace Common.Systems.Village
                     case UiActionType.Click:
                         break;
                     case UiActionType.Selected:
+                        // todo: needs some clean up
                         var addresses = action.ObjectName.Split('_').Select(int.Parse).ToArray();
                         var cell = _villageFieldComponent.FieldModel.GetItem(addresses[0], addresses[1]);
-                        _buildingAndUpdateMenuService
-                           .FillBuildingOrUpdateList(new DistrictHelper().GetAvailableBuildings(cell.Type, new[] { DistrictType.None }),
+                        var availableDistricts = new DistrictHelper()
+                           .GetAvailableBuildings(cell.Type,
+                                                  _villageFieldComponent.FieldModel.GetEnumerable().Select(x => x.Type));
+                        
+                        _buildingService
+                           .FillBuildingOrUpdateList(availableDistricts,
                                                      _uiStoreService,
                                                      _resourceComponents,
                                                      cell);

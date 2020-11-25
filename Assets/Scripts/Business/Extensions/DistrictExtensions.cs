@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Business.Attributes;
 using Business.Attributes.District;
@@ -36,6 +37,13 @@ namespace Business.Extensions
             return attribute == null || string.IsNullOrEmpty(attribute.TexturePath)
                 ? string.Empty 
                 : attribute.TexturePath;
+        }
+        
+        public static int GetMaxCount(this DistrictType districtType)
+        {
+            var attribute = districtType.GetAttribute<DistrictType, DistrictDescriptionAttribute>();
+
+            return attribute?.MaxCount ?? int.MaxValue;
         }
         
         public static IEnumerable<(ResourceType type, int value)> GetPrices(this DistrictType districtType)

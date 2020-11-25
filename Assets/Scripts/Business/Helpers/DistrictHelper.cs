@@ -7,6 +7,7 @@ using Business.Extensions;
 using Business.Models;
 using Common.Models;
 using Common.TypeExtensions;
+using UnityEngine;
 
 namespace Business.Helpers
 {
@@ -101,8 +102,10 @@ namespace Business.Helpers
         {
             var list = GetList(GetRootLeafOfBuildingTree())
                .Where(x => x.Object != null)
+               .Where(x =>x.Object.DistrictType.GetMaxCount() >
+                          existingBuildings.Count(ed => ed == x.Object.DistrictType))
                .ToList();
-
+            
             var listOfLeaf =
                 districtOnCell == DistrictType.None
                     ? list

@@ -72,7 +72,7 @@ namespace Common
                .Inject(new UiStoreService())
                .Inject(new UiPrefabStoreService())
                .Inject(new FieldService())
-               .Inject(new BuildingAndUpdateMenuService())
+               .Inject(new BuildingService())
                .Inject(new ResourceService());
         }
         
