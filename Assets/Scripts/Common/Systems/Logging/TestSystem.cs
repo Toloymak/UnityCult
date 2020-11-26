@@ -1,6 +1,6 @@
-﻿using System.Diagnostics.SymbolStore;
-using Business.Helpers;
-using Common.Components;
+﻿using Business.Helpers;
+using Business.Models;
+using Business.Models.Unit;
 using Common.Enums;
 using Leopotam.Ecs;
 
@@ -8,6 +8,8 @@ namespace Common.Systems.Logging
 {
     public class TestSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
+        private EcsFilter<UnitModel> _unitModelFilter = null;
+        
         public void Init()
         {
         }
@@ -19,9 +21,10 @@ namespace Common.Systems.Logging
             if (_isFirstRun)
             {
                 // TestBuildingsStructure();
+
+                _isFirstRun = false;
             }
             
-            _isFirstRun = false;
         }
 
         public void Destroy()

@@ -1,6 +1,6 @@
 ﻿using Business.Enums;
 
-namespace Business.Models
+namespace Business.Models.Unit
 {
     public class SkillModel
     {

@@ -1,4 +1,5 @@
-﻿using Common.Components;
+﻿using Business.Models;
+using Common.Components;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;

@@ -5,6 +5,7 @@ using Common.Systems.Actions;
 using Common.Systems.Logging;
 using Common.Systems.Resources;
 using Common.Systems.Timer;
+using Common.Systems.Units;
 using Common.Systems.Village;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -63,7 +64,9 @@ namespace Common
                .Add(new BuildingMenuControlSystem())
                .Add(new ActionMenuControlSystem())
                .Add(new ResourceSystem())
-               .Add(new TimerSystem());
+               .Add(new TimerSystem())
+               .Add(new UnitSystem())
+               .Add(new UnitMovementSystem());
         }
         
         private void AddCommonServices(EcsSystems systems)

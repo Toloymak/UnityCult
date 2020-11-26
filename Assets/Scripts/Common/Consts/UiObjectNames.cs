@@ -7,6 +7,8 @@
         public const string ActionList = "ActionScrollList/ActionListPanel";
         public const string ResourcePanel = "ResourcePanel";
         public const string PriceItemInListItem = "Prices";
+        public const string MainCanvas = "MainCanvas";
+
 
     }
 }

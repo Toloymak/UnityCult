@@ -36,8 +36,11 @@
             <e p="Models" t="Include">
               <e p="DistrictModel.cs" t="Include" />
               <e p="Leaf.cs" t="Include" />
-              <e p="SkillModel.cs" t="Include" />
-              <e p="UnitModel.cs" t="Include" />
+              <e p="Unit" t="Include">
+                <e p="SkillModel.cs" t="Include" />
+                <e p="UnitModel.cs" t="Include" />
+                <e p="UnitPositionComponent.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Common" t="Include">
@@ -94,6 +97,10 @@
               </e>
               <e p="Timer" t="Include">
                 <e p="TimerSystem.cs" t="Include" />
+              </e>
+              <e p="Units" t="Include">
+                <e p="UnitMovementSystem.cs" t="Include" />
+                <e p="UnitSystem.cs" t="Include" />
               </e>
               <e p="Village" t="Include">
                 <e p="BuildingMenuControlSystem.cs" t="Include" />
