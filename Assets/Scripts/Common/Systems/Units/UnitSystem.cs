@@ -1,25 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Business.Models;
 using Business.Models.Unit;
 using Common.Consts;
+using Common.Services;
 using Leopotam.Ecs;
+using Newtonsoft.Json;
 
 namespace Common.Systems.Units
 {
-    public class UnitSystem : BaseSystem, IEcsInitSystem
+    public class UnitSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem
     {
         private EcsWorld _ecsWorld = null;
-        private EcsFilter<UnitModel> _unitModelFilters = null;
-        
+        private EcsFilter<UnitComponent> _unitModelFilters = null;
+        private UiStoreService _uiStoreService = null;
+
         public void Init()
         {
             var firstDefaultDistrict = BaseStateOfGame.Districts.First();
             
-            foreach (var unitModel in _defaultUnitModels)
+            foreach (var unitModel in GetDefaultUnitModels())
             {
                 var unitEntity = _ecsWorld.NewEntity();
-                var unitComponent = unitEntity.Set<UnitModel>();
+                var unitComponent = unitEntity.Set<UnitComponent>();
 
                 unitComponent.Name = unitModel.Name;
 
@@ -28,21 +32,32 @@ namespace Common.Systems.Units
                 positionComponent.IsInVillage = true;
             }
         }
-        
-        private IList<UnitModel> _defaultUnitModels = new List<UnitModel>()
+
+        public void Run()
         {
-            new UnitModel()
+            // var unitModels = new List<UnitComponent>();
+            //
+            // foreach (var unitModel in _unitModelFilters)
+            // {
+            //     unitModels.Add(_unitModelFilters.Get1[unitModel]);
+            // }
+            //
+            // _uiStoreService.UnitList.text = JsonConvert.SerializeObject(unitModels, Formatting.Indented);
+        }
+
+        private IList<UnitComponent> GetDefaultUnitModels()
+        {
+            var list = new List<UnitComponent>();
+
+            for (var i = 0; i < 5000; i++)
             {
-                Name = "Ivan"
-            },
-            new UnitModel()
-            {
-                Name = "Mike"
-            },
-            new UnitModel()
-            {
-                Name = "Frodo"
-            },
-        };
+                list.Add(new UnitComponent()
+                {
+                    Name = new Guid().ToString()
+                });
+            }
+
+            return list;
+        }
     }
 }

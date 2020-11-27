@@ -66,7 +66,9 @@ namespace Common
                .Add(new ResourceSystem())
                .Add(new TimerSystem())
                .Add(new UnitSystem())
-               .Add(new UnitMovementSystem());
+               .Add(new UnitMovementSystem())
+               .Add(new UnitVillageActionSystem())
+               .Add(new FpsSystem());
         }
         
         private void AddCommonServices(EcsSystems systems)

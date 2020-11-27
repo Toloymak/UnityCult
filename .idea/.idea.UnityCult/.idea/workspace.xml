@@ -23,25 +23,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f1c2107-41af-4fd4-97ff-7d0322242425" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitPositionComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitPositionComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovementSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovementSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/DistrictService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/DistrictService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitVillageActionSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitVillageActionSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/SkillModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/SkillModel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitModel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitModel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Timer/TimerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Timer/TimerSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovementSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovementSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/District/DistrictRequiredDistrictAttribute.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/District/RequiredDistrictsAttribute.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/District/RequiredResearchesAttribute.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Tree.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/DistrictModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Attributes/IgnoreAttribute.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/TypeExtensions/EnumExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/VillageFieldComponent.cs" />
@@ -102,7 +97,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Enums/SkillType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/SkillModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/UnitModel.cs" />
-        <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/LogService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Resources/ResourceSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" />
@@ -123,13 +117,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/SkillModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovmentSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/ComponentPrefabNames.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitPositionComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/DistrictService.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" />
+        <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovementSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitVillageActionSystem.cs" />
       </list>
     </option>
   </component>
@@ -160,10 +160,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6836">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6836" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -199,6 +199,7 @@
       <workItem from="1606319103232" duration="2445000" />
       <workItem from="1606321573306" duration="204000" />
       <workItem from="1606407283302" duration="3026000" />
+      <workItem from="1606495255681" duration="3449000" />
     </task>
     <servers />
   </component>
@@ -297,28 +298,9 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="75" y="91" width="1364" height="844" key="dock-window-1/0.0.3440.1400@0.0.3440.1400" timestamp="1605358010605" />
-    <state x="2243" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1605800680650">
+    <state x="2243" y="320" width="672" height="678" key="search.everywhere.popup" timestamp="1606496707026">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="2243" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1605800680650" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Common/Systems/Timer/TimerSystem.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\Home\UnityCult\Assets\Scripts\Common\Systems\Timer\TimerSystem.cs" initialLine="21">
-            <startOffsets>
-              <option value="541" />
-            </startOffsets>
-            <endOffsets>
-              <option value="542" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="2243" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1606496707026" />
   </component>
 </project>

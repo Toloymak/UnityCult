@@ -8,6 +8,8 @@
         public const string ResourcePanel = "ResourcePanel";
         public const string PriceItemInListItem = "Prices";
         public const string MainCanvas = "MainCanvas";
+        public const string UnitList = "UnitScrollList/Units";
+        public const string FpsText = "FpsText";
 
 
     }

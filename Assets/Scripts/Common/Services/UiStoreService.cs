@@ -1,6 +1,7 @@
 ﻿using Common.Consts;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Common.Services
 {
@@ -30,6 +31,16 @@ namespace Common.Services
                 ? _buildActionList
                 : _buildActionList = GameObject.Find(UiObjectNames.BuildingActionList);
             set => _buildActionList = value;
+        }
+
+        private Text _unitList;
+
+        public Text UnitList
+        {
+            get => _unitList != null
+                ? _unitList
+                : _unitList = GameObject.Find(UiObjectNames.UnitList).GetComponent<Text>();
+            set => _unitList = value;
         }
     }
 }

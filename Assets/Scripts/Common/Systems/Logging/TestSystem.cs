@@ -8,7 +8,7 @@ namespace Common.Systems.Logging
 {
     public class TestSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
-        private EcsFilter<UnitModel> _unitModelFilter = null;
+        private EcsFilter<UnitComponent> _unitModelFilter = null;
         
         public void Init()
         {

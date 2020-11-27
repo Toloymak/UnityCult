@@ -4,7 +4,7 @@ using Business.Enums;
 
 namespace Business.Models.Unit
 {
-    public class UnitModel
+    public class UnitComponent
     {
         public Guid Id { get; }
         // todo: Implementation for few cults
@@ -36,7 +36,7 @@ namespace Business.Models.Unit
         
         public IDictionary<SkillType, SkillModel> Skills { get; }
 
-        public UnitModel()
+        public UnitComponent()
         {
             Id = Guid.NewGuid();
             CultId = Guid.Empty;

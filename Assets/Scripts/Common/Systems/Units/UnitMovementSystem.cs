@@ -11,7 +11,7 @@ namespace Common.Systems.Units
 {
     public class UnitMovementSystem: BaseSystem, IEcsRunSystem
     {
-        private EcsFilter<UnitModel, UnitPositionComponent> _unitFilter = null;
+        private EcsFilter<UnitComponent, UnitPositionComponent> _unitFilter = null;
         private EcsFilter<VillageFieldComponent> _villageComponet = null;
 
         private VillageFieldComponent _villageFieldComponent;
@@ -25,11 +25,16 @@ namespace Common.Systems.Units
             if (_unitPrefab == null)
                 _unitPrefab = UnityEngine.Resources.Load(ComponentPrefabNames.Unit);
             
+            // DrawPosition();
+        }
+
+        private void DrawPosition()
+        {
             foreach (var unitId in _unitFilter)
             {
                 var entity = _unitFilter.Entities[unitId];
 
-                var unitComponent = entity.Get<UnitModel>();
+                var unitComponent = entity.Get<UnitComponent>();
                 var positionComponent = entity.Get<UnitPositionComponent>();
 
                 if (positionComponent.GameObject == null)
@@ -45,14 +50,7 @@ namespace Common.Systems.Units
                             positionComponent.VillagePosition.column);
 
                 positionComponent.GameObject.transform.position = cell.GameObject.transform.position;
-
-                // LogService.AddLog(LogLevel.Debug, $"{unitComponent.Name} - {positionComponent.VillagePosition.ToString()}");
             }
-        }
-
-        private void DrawPosition()
-        {
-            
         }
     }
 }
