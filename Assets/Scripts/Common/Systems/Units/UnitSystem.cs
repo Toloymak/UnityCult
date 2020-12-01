@@ -35,29 +35,35 @@ namespace Common.Systems.Units
 
         public void Run()
         {
-            // var unitModels = new List<UnitComponent>();
-            //
-            // foreach (var unitModel in _unitModelFilters)
-            // {
-            //     unitModels.Add(_unitModelFilters.Get1[unitModel]);
-            // }
-            //
-            // _uiStoreService.UnitList.text = JsonConvert.SerializeObject(unitModels, Formatting.Indented);
+            var unitModels = new List<string>();
+            
+            foreach (var unitModel in _unitModelFilters)
+            {
+                unitModels.Add(_unitModelFilters.Get1[unitModel].ToString());
+            }
+            
+            _uiStoreService.UnitList.text = JsonConvert.SerializeObject(unitModels, Formatting.Indented);
         }
 
         private IList<UnitComponent> GetDefaultUnitModels()
         {
-            var list = new List<UnitComponent>();
-
-            for (var i = 0; i < 5000; i++)
-            {
-                list.Add(new UnitComponent()
-                {
-                    Name = new Guid().ToString()
-                });
-            }
-
-            return list;
+            return Names.Select(x => new UnitComponent(){Name = x}).ToList();
         }
+        
+        private IList<string> Names = new List<string>()
+        {
+            "George",
+            "John",
+            "Thomas",
+            "James",
+            "Andrew",
+            "Martin",
+            "William",
+            "Zachary",
+            "Andrew",
+            "Millard",
+            "Franklin",
+            "Abraham",
+        };
     }
 }

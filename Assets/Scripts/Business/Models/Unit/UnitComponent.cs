@@ -42,5 +42,7 @@ namespace Business.Models.Unit
             CultId = Guid.Empty;
             Skills = new Dictionary<SkillType, SkillModel>();
         }
+
+        public override string ToString() => $"{Name}, {CurrentHealth}/{MaxHealth}HP, {BodyChi}B";
     }
 }
