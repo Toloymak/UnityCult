@@ -1,22 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Business.Enums;
-using Business.Extensions;
+using Business.Interfaces;
+using Common.Storages;
 
-namespace Business.Models
+namespace Business.Models.Districts
 {
-    public class DistrictModel
+    public class DistrictModel : IListItem
     {
         public DistrictType DistrictType { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        
-        public IEnumerable<(ResourceType type, int value)> Prices { get; set; }
-        
+
+        public IDictionary<ResourceType, int> Resources { get; set; }
+
         public DistrictBuildingType BuildingType { get; set; }
         public DistrictType? Parent { get; set; }
-        
+
         public IEnumerable<DistrictType> RequiredDistricts { get; set; }
         public IEnumerable<ResearchType> RequiredResearches { get; set; }
+
+        public bool IsActive => true;
+        
+        public Action ClickAction { get; set; }
 
         public override string ToString()
         {

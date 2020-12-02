@@ -5,6 +5,7 @@ using Business.Attributes;
 using Business.Attributes.District;
 using Business.Enums;
 using Business.Models;
+using Business.Models.Districts;
 using Common.TypeExtensions;
 using UnityEngine.Timeline;
 
@@ -46,13 +47,13 @@ namespace Business.Extensions
             return attribute?.MaxCount ?? int.MaxValue;
         }
         
-        public static IEnumerable<(ResourceType type, int value)> GetPrices(this DistrictType districtType)
+        public static IDictionary<ResourceType, int> GetPrices(this DistrictType districtType)
         {
             var attributes = districtType.GetAttributes<DistrictType, DistrictPriceAttribute>();
 
             return attributes == null
-                ? new (ResourceType, int)[]{}
-                : attributes.Select(x => (x.ResourceType, x.Price));
+                ? new Dictionary<ResourceType, int>()
+                : attributes.ToDictionary(x => x.ResourceType, x => x.Price);
         }
 
         public static (DistrictBuildingType buildingType, DistrictType? parent) GetBuildingType(this DistrictType districtType)
@@ -91,7 +92,7 @@ namespace Business.Extensions
             model.Description = districtType.GetDescription();
             model.BuildingType = districtType.GetBuildingType().buildingType;
             model.Parent = districtType.GetBuildingType().parent;
-            model.Prices = districtType.GetPrices();
+            model.Resources = districtType.GetPrices();
             model.RequiredDistricts = districtType.GetRequiredDistricts();
             model.RequiredResearches = districtType.GetRequiredResearches();
 

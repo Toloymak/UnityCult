@@ -29,7 +29,7 @@ namespace Common.Systems.Village
             {
                 var cell = villageFieldComponent.FieldModel.GetItem(district.row, district.column);
                 
-                _buildingService.BuildFree(cell, district.districtType);
+                _buildingService.Build(cell, district.districtType);
             }
         }
     }

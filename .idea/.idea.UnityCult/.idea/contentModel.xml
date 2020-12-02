@@ -33,8 +33,16 @@
             <e p="Helpers" t="Include">
               <e p="DistrictHelper.cs" t="Include" />
             </e>
+            <e p="Interfaces" t="Include">
+              <e p="IListItem.cs" t="Include" />
+            </e>
             <e p="Models" t="Include">
-              <e p="DistrictModel.cs" t="Include" />
+              <e p="Actions" t="Include">
+                <e p="ActionModel.cs" t="Include" />
+              </e>
+              <e p="Districts" t="Include">
+                <e p="DistrictModel.cs" t="Include" />
+              </e>
               <e p="Leaf.cs" t="Include" />
               <e p="Unit" t="Include">
                 <e p="SkillModel.cs" t="Include" />
@@ -63,7 +71,6 @@
               <e p="UiActionType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
-              <e p="ActionModel.cs" t="Include" />
               <e p="BuildingActionItem.cs" t="Include" />
               <e p="DistrictCellModel.cs" t="Include" />
               <e p="Dtos" t="Include">
@@ -77,12 +84,14 @@
               <e p="BuildingService.cs" t="Include" />
               <e p="DistrictService.cs" t="Include" />
               <e p="FieldService.cs" t="Include" />
+              <e p="ItemListService.cs" t="Include" />
               <e p="ResourceService.cs" t="Include" />
               <e p="UiPefabStore.cs" t="Include" />
               <e p="UiStoreService.cs" t="Include" />
             </e>
             <e p="Storages" t="Include">
               <e p="UiEventStorage.cs" t="Include" />
+              <e p="VillageStateStorage.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">
               <e p="Actions" t="Include">

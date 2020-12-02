@@ -41,7 +41,7 @@ namespace Business.Extensions
             return buildingActionItem
                .DistrictType
                .GetPrices()
-               .All(price => price.value <= resourceComponents[price.type].Count);
+               .All(price => price.Value <= resourceComponents[price.Key].Count);
         }
 
         public static IDictionary<ResourceType, ResourceComponent> ToDictionary(this EcsFilter<ResourceComponent> resourceComponents)

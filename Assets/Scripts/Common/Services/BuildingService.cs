@@ -25,7 +25,7 @@ namespace Common.Services
 
         private Object PriceItem =>
             _priceItem == null
-                ? _priceItem = Resources.Load(ComponentPrefabNames.PriceItem)
+                ? _priceItem = Resources.Load(ComponentPrefabNames.ResourceItem)
                 : _priceItem;
         
         public void FillBuildingOrUpdateList(IList<BuildingActionItem> buildingActionItems,
@@ -65,8 +65,8 @@ namespace Common.Services
                 {
                     var newPrice = (GameObject) Object.Instantiate(PriceItem, priceListGameObject.transform);
                     
-                    newPrice.transform.Find("Name").GetComponent<Text>().text = price.Item1.GetShortName();
-                    newPrice.transform.Find("Value").GetComponent<Text>().text = price.Item2.ToString();
+                    newPrice.transform.Find("Name").GetComponent<Text>().text = price.Key.GetShortName();
+                    newPrice.transform.Find("Value").GetComponent<Text>().text = price.Value.ToString();
                 }
             }
         }
@@ -79,16 +79,16 @@ namespace Common.Services
             var prices = districtType.GetPrices();
             foreach (var price in prices)
             {
-                resourceComponents[price.type].Count -= price.value;
+                resourceComponents[price.Key].Count -= price.Value;
             }
             
-            BuildFree(districtCellModel, districtType);
+            Build(districtCellModel, districtType);
 
             uiStoreService.BuildActionList.transform.DeleteAllChildren();
             districtCellModel.GameObject.GetComponent<Toggle>().isOn = false;
         }
 
-        public void BuildFree(DistrictCellModel districtCellModel, DistrictType districtType)
+        public void Build(DistrictCellModel districtCellModel, DistrictType districtType)
         {
             districtCellModel.Type = districtType;
             districtCellModel.GetName.text = districtType.GetName();
