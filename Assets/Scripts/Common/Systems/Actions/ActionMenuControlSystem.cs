@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Business.Enums;
 using Business.Extensions;
 using Business.Models.Actions;
-using Common.Components;
 using Common.Consts;
-using Common.Models;
+using Common.Helpers;
 using Common.Services;
 using Common.TypeExtensions;
 using Leopotam.Ecs;
+using SimpleInjector;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -17,11 +17,11 @@ namespace Common.Systems.Actions
 {
     public class ActionMenuControlSystem : BaseSystem, IEcsInitSystem
     {
-        private UiPrefabStoreService _uiPrefabStoreService = null;
         private UiStoreService _uiStoreService = null;
+        private ObjectInstantiateHelper _objectInstantiateHelper = null;
 
         public void Init()
-        { 
+        {
             _uiStoreService.ActionList.transform.DeleteAllChildren();
             FillActionPanel();
         }
@@ -30,9 +30,10 @@ namespace Common.Systems.Actions
         {
             foreach (var actionModel in _testActionModels)
             {
-                var newObject = (GameObject) Object.Instantiate(_uiPrefabStoreService.ListItem, _uiStoreService.ActionList
-                .transform);
-                newObject.name = $"action_{actionModel.Id}";
+                var newObject = _objectInstantiateHelper.Instanate(ComponentPrefabNames.ListItem,
+                                                                   _uiStoreService.ActionList.transform,
+                                                                   $"action_{actionModel.Id}");
+
                 newObject.transform.Find("Name").GetComponent<Text>().text = actionModel.Name;
                 newObject.transform.Find("Description").GetComponent<Text>().text = actionModel.Description;
                 

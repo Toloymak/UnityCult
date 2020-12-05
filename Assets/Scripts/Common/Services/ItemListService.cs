@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Business.Extensions;
 using Business.Interfaces;
 using Common.Consts;
+using Common.Helpers;
 using Common.TypeExtensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,22 +14,19 @@ namespace Common.Services
 {
     public class ItemListService
     {
-        private Object _itemPrefab;
-        private Object ItemPrefab =>
-            _itemPrefab == null
-                ? _itemPrefab = Resources.Load(ComponentPrefabNames.ListItem)
-                : _itemPrefab;
+        private readonly ObjectInstantiateHelper _objectInstantiateHelper;
 
-        private Object _priceItem;
-        private Object PriceItem =>
-            _priceItem == null
-                ? _priceItem = Resources.Load(ComponentPrefabNames.ResourceItem)
-                : _priceItem;
+        public ItemListService(ObjectInstantiateHelper objectInstantiateHelper)
+        {
+            _objectInstantiateHelper = objectInstantiateHelper;
+        }
 
         public void AddItem(Transform listTransform, IListItem listItem)
         {
-            var itemGameObject = (GameObject) Object.Instantiate(ItemPrefab, listTransform);
-            itemGameObject.name = $"item_{listItem.GetType()}";
+            var itemGameObject =
+                _objectInstantiateHelper.Instanate(ComponentPrefabNames.ListItem,
+                                                     listTransform,
+                                                     $"item_{listItem.GetType()}");
 
             itemGameObject.transform.Find("Name").GetComponent<Text>().text = listItem.Name;
             itemGameObject.transform.Find("Description").GetComponent<Text>().text = listItem.Description;
@@ -41,12 +39,13 @@ namespace Common.Services
 
             button.onClick = buttonEvent;
 
-            var priceListGameObject = itemGameObject.transform.Find(UiObjectNames.PriceItemInListItem);
-            priceListGameObject.transform.DeleteAllChildren();
+            var priceListGameObject = itemGameObject.transform.Find(UiObjectNames.PriceItemInListItem).transform;
+            priceListGameObject.DeleteAllChildren();
 
             foreach (var price in listItem.Resources)
             {
-                var newPrice = (GameObject) Object.Instantiate(PriceItem, priceListGameObject.transform);
+                var newPrice = _objectInstantiateHelper.Instanate(ComponentPrefabNames.ListPriceItem,
+                                                                  priceListGameObject);
 
                 newPrice.transform.Find("Name").GetComponent<Text>().text = price.Key.GetShortName();
                 newPrice.transform.Find("Value").GetComponent<Text>().text = price.Value.ToString();
