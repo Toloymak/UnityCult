@@ -70,6 +70,9 @@
               <e p="LogLevel.cs" t="Include" />
               <e p="UiActionType.cs" t="Include" />
             </e>
+            <e p="Helpers" t="Include">
+              <e p="ObjectInstantiateHelper.cs" t="Include" />
+            </e>
             <e p="Models" t="Include">
               <e p="BuildingActionItem.cs" t="Include" />
               <e p="DistrictCellModel.cs" t="Include" />
@@ -86,7 +89,7 @@
               <e p="FieldService.cs" t="Include" />
               <e p="ItemListService.cs" t="Include" />
               <e p="ResourceService.cs" t="Include" />
-              <e p="UiPefabStore.cs" t="Include" />
+              <e p="UiPrefabStoreService.cs" t="Include" />
               <e p="UiStoreService.cs" t="Include" />
             </e>
             <e p="Storages" t="Include">

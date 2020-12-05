@@ -1,4 +1,7 @@
-﻿using Common.Components;
+﻿using System;
+using System.Collections.Generic;
+using Common.Components;
+using Common.Helpers;
 using Common.Services;
 using Common.Storages;
 using Common.Systems.Actions;
@@ -8,6 +11,7 @@ using Common.Systems.Timer;
 using Common.Systems.Units;
 using Common.Systems.Village;
 using Leopotam.Ecs;
+using SimpleInjector;
 using UnityEngine;
 
 namespace Common
@@ -16,6 +20,8 @@ namespace Common
     {
         EcsWorld _world;
         EcsSystems _systems;
+
+        private Container _container;
         
         public void Start()
         {
@@ -28,10 +34,14 @@ namespace Common
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
 #endif
             
-            AddCommonServices(_systems);
+            _container = new Container();
+            RegisterSingletonServices();
+            RegisterServicesOnEcs(_systems);
+
+            AddServices(_systems);
+
             AddCommonSystems(_systems);
             AddSystems(_systems);
-            AddServices(_systems);
             
             _systems.Init();
         }
@@ -71,20 +81,34 @@ namespace Common
                .Add(new FpsSystem());
         }
         
-        private void AddCommonServices(EcsSystems systems)
+        private void RegisterServicesOnEcs(EcsSystems systems)
         {
             systems
-               .Inject(new UiStoreService())
-               .Inject(new UiPrefabStoreService())
-               .Inject(new FieldService())
-               .Inject(new BuildingService())
-               .Inject(new ResourceService());
+               .Inject(_container)
+               .Inject(_container.GetInstance<UiPrefabStoreService>())
+               .Inject(_container.GetInstance<UiStoreService>())
+               .Inject(_container.GetInstance<ObjectInstantiateHelper>())
+               .Inject(_container.GetInstance<FieldService>())
+               .Inject(_container.GetInstance<BuildingService>())
+               .Inject(_container.GetInstance<ResourceService>());
         }
-        
+
+        private void RegisterSingletonServices()
+        {
+            var singletonLifestyle = Lifestyle.Singleton;
+
+            _container.Register<UiPrefabStoreService>(singletonLifestyle);
+            _container.Register<UiStoreService>(singletonLifestyle);
+            _container.Register<ObjectInstantiateHelper>(singletonLifestyle);
+            _container.Register<FieldService>(singletonLifestyle);
+            _container.Register<BuildingService>(singletonLifestyle);
+            _container.Register<ResourceService>(singletonLifestyle);
+        }
+
         protected virtual void AddSystems(EcsSystems systems)
         {
         }
-        
+
         protected virtual void AddServices(EcsSystems systems)
         {
         }
