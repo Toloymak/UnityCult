@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Business.Enums;
 using Business.Extensions;
+using Business.Interfaces;
 using Business.Models.Actions;
 using Common.Consts;
 using Common.Helpers;
@@ -18,7 +20,8 @@ namespace Common.Systems.Actions
     public class ActionMenuControlSystem : BaseSystem, IEcsInitSystem
     {
         private UiStoreService _uiStoreService = null;
-        private ObjectInstantiateHelper _objectInstantiateHelper = null;
+        private ItemListService _itemListService = null;
+
 
         public void Init()
         {
@@ -28,36 +31,11 @@ namespace Common.Systems.Actions
 
         private void FillActionPanel()
         {
-            foreach (var actionModel in _testActionModels)
-            {
-                var newObject = _objectInstantiateHelper.Instanate(ComponentPrefabNames.ListItem,
-                                                                   _uiStoreService.ActionList.transform,
-                                                                   $"action_{actionModel.Id}");
-
-                newObject.transform.Find("Name").GetComponent<Text>().text = actionModel.Name;
-                newObject.transform.Find("Description").GetComponent<Text>().text = actionModel.Description;
-                
-                var priceListGameObject = newObject.transform.Find(UiObjectNames.PriceItemInListItem);
-                priceListGameObject.transform.DeleteAllChildren();
-                
-                foreach (var reword in actionModel.Resources)
-                {
-                    var newPrice = (GameObject) Object.Instantiate(PriceItem, priceListGameObject.transform);
-                    
-                    newPrice.transform.Find("Name").GetComponent<Text>().text = reword.Key.GetShortName();
-                    newPrice.transform.Find("Value").GetComponent<Text>().text = reword.Value.ToString();
-                }
-            }
+            _itemListService.AddItems(_uiStoreService.ActionList.transform,
+                                      _testActionModels);
         }
-        
-        private Object _priceItem;
 
-        private Object PriceItem =>
-            _priceItem == null
-                ? _priceItem = UnityEngine.Resources.Load(ComponentPrefabNames.ResourceItem)
-                : _priceItem;
-
-        private static IList<ActionModel> _testActionModels = new List<ActionModel>()
+        private static readonly IList<IListItem> _testActionModels = new List<IListItem>()
         {
             new ActionModel()
             {

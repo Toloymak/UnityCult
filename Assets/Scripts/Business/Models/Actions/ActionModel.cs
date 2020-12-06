@@ -17,13 +17,15 @@ namespace Business.Models.Actions
 
         public IDictionary<ResourceType, int> Resources { get; set; }
         public bool IsActive => true;
-        public Action ClickAction { get; set; }
+
+        public Action ClickAction { get; }
 
         public ActionModel()
         {
             Id = Guid.NewGuid();
             ExtraDuring = new TimeSpan();
             Resources = new Dictionary<ResourceType, int>();
+            ClickAction = () => {};
         }
     }
 }

@@ -83,7 +83,7 @@ namespace Business.Extensions
                 : attribute.ResearchTypes;
         }
 
-        public static DistrictModel GetModel(this DistrictType districtType)
+        public static DistrictModel GetModel(this DistrictType districtType, Action clickAction = null)
         {
             var model = new DistrictModel();
 
@@ -96,6 +96,9 @@ namespace Business.Extensions
             model.RequiredDistricts = districtType.GetRequiredDistricts();
             model.RequiredResearches = districtType.GetRequiredResearches();
 
+            if (clickAction != null)
+                model.ClickAction = clickAction;
+            
             return model;
         }
     }

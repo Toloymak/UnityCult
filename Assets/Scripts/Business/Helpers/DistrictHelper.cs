@@ -98,8 +98,8 @@ namespace Business.Helpers
             return null;
         }
 
-        public IList<BuildingActionItem> GetAvailableBuildings(DistrictType districtOnCell,
-                                                                IEnumerable<DistrictType> existingBuildings)
+        public IList<DistrictType> GetAvailableBuildings(DistrictType districtOnCell,
+                                                         IEnumerable<DistrictType> existingBuildings)
         {
             var list = GetList(GetRootLeafOfBuildingTree())
                .Where(x => x.Object != null)
@@ -118,18 +118,12 @@ namespace Business.Helpers
                                || x.Object.BuildingType == DistrictBuildingType.District
                                && existingBuildings.Contains(x.Parent.Object.DistrictType));
 
-            return listOfLeaf.Select(x => new BuildingActionItem()
-                {
-                    DistrictType = x.Object.DistrictType
-                })
-               .ToList();
+            return listOfLeaf.Select(x => x.Object.DistrictType).ToList();
         }
 
         private List<Leaf<DistrictModel>> GetList(Leaf<DistrictModel> currentLeaf)
         {
-            var result = new List<Leaf<DistrictModel>>();
-            
-            result.Add(currentLeaf);
+            var result = new List<Leaf<DistrictModel>> {currentLeaf};
 
             foreach (var child in currentLeaf.Children)
             {

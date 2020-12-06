@@ -4,13 +4,14 @@ using System.Linq;
 using Business.Enums;
 using Business.Extensions;
 using Business.Helpers;
+using Business.Interfaces;
+using Business.Models.Districts;
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
 using Common.Models;
 using Common.Services;
 using Common.Storages;
-using Common.TypeExtensions;
 using Leopotam.Ecs;
 
 namespace Common.Systems.Village
@@ -20,6 +21,7 @@ namespace Common.Systems.Village
         private BuildingService _buildingService = null;
         private EcsFilter<ResourceComponent> _resourceComponentFilter = null;
         private EcsFilter<VillageFieldComponent> _villageFiledComponentFilter = null;
+        private ItemListService _itemListService = null;
 
         private UiStoreService _uiStoreService = null;
 
@@ -52,18 +54,7 @@ namespace Common.Systems.Village
                     case UiActionType.Click:
                         break;
                     case UiActionType.Selected:
-                        // todo: needs some clean up
-                        var addresses = action.ObjectName.Split('_').Select(int.Parse).ToArray();
-                        var cell = _villageFieldComponent.FieldModel.GetItem(addresses[0], addresses[1]);
-                        var availableDistricts = new DistrictHelper()
-                           .GetAvailableBuildings(cell.Type,
-                                                  _villageFieldComponent.FieldModel.GetEnumerable().Select(x => x.Type));
-                        
-                        _buildingService
-                           .FillBuildingOrUpdateList(availableDistricts,
-                                                     _uiStoreService,
-                                                     _resourceComponents,
-                                                     cell);
+                        CreateBuildMenu(action);
                         break;
                     case UiActionType.Unselected:
                         break;
@@ -73,6 +64,17 @@ namespace Common.Systems.Village
 
                 UiEventStorage.RemoveClick(ObjectGroups.FieldGroup, action.ObjectName, action.Type);
             }
+        }
+
+        private void CreateBuildMenu(UIActionModel action)
+        {
+            var cell = _villageFieldComponent.FieldModel.GetItemByName(action.ObjectName);
+
+            var availableDistricts = new DistrictHelper()
+               .GetAvailableBuildings(cell.Type, _villageFieldComponent.GetExistingTypes())
+               .Select(x => x.GetModel(() => _buildingService.GetClickAction(cell, x, _resourceComponents)));
+
+            _itemListService.AddItems(_uiStoreService.BuildActionList.transform, availableDistricts);
         }
     }
 }

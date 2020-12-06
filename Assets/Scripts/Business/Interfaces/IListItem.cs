@@ -13,6 +13,6 @@ namespace Business.Interfaces
 
         bool IsActive { get; }
 
-        Action ClickAction { get; set; }
+        Action ClickAction { get; }
     }
 }

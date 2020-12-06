@@ -46,6 +46,14 @@ namespace Common.Models
             
             return GetRow(rowNumber)[columnNumber];
         }
+        
+        public T GetItemByName(string name)
+        {
+            var addresses = name.Split('_').Select(int.Parse).ToArray();
+            var cell = GetItem(addresses[0], addresses[1]);
+
+            return cell;
+        }
 
         public IEnumerable<T> GetEnumerable()
         {

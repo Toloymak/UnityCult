@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Business.Extensions;
 using Business.Interfaces;
@@ -52,9 +53,10 @@ namespace Common.Services
             }
         }
         
-        public void AddItems(Transform listGameObject, IList<IListItem> listItem)
+        public void AddItems(Transform listGameObject, IEnumerable<IListItem> listItems)
         {
-            Parallel.ForEach(listItem, x => AddItem(listGameObject, x));
+            foreach (var listItem in listItems)
+                AddItem(listGameObject, listItem);
         }
     }
 }

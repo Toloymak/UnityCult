@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Common.Components;
 using Common.Helpers;
 using Common.Services;
@@ -90,19 +91,22 @@ namespace Common
                .Inject(_container.GetInstance<ObjectInstantiateHelper>())
                .Inject(_container.GetInstance<FieldService>())
                .Inject(_container.GetInstance<BuildingService>())
-               .Inject(_container.GetInstance<ResourceService>());
+               .Inject(_container.GetInstance<ResourceService>())
+               .Inject(_container.GetInstance<ItemListService>())
+               ;
         }
 
         private void RegisterSingletonServices()
         {
             var singletonLifestyle = Lifestyle.Singleton;
-
+            
             _container.Register<UiPrefabStoreService>(singletonLifestyle);
             _container.Register<UiStoreService>(singletonLifestyle);
             _container.Register<ObjectInstantiateHelper>(singletonLifestyle);
             _container.Register<FieldService>(singletonLifestyle);
             _container.Register<BuildingService>(singletonLifestyle);
             _container.Register<ResourceService>(singletonLifestyle);
+            _container.Register<ItemListService>(singletonLifestyle);
         }
 
         protected virtual void AddSystems(EcsSystems systems)
