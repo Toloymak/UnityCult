@@ -56,7 +56,7 @@
             <e p="Components" t="Include">
               <e p="LogService.cs" t="Include" />
               <e p="ResourceCompont.cs" t="Include" />
-              <e p="TimerComponent.cs" t="Include" />
+              <e p="TimerStorage.cs" t="Include" />
               <e p="VillageFieldComponent.cs" t="Include" />
             </e>
             <e p="Consts" t="Include">
@@ -87,13 +87,13 @@
               <e p="BuildingService.cs" t="Include" />
               <e p="DistrictService.cs" t="Include" />
               <e p="FieldService.cs" t="Include" />
-              <e p="ItemListService.cs" t="Include" />
+              <e p="ItemListUiService.cs" t="Include" />
               <e p="ResourceService.cs" t="Include" />
-              <e p="UiPrefabStoreService.cs" t="Include" />
-              <e p="UiStoreService.cs" t="Include" />
             </e>
             <e p="Storages" t="Include">
               <e p="UiEventStorage.cs" t="Include" />
+              <e p="UiObjectStorage.cs" t="Include" />
+              <e p="UiPrefabStorage.cs" t="Include" />
               <e p="VillageStateStorage.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">

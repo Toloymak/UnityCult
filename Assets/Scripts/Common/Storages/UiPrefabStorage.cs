@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Services
+namespace Common.Storages
 {
-    public class UiPrefabStoreService
+    public class UiPrefabStorage
     {
         private readonly IDictionary<string, Object> _prefabs;
 
-        public UiPrefabStoreService()
+        public UiPrefabStorage()
         {
             _prefabs = new Dictionary<string, Object>();
         }

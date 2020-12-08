@@ -4,8 +4,6 @@ using System.Linq;
 using Business.Enums;
 using Business.Extensions;
 using Business.Helpers;
-using Business.Interfaces;
-using Business.Models.Districts;
 using Common.Components;
 using Common.Consts;
 using Common.Enums;
@@ -21,9 +19,9 @@ namespace Common.Systems.Village
         private BuildingService _buildingService = null;
         private EcsFilter<ResourceComponent> _resourceComponentFilter = null;
         private EcsFilter<VillageFieldComponent> _villageFiledComponentFilter = null;
-        private ItemListService _itemListService = null;
+        private ItemListUiService _itemListUiService = null;
 
-        private UiStoreService _uiStoreService = null;
+        private UiObjectStorage _uiObjectStorage = null;
 
         private HashSet<UIActionModel> _fieldUiActionGroup;
         private IDictionary<ResourceType, ResourceComponent> _resourceComponents;
@@ -74,7 +72,9 @@ namespace Common.Systems.Village
                .GetAvailableBuildings(cell.Type, _villageFieldComponent.GetExistingTypes())
                .Select(x => x.GetModel(() => _buildingService.GetClickAction(cell, x, _resourceComponents)));
 
-            _itemListService.AddItems(_uiStoreService.BuildActionList.transform, availableDistricts);
+            var buildActionList = _uiObjectStorage.GetGameObject(UiObjectNames.BuildingActionList);
+            
+            _itemListUiService.AddItems(buildActionList.transform, availableDistricts);
         }
     }
 }

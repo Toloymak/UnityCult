@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Business.Models;
 using Business.Models.Unit;
 using Common.Consts;
-using Common.Services;
+using Common.Storages;
 using Leopotam.Ecs;
 using Newtonsoft.Json;
+using UnityEngine.UI;
 
 namespace Common.Systems.Units
 {
@@ -14,7 +13,7 @@ namespace Common.Systems.Units
     {
         private EcsWorld _ecsWorld = null;
         private EcsFilter<UnitComponent> _unitModelFilters = null;
-        private UiStoreService _uiStoreService = null;
+        private UiObjectStorage _uiObjectStorage = null;
 
         public void Init()
         {
@@ -42,7 +41,8 @@ namespace Common.Systems.Units
                 unitModels.Add(_unitModelFilters.Get1[unitModel].ToString());
             }
             
-            _uiStoreService.UnitList.text = JsonConvert.SerializeObject(unitModels, Formatting.Indented);
+            _uiObjectStorage.GetComponent<Text>(UiObjectNames.UnitList).text = JsonConvert
+               .SerializeObject(unitModels, Formatting.Indented);
         }
 
         private IList<UnitComponent> GetDefaultUnitModels()

@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Business.Enums;
 using Business.Models.Unit;
 using Common.Components;
 using Common.Services;
 using Leopotam.Ecs;
+
 namespace Common.Systems.Units
 {
     public class UnitVillageActionSystem : BaseSystem, IEcsRunSystem
     {
         private EcsFilter<VillageFieldComponent> _filedComponetn = null;
         private EcsFilter<UnitComponent, UnitPositionComponent> _unitFilter = null;
-        private EcsFilter<TimerComponent> _timeFilter = null;
-        
-        private DistrictService _districtService;
+        private DistrictService _districtService = null;
 
         private VillageFieldComponent _villageFieldComponent;
 
@@ -22,10 +20,6 @@ namespace Common.Systems.Units
         {
             if (_villageFieldComponent == null)
                 _villageFieldComponent = _filedComponetn.Get1.First();
-
-            if (_districtService == null)
-                _districtService = new DistrictService(_timeFilter.Get1.First());
-
 
             foreach (var unitId in _unitFilter)
             {

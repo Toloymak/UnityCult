@@ -1,15 +1,10 @@
 ﻿using Business.Helpers;
-using Business.Models;
-using Business.Models.Unit;
-using Common.Enums;
 using Leopotam.Ecs;
 
 namespace Common.Systems.Logging
 {
     public class TestSystem : BaseSystem, IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
     {
-        private EcsFilter<UnitComponent> _unitModelFilter = null;
-        
         public void Init()
         {
         }

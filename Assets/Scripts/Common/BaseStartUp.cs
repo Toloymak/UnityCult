@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Common.Components;
+﻿using Common.Components;
 using Common.Helpers;
 using Common.Services;
 using Common.Storages;
@@ -86,13 +83,18 @@ namespace Common
         {
             systems
                .Inject(_container)
-               .Inject(_container.GetInstance<UiPrefabStoreService>())
-               .Inject(_container.GetInstance<UiStoreService>())
+
                .Inject(_container.GetInstance<ObjectInstantiateHelper>())
                .Inject(_container.GetInstance<FieldService>())
                .Inject(_container.GetInstance<BuildingService>())
                .Inject(_container.GetInstance<ResourceService>())
-               .Inject(_container.GetInstance<ItemListService>())
+               .Inject(_container.GetInstance<ItemListUiService>())
+               .Inject(_container.GetInstance<DistrictService>())
+                // Storages
+               .Inject(_container.GetInstance<TimerStorage>())
+               .Inject(_container.GetInstance<TimeEventStorage>())
+               .Inject(_container.GetInstance<UiPrefabStorage>())
+               .Inject(_container.GetInstance<UiObjectStorage>())
                ;
         }
 
@@ -100,13 +102,18 @@ namespace Common
         {
             var singletonLifestyle = Lifestyle.Singleton;
             
-            _container.Register<UiPrefabStoreService>(singletonLifestyle);
-            _container.Register<UiStoreService>(singletonLifestyle);
             _container.Register<ObjectInstantiateHelper>(singletonLifestyle);
             _container.Register<FieldService>(singletonLifestyle);
             _container.Register<BuildingService>(singletonLifestyle);
             _container.Register<ResourceService>(singletonLifestyle);
-            _container.Register<ItemListService>(singletonLifestyle);
+            _container.Register<ItemListUiService>(singletonLifestyle);
+            _container.Register<DistrictService>(singletonLifestyle);
+
+            // Storages
+            _container.Register<TimerStorage>(singletonLifestyle);
+            _container.Register<TimeEventStorage>(singletonLifestyle);
+            _container.Register<UiPrefabStorage>(singletonLifestyle);
+            _container.Register<UiObjectStorage>(singletonLifestyle);
         }
 
         protected virtual void AddSystems(EcsSystems systems)

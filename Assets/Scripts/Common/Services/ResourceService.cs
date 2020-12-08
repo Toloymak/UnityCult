@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Common.Services
 {
-    public partial class ResourceService
+    public class ResourceService
     {
         public ResourceComponent AddResource(ResourceType resourceType,
                                              LabelCreateDto resourceDependences)

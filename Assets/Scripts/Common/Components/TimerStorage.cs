@@ -3,7 +3,7 @@ using System.Diagnostics.SymbolStore;
 
 namespace Common.Components
 {
-    public class TimerComponent
+    public class TimerStorage
     {
         private bool _isActive;
         private TimeSpan _timeBeforeStop;
@@ -16,7 +16,7 @@ namespace Common.Components
                 ? _timeBeforeStop + TimeFromLastStart
                 : _timeBeforeStop;
 
-        public TimerComponent()
+        public TimerStorage()
         {
             _timeBeforeStop = TimeSpan.Zero;
         }

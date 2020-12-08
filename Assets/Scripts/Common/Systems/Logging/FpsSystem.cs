@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using Common.Consts;
+﻿using Common.Consts;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;

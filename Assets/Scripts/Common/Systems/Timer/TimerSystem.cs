@@ -1,30 +1,21 @@
-﻿using Business.Models;
-using Common.Components;
+﻿using Common.Components;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Common.Systems.Timer
 {
-    public class TimerSystem: BaseSystem, IEcsInitSystem, IEcsRunSystem
+    public class TimerSystem: BaseSystem, IEcsRunSystem
     {
-        private EcsWorld _ecsWorld = null;
-
-        private TimerComponent _timerComponent;
-        private bool _isFirstFrame;
-
-        public void Init()
-        {
-            _timerComponent = _ecsWorld.NewEntity().Set<TimerComponent>();
-            _isFirstFrame = true;
-        }
+        private TimerStorage _timerStorage = null;
+        private bool _isFirstFrame = true;
 
         public void Run()
         {
             if (_isFirstFrame)
             {
                 _isFirstFrame = false;
-                _timerComponent.Start();
+                _timerStorage.Start();
             }
 
             UpdateTimerView();
@@ -36,15 +27,15 @@ namespace Common.Systems.Timer
 
         private void StartOrStop()
         {
-            switch (_timerComponent.IsActive)
+            switch (_timerStorage.IsActive)
             {
                 case true:
                     LogService.AddLog("Stop");
-                    _timerComponent.Stop();
+                    _timerStorage.Stop();
                     break;
                 case false:
                     LogService.AddLog("Start");
-                    _timerComponent.Start();
+                    _timerStorage.Start();
                     break;
             }
         }
@@ -56,7 +47,7 @@ namespace Common.Systems.Timer
             if (_timerText == null)
                 _timerText = GameObject.Find("TimerText").GetComponent<Text>();
 
-            _timerText.text = _timerComponent.TotalTime.ToString(@"hh\:mm\:ss");
+            _timerText.text = _timerStorage.TotalTime.ToString(@"hh\:mm\:ss");
         }
     }
 }

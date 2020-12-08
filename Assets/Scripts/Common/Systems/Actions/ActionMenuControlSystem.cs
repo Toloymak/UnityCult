@@ -1,38 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Business.Enums;
-using Business.Extensions;
 using Business.Interfaces;
 using Business.Models.Actions;
 using Common.Consts;
-using Common.Helpers;
 using Common.Services;
+using Common.Storages;
 using Common.TypeExtensions;
 using Leopotam.Ecs;
-using SimpleInjector;
-using UnityEngine;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace Common.Systems.Actions
 {
     public class ActionMenuControlSystem : BaseSystem, IEcsInitSystem
     {
-        private UiStoreService _uiStoreService = null;
-        private ItemListService _itemListService = null;
+        private UiObjectStorage _uiObjectStorage = null;
+        private ItemListUiService _itemListUiService = null;
 
 
         public void Init()
         {
-            _uiStoreService.ActionList.transform.DeleteAllChildren();
+            _uiObjectStorage.GetGameObject(UiObjectNames.ActionList).transform.DeleteAllChildren();
             FillActionPanel();
         }
 
         private void FillActionPanel()
         {
-            _itemListService.AddItems(_uiStoreService.ActionList.transform,
-                                      _testActionModels);
+            var actionList = _uiObjectStorage.GetGameObject(UiObjectNames.ActionList).transform;
+            
+            _itemListUiService.AddItems(actionList, _testActionModels);
         }
 
         private static readonly IList<IListItem> _testActionModels = new List<IListItem>()

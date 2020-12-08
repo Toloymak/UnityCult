@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Business.Enums;
 using Business.Extensions;
-using Business.Interfaces;
 using Common.Components;
 using Common.Consts;
 using Common.Models;
+using Common.Storages;
 using Common.TypeExtensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,11 +14,11 @@ namespace Common.Services
 {
     public class BuildingService
     {
-        private UiStoreService _uiStoreService;
+        private UiObjectStorage _uiObjectStorage;
 
-        public BuildingService(UiStoreService uiStoreService)
+        public BuildingService(UiObjectStorage uiObjectStorage)
         {
-            _uiStoreService = uiStoreService;
+            _uiObjectStorage = uiObjectStorage;
         }
 
         public void GetClickAction(DistrictCellModel districtCellModel,
@@ -27,7 +26,7 @@ namespace Common.Services
                                    IDictionary<ResourceType, ResourceComponent> resourceComponents)
         {
             Build(districtCellModel, resourceComponents, districtType);
-            _uiStoreService.BuildActionList.transform.DeleteAllChildren();
+            _uiObjectStorage.GetGameObject(UiObjectNames.BuildingActionList).transform.DeleteAllChildren();
         }
         
         public void Build(DistrictCellModel districtCellModel,

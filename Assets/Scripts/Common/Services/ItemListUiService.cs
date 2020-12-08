@@ -13,11 +13,11 @@ using Object = UnityEngine.Object;
 
 namespace Common.Services
 {
-    public class ItemListService
+    public class ItemListUiService
     {
         private readonly ObjectInstantiateHelper _objectInstantiateHelper;
 
-        public ItemListService(ObjectInstantiateHelper objectInstantiateHelper)
+        public ItemListUiService(ObjectInstantiateHelper objectInstantiateHelper)
         {
             _objectInstantiateHelper = objectInstantiateHelper;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Common.Models;
 using Common.Services;
+using Common.Storages;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -8,17 +9,17 @@ namespace Common.Helpers
 {
     public class ObjectInstantiateHelper
     {
-        private readonly UiPrefabStoreService _uiPrefabStoreService;
+        private readonly UiPrefabStorage _uiPrefabStorage;
 
-        public ObjectInstantiateHelper(UiPrefabStoreService uiPrefabStoreService)
+        public ObjectInstantiateHelper(UiPrefabStorage uiPrefabStorage)
         {
-            _uiPrefabStoreService = uiPrefabStoreService;
+            _uiPrefabStorage = uiPrefabStorage;
         }
 
         public GameObject Instanate(string prefabName, Transform parent, string newObjectName = null)
         {
             var createdObject = (GameObject) Object
-               .Instantiate(_uiPrefabStoreService.GetPrefab(prefabName), parent);
+               .Instantiate(_uiPrefabStorage.GetPrefab(prefabName), parent);
 
             if (!string.IsNullOrEmpty(newObjectName))
                 createdObject.name = newObjectName;
