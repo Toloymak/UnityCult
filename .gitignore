@@ -12,3 +12,5 @@ DEMO/
 Packages/
 TestResults/
 .vs/
+/.idea/*
+**/.idea/*
