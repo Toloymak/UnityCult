@@ -2,7 +2,6 @@
 
 namespace Business.Attributes
 {
-    // todo: Remove
     public class ResourceDescriptionAttribute : Attribute
     {
         public string ShortName { get; }

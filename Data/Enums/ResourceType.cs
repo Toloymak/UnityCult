@@ -2,26 +2,30 @@
 
 namespace Business.Enums
 {
-    // todo: Remove
     public enum ResourceType
     {
         [ResourceDescription("S", "Ordinary Stone")]
         [ResourceProperty(1300)]
-        OrdinarySoulStone,
+        OrdinarySoulStone = 0,
+        
         [ResourceDescription("GS", "Good Stone")]
         [ResourceProperty(0)]
-        GoodSoulStone,
+        GoodSoulStone = 100,
+        
         [ResourceDescription("PS", "Perfect Stone")]
         [ResourceProperty(0)]
-        PerfectSoulStone,
+        PerfectSoulStone = 200,
+        
         [ResourceDescription("E", "Energy")]
         [ResourceProperty(0)]
-        Energy,
+        Energy = 300,
+        
         [ResourceDescription("M", "Metal")]
         [ResourceProperty(0)]
-        MysticMetal,
+        MysticMetal = 400,
+        
         [ResourceDescription("F", "Food")]
         [ResourceProperty(0)]
-        Food,
+        Food = 500,
     }
 }

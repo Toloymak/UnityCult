@@ -8,6 +8,7 @@ namespace Business.Models.Districts
 {
     public class DistrictModel : IListItem
     {
+        // todo: Remove
         public DistrictType DistrictType { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

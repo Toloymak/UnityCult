@@ -2,7 +2,6 @@
 
 namespace Business.Attributes
 {
-    // todo: Remove
     public class ResourcePropertyAttribute : Attribute
     {
         public int DefaultValue { get; }

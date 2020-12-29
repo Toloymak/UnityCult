@@ -5,8 +5,4 @@
         <RootNamespace>Models</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Models" />
-    </ItemGroup>
-
 </Project>

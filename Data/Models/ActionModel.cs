@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using Business.Enums;
 
-namespace Business.Models.Actions
+namespace Models.Models
 {
-    // todo: Remove
-    public class ActionModel
+    public class ActionModel : BaseItem
     {
-        public Guid Id { get; set; }
-        
-        public bool IsActive { get; set; }
-        
-        public string Name { get; set; }
-        public string Description { get; set; }
-        
         public TimeSpan BaseDuring { get; set; }
         public TimeSpan ExtraDuring { get; set; }
         
