@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCore", "GameCore\GameCore.csproj", "{C0179EC4-34B3-4A63-8970-1805A112D342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{148C0E80-A0C0-49D1-9AC4-8CA68602378E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0179EC4-34B3-4A63-8970-1805A112D342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0179EC4-34B3-4A63-8970-1805A112D342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0179EC4-34B3-4A63-8970-1805A112D342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0179EC4-34B3-4A63-8970-1805A112D342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

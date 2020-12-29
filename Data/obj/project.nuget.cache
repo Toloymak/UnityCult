@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "e1VZ7RQfdPwJSWQ8TIEo8YPzrp/Apcj8XAQvYPCgnJwWlaZ3u6ZDlgSDqPCje1d8LmyQQK6bqmO1DAFTXcKrHQ==",
+  "success": true,
+  "projectFilePath": "C:\\Home\\UnityCult\\Data\\Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alexey\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Alexey\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

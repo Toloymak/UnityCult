@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Home\UnityCult\Unity" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Business" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="District" t="Include">
+                <e p="DistrictBuildingTypeAttribute.cs" t="Include" />
+                <e p="DistrictDescriptionAttribute.cs" t="Include" />
+                <e p="DistrictPriceAttribute.cs" t="Include" />
+                <e p="RequiredDistrictsAttribute.cs" t="Include" />
+                <e p="RequiredResearchesAttribute.cs" t="Include" />
+              </e>
+              <e p="IgnoreAttribute.cs" t="Include" />
+              <e p="ResourceDescriptionAttribute.cs" t="Include" />
+              <e p="ResourcePropertyAttribute.cs" t="Include" />
+            </e>
+            <e p="Enums" t="Include">
+              <e p="DistrictBuildingType.cs" t="Include" />
+              <e p="DistrictType.cs" t="Include" />
+              <e p="ResearchType.cs" t="Include" />
+              <e p="ResourceType.cs" t="Include" />
+              <e p="SkillType.cs" t="Include" />
+            </e>
+            <e p="extensions" t="Include">
+              <e p="DistrictExtensions.cs" t="Include" />
+              <e p="ResourceTypeExtensions.cs" t="Include" />
+            </e>
+            <e p="Helpers" t="Include">
+              <e p="DistrictHelper.cs" t="Include" />
+            </e>
+            <e p="Interfaces" t="Include">
+              <e p="IListItem.cs" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="Actions" t="Include">
+                <e p="ActionListItemModel.cs" t="Include" />
+                <e p="ActionModel.cs" t="Include" />
+              </e>
+              <e p="Districts" t="Include">
+                <e p="DistrictModel.cs" t="Include" />
+              </e>
+              <e p="Leaf.cs" t="Include" />
+              <e p="Unit" t="Include">
+                <e p="SkillModel.cs" t="Include" />
+                <e p="UnitComponent.cs" t="Include" />
+                <e p="UnitPositionComponent.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Common" t="Include">
+            <e p="BaseStartUp.cs" t="Include" />
+            <e p="Components" t="Include">
+              <e p="LogService.cs" t="Include" />
+              <e p="ResourceCompont.cs" t="Include" />
+              <e p="TimerStorage.cs" t="Include" />
+              <e p="VillageFieldComponent.cs" t="Include" />
+            </e>
+            <e p="Consts" t="Include">
+              <e p="BaseStateOfGame.cs" t="Include" />
+              <e p="ComponentPrefabNames.cs" t="Include" />
+              <e p="ObjectGroups.cs" t="Include" />
+              <e p="TextureNames.cs" t="Include" />
+              <e p="UiObjectNames.cs" t="Include" />
+            </e>
+            <e p="Enums" t="Include">
+              <e p="LogLevel.cs" t="Include" />
+              <e p="UiActionType.cs" t="Include" />
+            </e>
+            <e p="Helpers" t="Include">
+              <e p="ObjectInstantiateHelper.cs" t="Include" />
+            </e>
+            <e p="Models" t="Include">
+              <e p="BuildingActionItem.cs" t="Include" />
+              <e p="DistrictCellModel.cs" t="Include" />
+              <e p="Dtos" t="Include">
+                <e p="LabelCreateDto.cs" t="Include" />
+              </e>
+              <e p="FieldModel.cs" t="Include" />
+              <e p="LogModel.cs" t="Include" />
+              <e p="UIActionModel.cs" t="Include" />
+            </e>
+            <e p="Services" t="Include">
+              <e p="BuildingService.cs" t="Include" />
+              <e p="DistrictService.cs" t="Include" />
+              <e p="FieldService.cs" t="Include" />
+              <e p="ItemListUiService.cs" t="Include" />
+              <e p="ResourceService.cs" t="Include" />
+            </e>
+            <e p="Storages" t="Include">
+              <e p="UiEventStorage.cs" t="Include" />
+              <e p="UiObjectStorage.cs" t="Include" />
+              <e p="UiPrefabStorage.cs" t="Include" />
+              <e p="VillageStateStorage.cs" t="Include" />
+            </e>
+            <e p="Systems" t="Include">
+              <e p="Actions" t="Include">
+                <e p="ActionMenuControlSystem.cs" t="Include" />
+              </e>
+              <e p="BaseSystem.cs" t="Include" />
+              <e p="Logging" t="Include">
+                <e p="FpsSystem.cs" t="Include" />
+                <e p="LogSystem.cs" t="Include" />
+                <e p="TestSystem.cs" t="Include" />
+              </e>
+              <e p="Resources" t="Include">
+                <e p="ResourceSystem.cs" t="Include" />
+              </e>
+              <e p="Timer" t="Include">
+                <e p="TimerSystem.cs" t="Include" />
+              </e>
+              <e p="Units" t="Include">
+                <e p="UnitMovementSystem.cs" t="Include" />
+                <e p="UnitSystem.cs" t="Include" />
+                <e p="UnitVillageActionSystem.cs" t="Include" />
+              </e>
+              <e p="Village" t="Include">
+                <e p="BuildingMenuControlSystem.cs" t="Include" />
+                <e p="FieldControlSystem.cs" t="Include" />
+              </e>
+            </e>
+            <e p="TypeExtensions" t="Include">
+              <e p="EcsFilterExtensions.cs" t="Include" />
+              <e p="EnumExtensions.cs" t="Include" />
+              <e p="TransformExtensions.cs" t="Include" />
+            </e>
+          </e>
+          <e p="VillageScheme" t="Include">
+            <e p="VillageSchemeStartUp.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\Alexey\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alexey\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alexey\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Alexey\AppData\Roaming\JetBrains\Rider2020.3\extensions" t="IncludeRecursive" />
+  </component>
+</project>
