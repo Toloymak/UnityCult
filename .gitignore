@@ -1,0 +1,14 @@
+#Directories
+bin/
+obj/
+Debug/
+Release/
+ReleaseTest/
+DEV/
+VNEXT/
+TEST/
+PROD/
+DEMO/
+Packages/
+TestResults/
+.vs/
