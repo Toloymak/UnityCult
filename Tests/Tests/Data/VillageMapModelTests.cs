@@ -3,7 +3,7 @@ using System.Linq;
 using Models.Models.Village;
 using NUnit.Framework;
 
-namespace Tests.Data
+namespace Tests.Tests.Data
 {
     public class VillageMapModelTests
     {

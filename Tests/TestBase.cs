@@ -1,7 +1,16 @@
-﻿namespace Tests
+﻿using Core.Services;
+using Moq;
+
+namespace Tests
 {
     public abstract class TestBase<T>
     {
-        public T Service;
+        protected T Service;
+        protected Mock<ILogService> LogService;
+
+        protected TestBase()
+        {
+            LogService = new Mock<ILogService>();
+        }
     }
 }

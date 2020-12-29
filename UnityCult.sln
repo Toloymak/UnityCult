@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{226BC359-472D-4135-875D-3478B409BC1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Unity\Assembly-CSharp.csproj", "{03938CCD-4B40-8DFB-6B9B-21988D5CAC0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{226BC359-472D-4135-875D-3478B409BC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226BC359-472D-4135-875D-3478B409BC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226BC359-472D-4135-875D-3478B409BC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03938CCD-4B40-8DFB-6B9B-21988D5CAC0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03938CCD-4B40-8DFB-6B9B-21988D5CAC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03938CCD-4B40-8DFB-6B9B-21988D5CAC0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03938CCD-4B40-8DFB-6B9B-21988D5CAC0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
