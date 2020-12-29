@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCore", "GameCore\GameCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{148C0E80-A0C0-49D1-9AC4-8CA68602378E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{226BC359-472D-4135-875D-3478B409BC1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{148C0E80-A0C0-49D1-9AC4-8CA68602378E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226BC359-472D-4135-875D-3478B409BC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226BC359-472D-4135-875D-3478B409BC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226BC359-472D-4135-875D-3478B409BC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226BC359-472D-4135-875D-3478B409BC1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

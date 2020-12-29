@@ -8,8 +8,11 @@ namespace Models.Models.Village
     {
         public IList<IList<VillageCellModel>> Matrix { get; set; }
 
-        public VillageMapModel(int rowCount, int columnCount, Func<VillageCellModel> createStrategy)
+        public VillageMapModel(int rowCount, int columnCount)
         {
+            if (rowCount == 0 || columnCount == 0)
+                throw new ArgumentException("Matrix cannot be empty");
+            
             Matrix = new List<IList<VillageCellModel>>();
             
             for (int i = 0; i < rowCount; i++)
@@ -18,7 +21,7 @@ namespace Models.Models.Village
                 
                 for (int j = 0; j < columnCount; j++)
                 {
-                    row.Add(createStrategy.Invoke());
+                    row.Add(new VillageCellModel());
                 }
                 
                 Matrix.Add(row);
