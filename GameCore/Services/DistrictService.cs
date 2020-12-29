@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using Business.Enums;
 using Business.Models.Districts;
 using Models.Enums;
-using Models.Models;
 using Newtonsoft.Json;
 
 namespace Core.Services

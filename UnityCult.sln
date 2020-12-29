@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Unity\As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{AC75A096-0810-44E6-9420-2E313825DEFB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{B988BAAD-CC51-41CD-AEA2-918CCF62C340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistrictConfigTool", "Tools\DistrictConfigTool\DistrictConfigTool.csproj", "{ABAEA8AC-B552-40DB-AEB6-B825BB86279E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 		{AC75A096-0810-44E6-9420-2E313825DEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC75A096-0810-44E6-9420-2E313825DEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC75A096-0810-44E6-9420-2E313825DEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAEA8AC-B552-40DB-AEB6-B825BB86279E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAEA8AC-B552-40DB-AEB6-B825BB86279E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAEA8AC-B552-40DB-AEB6-B825BB86279E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAEA8AC-B552-40DB-AEB6-B825BB86279E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ABAEA8AC-B552-40DB-AEB6-B825BB86279E} = {B988BAAD-CC51-41CD-AEA2-918CCF62C340}
 	EndGlobalSection
 EndGlobal
