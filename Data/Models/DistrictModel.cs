@@ -1,23 +1,20 @@
 ﻿using System.Collections.Generic;
 using Business.Enums;
-using Models.Models;
+using Models.Extensions;
 
 namespace Business.Models.Districts
 {
-    public class DistrictModel : BaseItem
+    public class DistrictModel
     {
-        public long ParentTypeId { get; set; }
+        public DistrictType DistrictType { get; set; }
+        public IList<DistrictModel> ChildDistricts { get; set; }
 
         public IEnumerable<long> RequiredDistricts { get; set; }
         public IEnumerable<long> RequiredResearches { get; set; }
         
         public IDictionary<ResourceType, int> Resources { get; set; }
 
-        public DistrictBuildingType BuildingType { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public string Name => DistrictType.GetName();
+        public string Description => DistrictType.GetDescription();
     }
 }

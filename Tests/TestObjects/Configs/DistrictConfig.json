@@ -1,0 +1,36 @@
+﻿[
+  {
+    "DistrictType": 0,
+    "ChildDistricts": null,
+    "RequiredDistricts": null,
+    "RequiredResearches": null,
+    "Resources": null
+  },
+  {
+    "DistrictType": 400,
+    "ChildDistricts": [
+      {
+        "DistrictType": 410,
+        "ChildDistricts": [],
+        "RequiredDistricts": [
+          1
+        ],
+        "RequiredResearches": [
+          1
+        ],
+        "Resources": {
+          "Food": 100
+        }
+      }
+    ],
+    "RequiredDistricts": [
+      1
+    ],
+    "RequiredResearches": [
+      1
+    ],
+    "Resources": {
+      "Food": 100
+    }
+  }
+]
