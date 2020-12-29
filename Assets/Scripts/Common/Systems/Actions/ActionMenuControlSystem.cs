@@ -32,32 +32,32 @@ namespace Common.Systems.Actions
 
         private static readonly IList<IListItem> _testActionModels = new List<IListItem>()
         {
-            new ActionModel()
+            new ActionListItemModel()
             {
                 Name = "Exploring something",
                 Description = "Go to exploring something",
-                BaseDuring = new TimeSpan(0, 5, 0),
+                During = new TimeSpan(0, 5, 0),
                 Resources = new Dictionary<ResourceType, int>()
                 {
                     {ResourceType.Energy, 100},
                     {ResourceType.Food, 500}
-                }
+                },
             },
-            new ActionModel()
+            new ActionListItemModel()
             {
                 Name = "Attack something",
                 Description = "Go to attack somebody",
-                BaseDuring = new TimeSpan(0, 5, 0),
+                During = new TimeSpan(0, 5, 0),
                 Resources = new Dictionary<ResourceType, int>()
                 {
                     {ResourceType.OrdinarySoulStone, 1000},
                 }
             },
-            new ActionModel()
+            new ActionListItemModel()
             {
                 Name = "Trading",
                 Description = "Go to buy or sell something",
-                BaseDuring = new TimeSpan(0, 5, 0),
+                During = new TimeSpan(0, 5, 0),
                 Resources = new Dictionary<ResourceType, int>()
                 {
                     {ResourceType.OrdinarySoulStone, 1000},

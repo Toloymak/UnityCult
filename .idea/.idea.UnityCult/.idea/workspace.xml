@@ -23,32 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f1c2107-41af-4fd4-97ff-7d0322242425" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionListItemModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionListItemModel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UnityCult/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Components/TimerComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Components/TimerComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Helpers/ObjectInstantiateHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Helpers/ObjectInstantiateHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/DistrictService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/DistrictService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/ItemListService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/ItemListService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/ResourceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Services/ResourceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPrefabStoreService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPrefabStoreService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiStoreService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Storages/VillageStateStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Storages/VillageStateStorage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/LogSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/LogSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Resources/ResourceSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Resources/ResourceSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Timer/TimerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Timer/TimerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitVillageActionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitVillageActionSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +54,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.leopotam.ecs@98267cd08e/src/EcsFilter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.leopotam.ecs@98267cd08e/src/EcsSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ColorBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CDEC8475-F352-4A27-80F0-322B5E8BD8DA/42/2ccca964/EventDispatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.1.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CDEC8475-F352-4A27-80F0-322B5E8BD8DA/c0/a4e23968/IMGUIContainer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -96,8 +77,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Units/UnitMovmentSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Unit/UnitPositionComponent.cs" />
         <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Consts/UiObjectNames.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsText.cs" />
@@ -107,7 +86,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/ActionModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/DistrictModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Extensions/ResourceTypeExtensions.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Storages/VillageStateStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/CechadStorgatePrfab.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Helpers/CachedObjectHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Models/CechedObjectModel.cs" />
@@ -124,7 +102,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Helpers/DistrictHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Business/Interfaces/IListItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/ItemListService.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/ItemListUiService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/ResourceService.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/UiPrefabStorage.cs" />
@@ -136,7 +113,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Components/TimerStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Storages/UiObjectStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Services/BuildingService.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/FpsSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/LogSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Logging/TestSystem.cs" />
@@ -147,6 +123,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/BuildingMenuControlSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Village/FieldControlSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/BaseStartUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionComponent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Storages/VillageStateStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Systems/Actions/ActionMenuControlSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionListItemModel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Business/Models/Actions/ActionModel.cs" />
       </list>
     </option>
   </component>
@@ -177,10 +158,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16336">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16336" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -224,6 +205,7 @@
       <workItem from="1607276742455" duration="672000" />
       <workItem from="1607445313909" duration="18000" />
       <workItem from="1607445664524" duration="3632000" />
+      <workItem from="1607616649739" duration="624000" />
     </task>
     <servers />
   </component>
