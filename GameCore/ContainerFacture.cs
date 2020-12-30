@@ -5,12 +5,14 @@ namespace Core
 {
     public class ContainerFacture
     {
-        public void Create()
+        public static Container Create()
         {
             var container = new Container();
             
             RegisterSingletons(container);
             RegisterServices(container);
+
+            return container;
         }
 
         private static void RegisterSingletons(Container container)

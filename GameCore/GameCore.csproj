@@ -5,6 +5,10 @@
         <RootNamespace>Core</RootNamespace>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\Cult3d\Assets\Plugins</OutputPath>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\Data\Data.csproj" />
     </ItemGroup>

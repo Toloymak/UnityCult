@@ -14,3 +14,4 @@ TestResults/
 .vs/
 /.idea/*
 **/.idea/*
+/Cult3d/Assets/Plugins/netstandard2.0/**

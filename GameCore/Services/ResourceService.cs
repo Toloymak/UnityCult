@@ -16,9 +16,9 @@ namespace Core.Services
     {
         private readonly ResourcesModel _resourcesModel;
         
-        public ResourceService(ResourcesModel resourcesModel)
+        public ResourceService(IStorageService storageService)
         {
-            _resourcesModel = resourcesModel;
+            _resourcesModel = storageService.Get<ResourcesModel>();
         }
 
         public bool TryTakeResources(IDictionary<ResourceType, int> resources)
