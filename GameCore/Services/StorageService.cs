@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Models.Models;
 
 namespace Core.Services
 {
@@ -17,6 +18,8 @@ namespace Core.Services
         public StorageService()
         {
             _cachedObjects = new Dictionary<Type, object>();
+            
+            AddDefaultTypes();
         }
 
         public T Get<T>()
@@ -38,6 +41,12 @@ namespace Core.Services
         {
             _cachedObjects.Add(typeof(T), newObject);
             return newObject;
+        }
+
+        private void AddDefaultTypes()
+        {
+            Create(new TimerModel());
+            Create(new ResourcesModel());
         }
     }
 }

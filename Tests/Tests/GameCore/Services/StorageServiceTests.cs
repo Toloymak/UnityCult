@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.Services;
+using Models.Models;
 using NUnit.Framework;
 using Tests.TestObjects.Classes;
 
@@ -53,6 +55,16 @@ namespace Tests.Tests.GameCore.Services
         public void Get_NotExist()
         {
             Assert.Throws<KeyNotFoundException>(() => Service.Get<TestClassWithConstructor>());
+        }
+        
+        [TestCase(typeof(ResourcesModel))]
+        [TestCase(typeof(TimerModel))]
+        public void GetDefaultTypes(Type type)
+        {
+            var obj = Service.GetType().GetMethod("Get")?.MakeGenericMethod(type).Invoke(Service, null);
+            
+            Assert.IsNotNull(obj);
+            Assert.AreEqual(obj.GetType(), type);
         }
     }
 }
