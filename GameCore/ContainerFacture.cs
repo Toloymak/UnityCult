@@ -5,9 +5,10 @@ namespace Core
 {
     public class ContainerFacture
     {
-        public static Container Create()
+        public static Container Create(Lifestyle defaultLifestyle)
         {
             var container = new Container();
+            container.Options.DefaultLifestyle = defaultLifestyle;
             
             RegisterSingletons(container);
             RegisterServices(container);

@@ -1,5 +1,4 @@
-﻿using Core;
-using Core.UnityServiceContracts;
+﻿using Helpers;
 using Services;
 using SimpleInjector;
 using UnityEngine;
@@ -7,28 +6,24 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     private CameraControlService _cameraControlService;
+    private UiEventSettingService _uiEventSettingService;
+    
     private Container _container;
     
     // Start is called before the first frame update
     void Start()
     {
-        _container = ContainerFacture.Create();
-        RegisterUnityAssemblyServices(_container);
+        _container = new ContainerHelper().GetContainer();
         
         _cameraControlService = _container.GetInstance<CameraControlService>();
+        _uiEventSettingService = _container.GetInstance<UiEventSettingService>();
+        
+        _uiEventSettingService.SetUpBaseButtons();
     }
 
     // Update is called once per frame
     void Update()
     {
         _cameraControlService.MoveCamera();
-    }
-
-    private void RegisterUnityAssemblyServices(Container container)
-    {
-        var defaultLifeStyle = Lifestyle.Singleton;
-        
-        container.Register<CameraControlService>(defaultLifeStyle);
-        container.Register<IUnityBuildingService, UnityBuildingService>();
     }
 }
