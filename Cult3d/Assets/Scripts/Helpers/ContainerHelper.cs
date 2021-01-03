@@ -2,7 +2,6 @@
 using Core.UnityServiceContracts;
 using Services;
 using SimpleInjector;
-using UnityEditor;
 
 namespace Helpers
 {
@@ -20,6 +19,7 @@ namespace Helpers
 
         private void RegisterUnityAssemblyServices(Container container)
         {
+            container.Register<UnityObjectCacheService>(Lifestyle.Singleton);
             container.Register<CameraControlService>();
             container.Register<IUnityBuildingService, UnityBuildingService>();
             container.Register<UiPanelControlService>();

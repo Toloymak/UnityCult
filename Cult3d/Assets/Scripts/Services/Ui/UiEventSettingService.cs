@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using Consts;
 using UnityEngine.UI;
 
 namespace Services
@@ -6,14 +6,19 @@ namespace Services
     public class UiEventSettingService
     {
         private readonly UiPanelControlService _uiPanelControlService;
+        private readonly UnityObjectCacheService _unityObjectCacheService;
         
         private Toggle _buildingButton;
 
-        public UiEventSettingService(UiPanelControlService uiPanelControlService)
+        public UiEventSettingService(UiPanelControlService uiPanelControlService,
+                                     UnityObjectCacheService unityObjectCacheService)
         {
             _uiPanelControlService = uiPanelControlService;
-            
-            _buildingButton = GameObject.Find("BuildingButton").GetComponent<Toggle>();
+            _unityObjectCacheService = unityObjectCacheService;
+
+            _buildingButton = _unityObjectCacheService
+               .GetGameObject(UiObjectNames.BuildingButton)
+               .GetComponent<Toggle>();
         }
         
         public void SetUpBaseButtons()

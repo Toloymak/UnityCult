@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using Consts;
+using UnityEngine;
 
 namespace Services
 {
     public class UiPanelControlService
     {
+        private readonly UnityObjectCacheService _unityObjectCacheService;
+        
         private GameObject _buildingPanel;
         
-        public UiPanelControlService()
+        public UiPanelControlService(UnityObjectCacheService unityObjectCacheService)
         {
-            _buildingPanel = GameObject.Find("BuildingPanel");
+            _unityObjectCacheService = unityObjectCacheService;
+            
+            _buildingPanel = _unityObjectCacheService.GetGameObject(UiObjectNames.BuildingPanel);
         }
 
         public void HideAllPanels()
