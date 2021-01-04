@@ -1,29 +1,29 @@
-﻿using Helpers;
-using Services;
+﻿using System.Collections.Generic;
+using Helpers;
+using Interfaces;
 using SimpleInjector;
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    private CameraControlService _cameraControlService;
-    private UiEventSettingService _uiEventSettingService;
-    
     private Container _container;
+    private IEnumerable<IUpdateService> _updatableServices;
     
-    // Start is called before the first frame update
     void Start()
     {
         _container = new ContainerHelper().GetContainer();
         
-        _cameraControlService = _container.GetInstance<CameraControlService>();
-        _uiEventSettingService = _container.GetInstance<UiEventSettingService>();
-        
-        _uiEventSettingService.SetUpBaseButtons();
-    }
+        _updatableServices = _container.GetAllInstances<IUpdateService>();
 
-    // Update is called once per frame
+        foreach (var initService in _container.GetAllInstances<IInitService>())
+            initService.Init();
+    }
+    
     void Update()
     {
-        _cameraControlService.MoveCamera();
+        foreach (var updatableService in _updatableServices)
+        {
+            updatableService.Update();
+        }
     }
 }

@@ -1,12 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using Consts;
+using UnityEngine;
 
 namespace Services
 {
-    public class CameraControlService
+    public class CameraControlService : UpdatableMenuBaseService
     {
         private const float CameraSpeed = 10f;
-        
-        public void MoveCamera()
+
+        public CameraControlService()
+            : base(Parameters.DefaultUpdatePeriod)
+        {
+            
+        }
+
+        public override void Init()
+        {
+            
+        }
+
+        public override void Update()
         {
             MoveCamera(GetDirectionVector());
         }
@@ -16,7 +29,7 @@ namespace Services
             if (vector3 != default && !(Camera.main is null))
                 Camera.main.transform.position += vector3 * CameraSpeed * Time.deltaTime;
         }
-
+        
         private static Vector3 GetDirectionVector()
         {
             var vector3 = new Vector3();

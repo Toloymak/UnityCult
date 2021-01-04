@@ -1,18 +1,20 @@
 ﻿using System;
+using Interfaces;
 
 namespace Services
 {
-    public abstract class UpdateBaseService
+    public abstract class UpdatableMenuBaseService : IUpdateService
     {
         private DateTime LastUpdate { get; set; }
         private TimeSpan Period { get; set; }
 
-        protected UpdateBaseService(TimeSpan period)
+        protected UpdatableMenuBaseService(TimeSpan period)
         {
-            Period = TimeSpan.Zero;
+            Period = period;
             LastUpdate = DateTime.MinValue;
         }
 
+        public abstract void Init();
         public abstract void Update();
 
         protected bool NeedUpdate()
