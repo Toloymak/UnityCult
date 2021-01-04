@@ -13,8 +13,10 @@ namespace Tests.Tests.GameCore.Services
         [SetUp]
         public void SetUp()
         {
-            _resourcesModel = new ResourcesModel();
-            Service = new ResourceService(_resourcesModel);
+            var storageService = new StorageService();
+            _resourcesModel = storageService.GetOrCreate<ResourcesModel>();
+            
+            Service = new ResourceService(storageService);
         }
 
         [TestCase(100, 100, true)]

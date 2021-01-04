@@ -4,10 +4,12 @@ using Business.Models.Districts;
 using Models.Enums;
 using Newtonsoft.Json;
 
-namespace Core.Services
+namespace Core.Services.District
 {
     public interface IDistrictService
     {
+        IList<DistrictModel> GetDistrictTree();
+        void PrintDistrictTree();
     }
 
     public class DistrictService : IDistrictService
@@ -19,11 +21,16 @@ namespace Core.Services
             _configService = configService;
         }
 
-        public void GetDistrictTree()
+        public IList<DistrictModel> GetDistrictTree()
         {
             var stringConfig = _configService.GetConfigFile(ConfigType.District);
             var districtModels = JsonConvert.DeserializeObject<IList<DistrictModel>>(stringConfig);
-            Print(districtModels);
+            return districtModels;
+        }
+
+        public void PrintDistrictTree()
+        {
+            Print(GetDistrictTree());
         }
 
         private void Print(IList<DistrictModel> districtModels)

@@ -42,7 +42,9 @@ namespace Helpers
         private void RegisterUnityAssemblyServices(Container container)
         {
             container.Register<UnityObjectCacheService>(Lifestyle.Singleton);
+            container.Register<PrefabCacheService>(Lifestyle.Singleton);
             container.Register<IUnityBuildingService, UnityBuildingService>();
+            container.Register<ObjectInstantiateHelper>();
         }
 
         private void RegisterSettingServices(Container container)

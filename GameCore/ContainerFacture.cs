@@ -1,4 +1,5 @@
 ﻿using Core.Services;
+using Core.Services.District;
 using SimpleInjector;
 
 namespace Core
@@ -28,6 +29,7 @@ namespace Core
             container.Register<IDistrictService, DistrictService>();
             container.Register<ILogService, LogService>();
             container.Register<IResourceService, ResourceService>();
+            container.Register<IFilePathProvider, FilePathProvider>();
         }
     }
 }
