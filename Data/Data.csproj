@@ -9,4 +9,10 @@
       <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Models\ListItemModelExtensions.cs">
+        <DependentUpon>ListItemModel.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

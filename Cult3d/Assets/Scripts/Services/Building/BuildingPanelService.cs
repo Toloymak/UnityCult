@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using Business.Models.Districts;
-using Common.TypeExtensions;
 using Consts;
+using Core.Services;
 using Core.Services.District;
+using Core.UnityServiceContracts;
+using Extensions;
 using Helpers;
 using Interfaces;
+using Models;
 using Models.Models;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,18 +22,21 @@ namespace Services.Building
         private readonly GameObject _buildingPanelContent;
         private readonly IButtonHelper _buttonHelper;
         private readonly IEventHelper _eventHelper;
+        private readonly IUnityBuildingService _unityBuildingService;
 
         private IList<DistrictModel> _cachedDistrictModels;
             
         public BuildingPanelService(UnityObjectCacheService unityObjectCacheService,
                                     IDistrictService districtService,
                                     IButtonHelper buttonHelper,
-                                    IEventHelper eventHelper)
+                                    IEventHelper eventHelper,
+                                    IUnityBuildingService unityBuildingService)
             : base(Parameters.DefaultUpdatePeriod)
         {
             _districtService = districtService;
             _buttonHelper = buttonHelper;
             _eventHelper = eventHelper;
+            _unityBuildingService = unityBuildingService;
             _buildingPanel = unityObjectCacheService.GetGameObject(UiObjectNames.BuildingPanel);
             _buildingButton = unityObjectCacheService
                .GetGameObject(UiObjectNames.BuildingButton)
@@ -67,7 +73,11 @@ namespace Services.Building
             
             foreach (var districtModel in districtTree)
             {
-                _buttonHelper.CreateListItem(districtModel.ToListItemModel(() => Debug.Log("Build")),
+                _buttonHelper.CreateListItem(districtModel.ToListItemModel(() =>
+                                             {
+                                                 Debug.Log("Build");
+                                                 _unityBuildingService.ShowDistrictForBuilding(districtModel.DistrictType);
+                                             }),
                                              _buildingPanelContent.transform);
             }
         }

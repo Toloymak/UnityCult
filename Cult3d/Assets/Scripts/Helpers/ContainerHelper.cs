@@ -23,20 +23,18 @@ namespace Helpers
 
         private void RegisterInitServices(Container container)
         {
-            container.Collection.Register<IInitService>(new []
-            {
-                typeof(BuildingPanelService)
-                
-            });
+            container.Collection.Register<IInitService>(
+                                                        typeof(BuildingPanelService)
+                                                       );
         }
-        
+
         private void RegisterUpdateServices(Container container)
         {
-            container.Collection.Register<IUpdateService>(new []
-            {
-                typeof(BuildingPanelService),
-                typeof(CameraControlService)
-            });
+            container.Collection.Register<IUpdateService>(
+                                                          typeof(BuildingPanelService),
+                                                          typeof(CameraControlService),
+                                                          typeof(DistrictBuildingProcessService)
+                                                         );
         }
 
         private void RegisterUnityAssemblyServices(Container container)
@@ -47,6 +45,7 @@ namespace Helpers
             container.Register<IObjectInstantiateHelper, ObjectInstantiateHelper>();
             container.Register<IButtonHelper, ButtonHelper>();
             container.Register<IEventHelper, EventHelper>();
+            container.Register<IMouseHelper, MouseHelper>();
         }
 
         private void RegisterSettingServices(Container container)
