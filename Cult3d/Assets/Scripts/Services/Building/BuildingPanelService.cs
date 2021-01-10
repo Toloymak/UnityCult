@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Business.Models.Districts;
 using Common.TypeExtensions;
 using Consts;
 using Core.Services.District;
 using Helpers;
 using Interfaces;
+using Models.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,20 +14,23 @@ namespace Services.Building
     public class BuildingPanelService : UpdatableMenuBaseService, IInitService
     {
         private readonly IDistrictService _districtService;
-        private readonly ObjectInstantiateHelper _objectInstantiateHelper;
-        private GameObject _buildingPanel;
-        private Toggle _buildingButton;
-        private GameObject _buildingPanelContent;
+        private readonly GameObject _buildingPanel;
+        private readonly Toggle _buildingButton;
+        private readonly GameObject _buildingPanelContent;
+        private readonly IButtonHelper _buttonHelper;
+        private readonly IEventHelper _eventHelper;
 
         private IList<DistrictModel> _cachedDistrictModels;
             
         public BuildingPanelService(UnityObjectCacheService unityObjectCacheService,
                                     IDistrictService districtService,
-                                    ObjectInstantiateHelper objectInstantiateHelper)
+                                    IButtonHelper buttonHelper,
+                                    IEventHelper eventHelper)
             : base(Parameters.DefaultUpdatePeriod)
         {
             _districtService = districtService;
-            _objectInstantiateHelper = objectInstantiateHelper;
+            _buttonHelper = buttonHelper;
+            _eventHelper = eventHelper;
             _buildingPanel = unityObjectCacheService.GetGameObject(UiObjectNames.BuildingPanel);
             _buildingButton = unityObjectCacheService
                .GetGameObject(UiObjectNames.BuildingButton)
@@ -40,7 +43,7 @@ namespace Services.Building
 
         public override void Init()
         {
-            _buildingButton.onValueChanged = BuildingButtonEvent();
+            _buildingButton.onValueChanged = _eventHelper.CreateToggleEvent(value => _buildingPanel.SetActive(value));
             _buildingPanel.SetActive(false);
         }
         
@@ -60,24 +63,13 @@ namespace Services.Building
 
         private void UpdateBuildingList(IList<DistrictModel> districtTree)
         {
-            Debug.Log("Update building list");
-            
             _buildingPanelContent.transform.DeleteAllChildren();
             
             foreach (var districtModel in districtTree)
             {
-                var item = _objectInstantiateHelper
-                   .Instanate(PrefabNames.DistrictListItem, _buildingPanelContent.transform);
-
-                item.transform.Find("Text").GetComponent<Text>().text = districtModel.Name;
+                _buttonHelper.CreateListItem(districtModel.ToListItemModel(() => Debug.Log("Build")),
+                                             _buildingPanelContent.transform);
             }
-        }
-
-        private Toggle.ToggleEvent BuildingButtonEvent()
-        {
-            var buildingOnClickEvent = new Toggle.ToggleEvent();
-            buildingOnClickEvent.AddListener(value => _buildingPanel.SetActive(value));
-            return buildingOnClickEvent;
         }
     }
 }

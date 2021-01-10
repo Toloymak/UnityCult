@@ -4,7 +4,12 @@ using Object = UnityEngine.Object;
 
 namespace Helpers
 {
-    public class ObjectInstantiateHelper
+    public interface IObjectInstantiateHelper
+    {
+        GameObject Instanate(string prefabName, Transform parent, string newObjectName = null);
+    }
+
+    public class ObjectInstantiateHelper : IObjectInstantiateHelper
     {
         private readonly PrefabCacheService _uiPrefabStorage;
 

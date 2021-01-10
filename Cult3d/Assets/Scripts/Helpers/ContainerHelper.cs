@@ -44,7 +44,9 @@ namespace Helpers
             container.Register<UnityObjectCacheService>(Lifestyle.Singleton);
             container.Register<PrefabCacheService>(Lifestyle.Singleton);
             container.Register<IUnityBuildingService, UnityBuildingService>();
-            container.Register<ObjectInstantiateHelper>();
+            container.Register<IObjectInstantiateHelper, ObjectInstantiateHelper>();
+            container.Register<IButtonHelper, ButtonHelper>();
+            container.Register<IEventHelper, EventHelper>();
         }
 
         private void RegisterSettingServices(Container container)
