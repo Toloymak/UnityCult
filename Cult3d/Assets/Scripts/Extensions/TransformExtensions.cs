@@ -12,5 +12,11 @@ namespace Extensions
                 Object.Destroy(child.gameObject);
             }
         }
+        
+        public static (int x, int z) GetXZCellPosition(this Transform transform)
+        {
+            var position = transform.position;
+            return ((int) position.x, (int) position.z);
+        }
     }
 }

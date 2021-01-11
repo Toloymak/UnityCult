@@ -1,5 +1,4 @@
 ﻿using System;
-using Business.Models.Districts;
 
 namespace Models.Models
 {

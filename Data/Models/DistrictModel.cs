@@ -2,7 +2,7 @@
 using Business.Enums;
 using Models.Extensions;
 
-namespace Business.Models.Districts
+namespace Models.Models
 {
     public class DistrictModel
     {

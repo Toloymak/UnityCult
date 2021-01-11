@@ -3,6 +3,7 @@ using Core.UnityServiceContracts;
 using Interfaces;
 using Services;
 using Services.Building;
+using Services.Village;
 using SimpleInjector;
 
 namespace Helpers
@@ -24,7 +25,8 @@ namespace Helpers
         private void RegisterInitServices(Container container)
         {
             container.Collection.Register<IInitService>(
-                                                        typeof(BuildingPanelService)
+                                                        typeof(BuildingPanelService),
+                                                        typeof(VillageService)
                                                        );
         }
 
@@ -33,7 +35,8 @@ namespace Helpers
             container.Collection.Register<IUpdateService>(
                                                           typeof(BuildingPanelService),
                                                           typeof(CameraControlService),
-                                                          typeof(DistrictBuildingProcessService)
+                                                          typeof(DistrictBuildingProcessService),
+                                                          typeof(MouseControlService)
                                                          );
         }
 

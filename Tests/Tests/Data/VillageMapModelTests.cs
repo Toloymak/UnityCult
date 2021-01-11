@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Models.Models.Village;
 using NUnit.Framework;
@@ -7,6 +8,8 @@ namespace Tests.Tests.Data
 {
     public class VillageMapModelTests
     {
+        private VillageMapModel matrix;
+        
         [TestCase(1, 1)]
         [TestCase(999, 999)]
         public void Create(int row, int column)
@@ -23,6 +26,29 @@ namespace Tests.Tests.Data
         {
             // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new VillageMapModel(row, column));
+        }
+        
+        [Test]
+        public void GetByCoordinates_notFound()
+        {
+            matrix = new VillageMapModel(10, 10);
+
+            Assert.Throws<KeyNotFoundException>(() =>
+            {
+                var data = matrix.CoordinateDictionary[(1, 1)];
+            });
+        }
+        
+        [Test]
+        public void GetByCoordinates()
+        {
+            matrix = new VillageMapModel(10, 10);
+            var item = matrix.GetItem(1, 1);
+            item.Coordinates = (5, 5);
+
+            var data = matrix.CoordinateDictionary[(5, 5)];
+            
+            Assert.AreEqual(item, data);
         }
     }
 }

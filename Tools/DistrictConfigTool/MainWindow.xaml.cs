@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using Business.Enums;
-using Business.Models.Districts;
+using Models.Models;
 using Newtonsoft.Json;
 
 namespace DistrictConfigTool

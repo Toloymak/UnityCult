@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Business.Models.Districts;
 using Models.Enums;
+using Models.Models;
 using Newtonsoft.Json;
 
 namespace Core.Services.District

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Business.Models.Districts;
 using Consts;
+using Core.Extensions;
 using Core.Services;
 using Core.Services.District;
 using Core.UnityServiceContracts;
@@ -70,15 +70,15 @@ namespace Services.Building
         private void UpdateBuildingList(IList<DistrictModel> districtTree)
         {
             _buildingPanelContent.transform.DeleteAllChildren();
-            
+
             foreach (var districtModel in districtTree)
             {
-                _buttonHelper.CreateListItem(districtModel.ToListItemModel(() =>
-                                             {
-                                                 Debug.Log("Build");
-                                                 _unityBuildingService.ShowDistrictForBuilding(districtModel.DistrictType);
-                                             }),
-                                             _buildingPanelContent.transform);
+                _buttonHelper
+                   .CreateListItem(districtModel.ToListItemModel(() =>
+                                   {
+                                       _unityBuildingService.ShowDistrictForBuilding(districtModel.DistrictType);
+                                   }),
+                                   _buildingPanelContent.transform);
             }
         }
     }

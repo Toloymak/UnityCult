@@ -29,6 +29,7 @@ namespace Services
         {
             var obj = _objectInstantiateHelper.Instanate(DistrictPrefabNames.DefaultPrefab, null);
             _storageService.GetOrCreate<BuildingProcessModel>().DistrictInProcess = obj;
+            _storageService.GetOrCreate<BuildingProcessModel>().DistrictType = districtType;
         }
     }
 }

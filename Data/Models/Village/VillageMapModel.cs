@@ -7,6 +7,7 @@ namespace Models.Models.Village
     public class VillageMapModel
     {
         public IList<IList<VillageCellModel>> Matrix { get; set; }
+        public IDictionary<(int x, int z), VillageCellModel> CoordinateDictionary { get; set; } 
 
         public VillageMapModel(int rowCount, int columnCount)
         {
@@ -14,6 +15,7 @@ namespace Models.Models.Village
                 throw new ArgumentException("Matrix cannot be empty");
             
             Matrix = new List<IList<VillageCellModel>>();
+            CoordinateDictionary = new Dictionary<(int x, int z), VillageCellModel>();
             
             for (int i = 0; i < rowCount; i++)
             {
@@ -21,7 +23,13 @@ namespace Models.Models.Village
                 
                 for (int j = 0; j < columnCount; j++)
                 {
-                    row.Add(new VillageCellModel());
+                    row.Add(new VillageCellModel((coordinates, model) =>
+                    {
+                        if (CoordinateDictionary.TryGetValue(coordinates, out _))
+                            CoordinateDictionary.Remove(coordinates);
+                        
+                        CoordinateDictionary.Add(coordinates, model);
+                    }));
                 }
                 
                 Matrix.Add(row);
@@ -48,14 +56,6 @@ namespace Models.Models.Village
             CheckColumnCount(columnNumber);
             
             return GetRow(rowNumber)[columnNumber];
-        }
-        
-        public VillageCellModel GetItemByName(string name)
-        {
-            var addresses = name.Split('_').Select(int.Parse).ToArray();
-            var cell = GetItem(addresses[0], addresses[1]);
-
-            return cell;
         }
 
         public IEnumerable<VillageCellModel> GetEnumerable()

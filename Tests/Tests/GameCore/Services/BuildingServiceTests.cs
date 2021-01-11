@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Business.Enums;
-using Business.Models.Districts;
 using Core.Services;
+using Core.Services.District;
 using Core.UnityServiceContracts;
+using Models.Models;
 using Models.Models.Village;
 using Moq;
 using NUnit.Framework;
@@ -12,52 +13,71 @@ namespace Tests.Tests.GameCore.Services
     public class BuildingServiceTests : TestBase<BuildingService>
     {
         private Mock<IUnityBuildingService> _unityBuildingServiceMock;
-        private Mock<IResourceService> _resoutrceService;
+        private Mock<IResourceService> _resourceService;
+        private Mock<IDistrictService> _districtService;
         
         [SetUp]
         public void SetUp()
         {
             _unityBuildingServiceMock = new Mock<IUnityBuildingService>();
-            _resoutrceService = new Mock<IResourceService>();
-            
+            _resourceService = new Mock<IResourceService>();
+            _districtService = new Mock<IDistrictService>();
+
             Service = new BuildingService(_unityBuildingServiceMock.Object,
-                                          _resoutrceService.Object,
-                                          LogService.Object);
+                                          _resourceService.Object,
+                                          LogService.Object,
+                                          _districtService.Object);
         }
         
         [Test]
         public void Build()
         {
-            var cell = new VillageCellModel();
-            var districtModel = new DistrictModel();
+            var cell = new VillageCellModel((tuple, model) => { });
+            var districtModel = new DistrictModel()
+            {
+                DistrictType = DistrictType.Administration
+            };
 
-            _resoutrceService
+            _resourceService
                .Setup(x => x.TryTakeResources(It.IsAny<IDictionary<ResourceType, int>>()))
                .Returns(true);
+
+            CreateDistrictTree(districtModel);
             
-            Service.Build(cell, districtModel);
+            Service.Build(cell, DistrictType.Administration);
             
             Assert.AreEqual(cell.DistrictModel, districtModel);
             
-            _resoutrceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
+            _resourceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
             _unityBuildingServiceMock.Verify(x => x.UpdateCellView(cell), Times.Once);
         }
-        
+
+        private void CreateDistrictTree(DistrictModel districtModel)
+        {
+            _districtService.Setup(service => service.GetDistrictTree())
+               .Returns(() => new List<DistrictModel>() {districtModel});
+        }
+
         [Test]
         public void Build_IsNotEnoughMoney()
         {
-            var cell = new VillageCellModel();
-            var districtModel = new DistrictModel();
+            var cell = new VillageCellModel((tuple, model) => { });
+            var districtModel = new DistrictModel()
+            {
+                DistrictType = DistrictType.Administration
+            };
 
-            _resoutrceService
+            _resourceService
                .Setup(x => x.TryTakeResources(It.IsAny<IDictionary<ResourceType, int>>()))
                .Returns(false);
             
-            Service.Build(cell, districtModel);
+            CreateDistrictTree(districtModel);
+
+            Service.Build(cell, DistrictType.Administration);
             
             Assert.AreEqual(cell.DistrictModel, null);
             
-            _resoutrceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
+            _resourceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
             _unityBuildingServiceMock.Verify(x => x.UpdateCellView(cell), Times.Never);
         }
     }
