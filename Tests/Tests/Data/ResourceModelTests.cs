@@ -4,6 +4,8 @@ using NUnit.Framework;
 
 namespace Tests.Tests.Data
 {
+    [TestFixture]
+    [Parallelizable]
     public class ResourceModelTests
     {
         [Test]

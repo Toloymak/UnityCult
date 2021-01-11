@@ -6,73 +6,21 @@ namespace Models.Models.Village
 {
     public class VillageMapModel
     {
-        public IList<IList<VillageCellModel>> Matrix { get; set; }
-        public IDictionary<(int x, int z), VillageCellModel> CoordinateDictionary { get; set; } 
+        public IDictionary<Coordinates, VillageCellModel> MapCoordinateDictionary { get; } 
 
-        public VillageMapModel(int rowCount, int columnCount)
+        public VillageMapModel(int rowCount, int columnCount, Coordinates startPoint)
         {
             if (rowCount == 0 || columnCount == 0)
-                throw new ArgumentException("Matrix cannot be empty");
+                throw new ArgumentException("Map cannot be empty");
             
-            Matrix = new List<IList<VillageCellModel>>();
-            CoordinateDictionary = new Dictionary<(int x, int z), VillageCellModel>();
+            MapCoordinateDictionary = new Dictionary<Coordinates, VillageCellModel>();
             
-            for (int i = 0; i < rowCount; i++)
-            {
-                var row = new List<VillageCellModel>();
-                
-                for (int j = 0; j < columnCount; j++)
+            for (var rowNumber = 0; rowNumber < rowCount; rowNumber++)
+                for (var columnNumber = 0; columnNumber < columnCount; columnNumber++)
                 {
-                    row.Add(new VillageCellModel((coordinates, model) =>
-                    {
-                        if (CoordinateDictionary.TryGetValue(coordinates, out _))
-                            CoordinateDictionary.Remove(coordinates);
-                        
-                        CoordinateDictionary.Add(coordinates, model);
-                    }));
+                    var mapCoordinates = new Coordinates(startPoint.X + rowNumber, startPoint.Z + columnNumber);
+                    MapCoordinateDictionary.Add(mapCoordinates, new VillageCellModel(mapCoordinates));
                 }
-                
-                Matrix.Add(row);
-            }
-        }
-        
-        public IList<VillageCellModel> GetRow(int number)
-        {
-            CheckRowNumber(number);
-
-            return Matrix[number];
-        }
-
-        public List<VillageCellModel> GetColumn(int number)
-        {
-            CheckColumnCount(number);
-
-            return Matrix.Select(row => row[number]).ToList();
-        }
-
-        public VillageCellModel GetItem(int rowNumber, int columnNumber)
-        {
-            CheckRowNumber(rowNumber);
-            CheckColumnCount(columnNumber);
-            
-            return GetRow(rowNumber)[columnNumber];
-        }
-
-        public IEnumerable<VillageCellModel> GetEnumerable()
-        {
-            return Matrix.SelectMany(x => x);
-        }
-
-        private void CheckRowNumber(int number)
-        {
-            if (number >= Matrix.Count)
-                throw new ArgumentException($"Matrix contain just {Matrix.Count} rows");
-        }
-
-        private void CheckColumnCount(int number)
-        {
-            if (number >= Matrix.First().Count)
-                throw new ArgumentException($"Matrix contain just {Matrix.Count} columns");
         }
     }
 }

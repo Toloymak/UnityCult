@@ -1,9 +1,9 @@
-﻿using Core;
+﻿using Assets.Scripts.Services.Village;
+using Core;
 using Core.UnityServiceContracts;
 using Interfaces;
 using Services;
 using Services.Building;
-using Services.Village;
 using SimpleInjector;
 
 namespace Helpers

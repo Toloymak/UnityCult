@@ -85,7 +85,7 @@ namespace Services.Building
         private bool TryGetCell(out VillageCellModel cell)
         {
             return _storageService.Get<VillageMapModel>()
-               .CoordinateDictionary
+               .MapCoordinateDictionary
                .TryGetValue(_buildingProcessModel.DistrictInProcess.transform.GetXZCellPosition(), out cell);
         }
     }

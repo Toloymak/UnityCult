@@ -4,24 +4,18 @@ namespace Models.Models.Village
 {
     public class VillageCellModel : BaseItem
     {
-        public DistrictModel DistrictModel { get; set; }
+        public Coordinates WorldCoordinates { get; }
 
-        private (int x, int z) _coordinates;
-        private readonly Action<(int x, int z), VillageCellModel> _editCoordinatesAction;
+        public DistrictInfoModel DistrictInfoModel { get; set; }
 
-        public VillageCellModel(Action<(int x, int z), VillageCellModel> editCoordinatesAction)
+        public VillageCellModel(Coordinates worldCoordinates)
         {
-            _editCoordinatesAction = editCoordinatesAction;
+            WorldCoordinates = worldCoordinates;
         }
 
-        public (int x, int z) Coordinates
+        public override string ToString()
         {
-            get => _coordinates;
-            set
-            {
-                _coordinates = value;
-                _editCoordinatesAction.Invoke(value, this);
-            }
+            return $"{WorldCoordinates}";
         }
     }
 }

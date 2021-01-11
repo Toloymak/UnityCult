@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using Business.Enums;
 using Models.Models;
+using Models.Models.Village;
 using Newtonsoft.Json;
 
 namespace DistrictConfigTool
@@ -22,11 +23,11 @@ namespace DistrictConfigTool
 
         private void CalculateButton_OnClick(object sender, RoutedEventArgs e)
         {
-            IList<DistrictModel> districtModels;
+            IList<DistrictInfoModel> districtModels;
             try
             {
                 var json = JsonText.Text;
-                districtModels = JsonConvert.DeserializeObject<IList<DistrictModel>>(json);
+                districtModels = JsonConvert.DeserializeObject<IList<DistrictInfoModel>>(json);
                 ResultTextBlock.Text = GetTree(districtModels);
             }
             catch (Exception exception)
@@ -35,7 +36,7 @@ namespace DistrictConfigTool
             }
         }
 
-        private string GetTree(IList<DistrictModel> districtModels, int deep = 0)
+        private string GetTree(IList<DistrictInfoModel> districtModels, int deep = 0)
         {
             
             if (districtModels == null)
@@ -63,11 +64,11 @@ namespace DistrictConfigTool
             return result.ToString();
         }
 
-        private List<DistrictModel> GetConfigExample()
+        private List<DistrictInfoModel> GetConfigExample()
         {
-            return new List<DistrictModel>()
+            return new List<DistrictInfoModel>()
             {
-                new DistrictModel()
+                new DistrictInfoModel()
                 {
                     DistrictType = DistrictType.Alchemy,
                     Resources = new Dictionary<ResourceType, int>()
@@ -76,9 +77,9 @@ namespace DistrictConfigTool
                     },
                     RequiredDistricts = new long[] {},
                     RequiredResearches = new long[] {},
-                    ChildDistricts = new List<DistrictModel>()
+                    ChildDistricts = new List<DistrictInfoModel>()
                 },
-                new DistrictModel()
+                new DistrictInfoModel()
                 {
                     DistrictType = DistrictType.Arena,
                     Resources = new Dictionary<ResourceType, int>()
@@ -87,9 +88,9 @@ namespace DistrictConfigTool
                     },
                     RequiredDistricts = new[] {1L},
                     RequiredResearches = new[] {1L},
-                    ChildDistricts = new List<DistrictModel>()
+                    ChildDistricts = new List<DistrictInfoModel>()
                     {
-                        new DistrictModel()
+                        new DistrictInfoModel()
                         {
                             DistrictType = DistrictType.Arena2,
                             Resources = new Dictionary<ResourceType, int>()
@@ -98,7 +99,7 @@ namespace DistrictConfigTool
                             },
                             RequiredDistricts = new[] {1L},
                             RequiredResearches = new[] {1L},
-                            ChildDistricts = new List<DistrictModel>()
+                            ChildDistricts = new List<DistrictInfoModel>()
                             {
                             }
                         },

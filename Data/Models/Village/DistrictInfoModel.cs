@@ -2,12 +2,12 @@
 using Business.Enums;
 using Models.Extensions;
 
-namespace Models.Models
+namespace Models.Models.Village
 {
-    public class DistrictModel
+    public class DistrictInfoModel
     {
         public DistrictType DistrictType { get; set; }
-        public IList<DistrictModel> ChildDistricts { get; set; }
+        public IList<DistrictInfoModel> ChildDistricts { get; set; }
 
         public IEnumerable<long> RequiredDistricts { get; set; }
         public IEnumerable<long> RequiredResearches { get; set; }

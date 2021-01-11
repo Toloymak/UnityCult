@@ -32,8 +32,8 @@ namespace Tests.Tests.GameCore.Services
         [Test]
         public void Build()
         {
-            var cell = new VillageCellModel((tuple, model) => { });
-            var districtModel = new DistrictModel()
+            var cell = new VillageCellModel(new Coordinates());
+            var districtModel = new DistrictInfoModel()
             {
                 DistrictType = DistrictType.Administration
             };
@@ -46,23 +46,23 @@ namespace Tests.Tests.GameCore.Services
             
             Service.Build(cell, DistrictType.Administration);
             
-            Assert.AreEqual(cell.DistrictModel, districtModel);
+            Assert.AreEqual(cell.DistrictInfoModel, districtModel);
             
             _resourceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
             _unityBuildingServiceMock.Verify(x => x.UpdateCellView(cell), Times.Once);
         }
 
-        private void CreateDistrictTree(DistrictModel districtModel)
+        private void CreateDistrictTree(DistrictInfoModel districtInfoModel)
         {
             _districtService.Setup(service => service.GetDistrictTree())
-               .Returns(() => new List<DistrictModel>() {districtModel});
+               .Returns(() => new List<DistrictInfoModel>() {districtInfoModel});
         }
 
         [Test]
         public void Build_IsNotEnoughMoney()
         {
-            var cell = new VillageCellModel((tuple, model) => { });
-            var districtModel = new DistrictModel()
+            var cell = new VillageCellModel(new Coordinates());
+            var districtModel = new DistrictInfoModel()
             {
                 DistrictType = DistrictType.Administration
             };
@@ -75,7 +75,7 @@ namespace Tests.Tests.GameCore.Services
 
             Service.Build(cell, DistrictType.Administration);
             
-            Assert.AreEqual(cell.DistrictModel, null);
+            Assert.AreEqual(cell.DistrictInfoModel, null);
             
             _resourceService.Verify(x => x.TryTakeResources(districtModel.Resources), Times.Once);
             _unityBuildingServiceMock.Verify(x => x.UpdateCellView(cell), Times.Never);

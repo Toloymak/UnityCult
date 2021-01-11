@@ -18,19 +18,16 @@ namespace Core.Services
         private readonly IResourceService _resourceService;
         private readonly ILogService _logService;
         private readonly IDistrictService _districtService;
-        private readonly IStorageService _storageService;
 
         public BuildingService(IUnityBuildingService unityBuildingService,
                                IResourceService resourceService,
                                ILogService logService,
-                               IDistrictService districtService,
-                               IStorageService storageService)
+                               IDistrictService districtService)
         {
             _unityBuildingService = unityBuildingService;
             _resourceService = resourceService;
             _logService = logService;
             _districtService = districtService;
-            _storageService = storageService;
         }
 
         public void Build(VillageCellModel villageCellModel,
@@ -41,7 +38,7 @@ namespace Core.Services
             if (!_resourceService.TryTakeResources(districtModel.Resources))
                 return;
             
-            villageCellModel.DistrictModel = districtModel;
+            villageCellModel.DistrictInfoModel = districtModel;
             
             _unityBuildingService.UpdateCellView(villageCellModel);
             

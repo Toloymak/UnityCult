@@ -1,8 +1,11 @@
 ﻿using Core.Services;
 using Moq;
+using NUnit.Framework;
 
 namespace Tests
 {
+    [TestFixture]
+    [Parallelizable]
     public abstract class TestBase<T>
     {
         protected T Service;

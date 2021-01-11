@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Models.Models;
+using UnityEngine;
 
 namespace Extensions
 {
@@ -13,10 +14,10 @@ namespace Extensions
             }
         }
         
-        public static (int x, int z) GetXZCellPosition(this Transform transform)
+        public static Coordinates GetXZCellPosition(this Transform transform)
         {
             var position = transform.position;
-            return ((int) position.x, (int) position.z);
+            return new Coordinates((int) position.x, (int) position.z);
         }
     }
 }

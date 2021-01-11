@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Models.Models;
 using Models.Models.Village;
 using NUnit.Framework;
 
 namespace Tests.Tests.Data
 {
+    [TestFixture]
+    [Parallelizable]
     public class VillageMapModelTests
     {
-        private VillageMapModel matrix;
-        
         [TestCase(1, 1)]
-        [TestCase(999, 999)]
+        [TestCase(100, 100)]
         public void Create(int row, int column)
         {
-            var matrix = new VillageMapModel(row, column);
-            Assert.AreEqual(matrix.Matrix.Count, row);
-            Assert.AreEqual(matrix.Matrix.First().Count, column);
+            var matrix = new VillageMapModel(row, column, new Coordinates());
+            Assert.AreEqual(row * column, matrix.MapCoordinateDictionary.Count);
         }
         
         [TestCase(0, 0)]
@@ -25,30 +24,27 @@ namespace Tests.Tests.Data
         public void Create_EmptyMatrix_Exception(int row, int column)
         {
             // ReSharper disable once ObjectCreationAsStatement
-            Assert.Throws<ArgumentException>(() => new VillageMapModel(row, column));
+            Assert.Throws<ArgumentException>(() => new VillageMapModel(row, column, new Coordinates()));
         }
         
         [Test]
         public void GetByCoordinates_notFound()
         {
-            matrix = new VillageMapModel(10, 10);
+            var matrix = new VillageMapModel(10, 10, new Coordinates());
 
             Assert.Throws<KeyNotFoundException>(() =>
             {
-                var data = matrix.CoordinateDictionary[(1, 1)];
+                var data = matrix.MapCoordinateDictionary[new Coordinates(100, 100)];
             });
         }
         
         [Test]
         public void GetByCoordinates()
         {
-            matrix = new VillageMapModel(10, 10);
-            var item = matrix.GetItem(1, 1);
-            item.Coordinates = (5, 5);
-
-            var data = matrix.CoordinateDictionary[(5, 5)];
+            var matrix = new VillageMapModel(10, 10, new Coordinates(10, 10));
+            var data = matrix.MapCoordinateDictionary[new Coordinates(13, 13)];
             
-            Assert.AreEqual(item, data);
+            Assert.AreEqual(new Coordinates(13, 13), data.WorldCoordinates);
         }
     }
 }

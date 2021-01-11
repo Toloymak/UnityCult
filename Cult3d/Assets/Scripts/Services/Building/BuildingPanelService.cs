@@ -9,6 +9,7 @@ using Helpers;
 using Interfaces;
 using Models;
 using Models.Models;
+using Models.Models.Village;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ namespace Services.Building
         private readonly IEventHelper _eventHelper;
         private readonly IUnityBuildingService _unityBuildingService;
 
-        private IList<DistrictModel> _cachedDistrictModels;
+        private IList<DistrictInfoModel> _cachedDistrictModels;
             
         public BuildingPanelService(UnityObjectCacheService unityObjectCacheService,
                                     IDistrictService districtService,
@@ -44,7 +45,7 @@ namespace Services.Building
             _buildingPanelContent = unityObjectCacheService
                .GetGameObject(UiObjectNames.BuildingPanelContent);
 
-            _cachedDistrictModels = new List<DistrictModel>();
+            _cachedDistrictModels = new List<DistrictInfoModel>();
         }
 
         public void Init()
@@ -67,7 +68,7 @@ namespace Services.Building
             _cachedDistrictModels = districtTree;
         }
 
-        private void UpdateBuildingList(IList<DistrictModel> districtTree)
+        private void UpdateBuildingList(IList<DistrictInfoModel> districtTree)
         {
             _buildingPanelContent.transform.DeleteAllChildren();
 

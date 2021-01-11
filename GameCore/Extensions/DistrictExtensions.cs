@@ -2,18 +2,19 @@
 using System.Linq;
 using Business.Enums;
 using Models.Models;
+using Models.Models.Village;
 
 namespace Core.Extensions
 {
     public static class DistrictExtensions
     {
-        public static IList<DistrictModel> GetAvailable(this IList<DistrictModel> districtModels)
+        public static IList<DistrictInfoModel> GetAvailable(this IList<DistrictInfoModel> districtModels)
         {
             return districtModels.Where(x => x.DistrictType != DistrictType.None).ToList();
         }
 
-        public static bool WasChangedBuildingList(this IList<DistrictModel> districtModels,
-                                                  IList<DistrictModel> cachedDistrictModels)
+        public static bool WasChangedBuildingList(this IList<DistrictInfoModel> districtModels,
+                                                  IList<DistrictInfoModel> cachedDistrictModels)
         {
             if (cachedDistrictModels.Count == districtModels.Count)
             {
@@ -25,7 +26,7 @@ namespace Core.Extensions
             return true;
         }
         
-        public static DistrictModel GetByType(this IList<DistrictModel> districtModels, DistrictType districtType)
+        public static DistrictInfoModel GetByType(this IList<DistrictInfoModel> districtModels, DistrictType districtType)
         {
             foreach (var districtModel in districtModels)
             {
@@ -37,15 +38,15 @@ namespace Core.Extensions
             return null;
         }
         
-        private static DistrictModel Find(DistrictModel districtModel, DistrictType districtType)
+        private static DistrictInfoModel Find(DistrictInfoModel districtInfoModel, DistrictType districtType)
         {
-            if (districtModel.DistrictType == districtType)
-                return districtModel;
+            if (districtInfoModel.DistrictType == districtType)
+                return districtInfoModel;
 
-            if (districtModel.ChildDistricts == null)
+            if (districtInfoModel.ChildDistricts == null)
                 return null;
             
-            foreach (var model in districtModel.ChildDistricts)
+            foreach (var model in districtInfoModel.ChildDistricts)
             {
                 var result = Find(model, districtType);
                 if (result != null)
