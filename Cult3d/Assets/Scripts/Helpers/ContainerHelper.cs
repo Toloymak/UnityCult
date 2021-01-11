@@ -35,8 +35,7 @@ namespace Helpers
             container.Collection.Register<IUpdateService>(
                                                           typeof(BuildingPanelService),
                                                           typeof(CameraControlService),
-                                                          typeof(DistrictBuildingProcessService),
-                                                          typeof(MouseControlService)
+                                                          typeof(DistrictBuildingProcessService)
                                                          );
         }
 

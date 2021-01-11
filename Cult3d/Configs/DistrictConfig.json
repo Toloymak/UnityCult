@@ -31,6 +31,19 @@
     ],
     "Resources": {
       "Food": 100
-    }
+    },
+    "XSize": 3,
+    "ZSize": 3
+  },
+  {
+    "DistrictType": 700,
+    "ChildDistricts": [],
+    "RequiredDistricts": [],
+    "RequiredResearches": [],
+    "Resources": {
+      "Food": 100
+    },
+    "XSize": 3,
+    "ZSize": 3
   }
 ]

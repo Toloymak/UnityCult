@@ -40,7 +40,7 @@ namespace Core.Services.District
             
             foreach (var model in districtModels)
             {
-                Console.WriteLine(model.DistrictType);
+                Console.WriteLine(model.ToString());
                 Print(model.ChildDistricts);
             }
         }

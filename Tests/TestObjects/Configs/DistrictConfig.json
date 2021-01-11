@@ -4,7 +4,9 @@
     "ChildDistricts": null,
     "RequiredDistricts": null,
     "RequiredResearches": null,
-    "Resources": null
+    "Resources": null,
+    "XSize": 1,
+    "ZSize": 1
   },
   {
     "DistrictType": 400,
@@ -31,6 +33,8 @@
     ],
     "Resources": {
       "Food": 100
-    }
+    },
+    "XSize": 3,
+    "ZSize": 3
   }
 ]
