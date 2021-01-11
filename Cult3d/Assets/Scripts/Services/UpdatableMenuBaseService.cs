@@ -14,7 +14,6 @@ namespace Services
             LastUpdate = DateTime.MinValue;
         }
 
-        public abstract void Init();
         public abstract void Update();
 
         protected bool NeedUpdate()

@@ -47,7 +47,7 @@ namespace Services.Building
             _cachedDistrictModels = new List<DistrictModel>();
         }
 
-        public override void Init()
+        public void Init()
         {
             _buildingButton.onValueChanged = _eventHelper.CreateToggleEvent(value => _buildingPanel.SetActive(value));
             _buildingPanel.SetActive(false);
