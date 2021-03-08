@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{31A0B80C-DCE3-42C2-B305-320AA331DC74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTester", "ConsoleAppTester\ConsoleAppTester.csproj", "{871EF8EF-B1A0-4BFB-8F5F-5E5BBBEB707D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{31A0B80C-DCE3-42C2-B305-320AA331DC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31A0B80C-DCE3-42C2-B305-320AA331DC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31A0B80C-DCE3-42C2-B305-320AA331DC74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{871EF8EF-B1A0-4BFB-8F5F-5E5BBBEB707D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{871EF8EF-B1A0-4BFB-8F5F-5E5BBBEB707D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{871EF8EF-B1A0-4BFB-8F5F-5E5BBBEB707D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{871EF8EF-B1A0-4BFB-8F5F-5E5BBBEB707D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

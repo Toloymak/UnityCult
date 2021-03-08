@@ -1,9 +1,6 @@
 ﻿using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Managers.Managers;
-using Models.Enums;
-using Models.Models;
 
 namespace Services.Services
 {
@@ -42,11 +39,10 @@ namespace Services.Services
                         Sum = x.Sum(r => r.Amount)
                     });
 
-            var tasks = resourceGroups
-                .Select(x => _resourceManager.Add(x.Type, x.Sum))
-                .ToArray();
-
-            await Task.WhenAll(tasks);
+            foreach (var resourceGroup in resourceGroups)
+            {
+                _resourceManager.Add(resourceGroup.Type, resourceGroup.Sum);
+            }
         }
     }
 }

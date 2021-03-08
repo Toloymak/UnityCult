@@ -1,18 +1,32 @@
 ﻿using System.Threading.Tasks;
 using Models.Enums;
+using Models.Models;
 
 namespace Managers.Managers
 {
     public interface IResourceManager
     {
-        Task Add(ResourceType resourceType, int count);
+        void Add(ResourceType resourceType, int count);
+        Task<bool> TryTake(ResourceType resourceType, int count);
     }
 
     public class ResourceManager : IResourceManager
     {
-        public Task Add(ResourceType resourceType, int count)
+        private readonly ResourceModel _resourceModel;
+        
+        public ResourceManager(ResourceModel resourceModel)
         {
-            throw new System.NotImplementedException();
+            _resourceModel = resourceModel;
+        }
+        
+        public void Add(ResourceType resourceType, int count)
+        {
+            _resourceModel.AddOrUpdate(resourceType, count, (type, i) => i + count);
+        }
+
+        public Task<bool> TryTake(ResourceType resourceType, int count)
+        {
+            // todo: add logic of concurently resource protection
         }
     }
 }
