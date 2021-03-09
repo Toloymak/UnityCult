@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Models.Enums;
 using Models.Models;
 
@@ -7,26 +7,54 @@ namespace Managers.Managers
     public interface IResourceManager
     {
         void Add(ResourceType resourceType, int count);
-        Task<bool> TryTake(ResourceType resourceType, int count);
+        bool TryTake((ResourceType, int)[] resources);
     }
 
     public class ResourceManager : IResourceManager
     {
-        private readonly ResourceModel _resourceModel;
+        private readonly ResourcesModel _resourcesModel;
         
-        public ResourceManager(ResourceModel resourceModel)
+        public ResourceManager(ResourcesModel resourcesModel)
         {
-            _resourceModel = resourceModel;
+            _resourcesModel = resourcesModel;
         }
         
         public void Add(ResourceType resourceType, int count)
         {
-            _resourceModel.AddOrUpdate(resourceType, count, (type, i) => i + count);
+            // ReSharper disable once InconsistentlySynchronizedField
+            _resourcesModel.AddOrUpdate(resourceType, count, (type, i) => i + count);
         }
 
-        public Task<bool> TryTake(ResourceType resourceType, int count)
+        public bool TryTake((ResourceType, int)[] resources)
         {
-            // todo: add logic of concurently resource protection
+            lock (_resourcesModel.TakeResourceLocker)
+            {
+                if (!IsEnoughResources(resources))
+                    return false;
+
+                TakeResources(resources);
+                
+                return true;
+            }
+        }
+
+        private bool IsEnoughResources(IEnumerable<(ResourceType, int)> resources)
+        {
+            foreach (var (type, amount) in resources)
+            {
+                if (_resourcesModel[type] < amount)
+                    return false;
+            }
+
+            return true;
+        }
+        
+        private void TakeResources(IEnumerable<(ResourceType, int)> resources)
+        {
+            foreach (var (resourceType, amount) in resources)
+            {
+                Add(resourceType, -amount);
+            }
         }
     }
 }

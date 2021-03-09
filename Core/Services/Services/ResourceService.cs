@@ -26,7 +26,7 @@ namespace Services.Services
 
         public async Task Calculate()
         {
-            var effects = await _effectManager.GetResourceEffects();
+            var effects = _effectManager.GetResourceEffects();
             var districtEffects = await _districtManager.GetResourceEffectModels();
 
             var resourceGroups = effects

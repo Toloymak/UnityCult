@@ -2,7 +2,7 @@
 
 namespace Models.Models
 {
-    public class ResourceEffectModel : EffectModel
+    public class ResourceEffectModel
     {
         public ResourceType ResourceType { get; set; }
         public int Amount { get; set; }

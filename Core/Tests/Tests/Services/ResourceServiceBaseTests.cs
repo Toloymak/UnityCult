@@ -27,7 +27,7 @@ namespace Tests.Tests.Services
             _effectManagerMock = new Mock<IEffectManager>();
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
-                .ReturnsAsync(new List<ResourceEffectModel>());
+                .Returns(new List<ResourceEffectModel>());
             _districtManagerMock = new Mock<IDistrictManager>();
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
@@ -70,7 +70,7 @@ namespace Tests.Tests.Services
 
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
-                .ReturnsAsync(effects);
+                .Returns(effects);
             
             await Service.Calculate();
             _resourceManagerMock.Verify(x => x.Add(resourceType, TestResourceCount), Times.Once);
@@ -83,7 +83,7 @@ namespace Tests.Tests.Services
 
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
-                .ReturnsAsync(new List<ResourceEffectModel>() {effect, effect});
+                .Returns(new List<ResourceEffectModel>() {effect, effect});
             
             await Service.Calculate();
             _resourceManagerMock
@@ -102,7 +102,7 @@ namespace Tests.Tests.Services
 
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
-                .ReturnsAsync(new List<ResourceEffectModel>() {firstEffect, secondEffect});
+                .Returns(new List<ResourceEffectModel>() {firstEffect, secondEffect});
             
             await Service.Calculate();
             _resourceManagerMock
@@ -172,7 +172,7 @@ namespace Tests.Tests.Services
 
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
-                .ReturnsAsync(new List<ResourceEffectModel>() {effect});
+                .Returns(new List<ResourceEffectModel>() {effect});
             
             await Service.Calculate();
             _resourceManagerMock.Verify(x => x.Add(resourceType, TestResourceCount * 2), Times.Once);
