@@ -5,5 +5,13 @@
     &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.Add_success&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.Add_NotEmptyResource_Success&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.Add_WithoutResources_NotAddToResourceDictionary&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.GetResources_NoEffects_EmptyResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.GetResources_OneEffect_EmptyResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.GetResources_TwoEffects_EmptyResult&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.GetResources_TwoResourceEffectsFromDifferentEffects&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.RemoveNotActual_EmptyList&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.RemoveNotActual_NotExpired&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.RemoveNotActual_IsExpired&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8340B0E0-5D3B-40A3-B489-9122B48F067A::.NETCoreApp,Version=v3.1::Tests.Tests.Managers.EffectManagerTests.RemoveNotActual_IsExpired_WithResources&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
