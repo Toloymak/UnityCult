@@ -24,12 +24,12 @@ namespace Services.Services
             _districtManager = districtManager;
         }
 
-        public async Task Calculate()
+        public Task Calculate()
         {
             var effects = _effectManager.GetResourceEffects();
-            var districtEffects = await _districtManager.GetResourceEffectModels();
+            var districtEffects = _districtManager.GetResourceEffectModels();
 
-            var resourceGroups = effects
+            var updateResourceTasks = effects
                 .Concat(districtEffects)
                 .GroupBy(x => x.ResourceType)
                 .Select(x =>
@@ -37,12 +37,10 @@ namespace Services.Services
                     {
                         Type = x.Key,
                         Sum = x.Sum(r => r.Amount)
-                    });
+                    })
+               .Select(x => Task.Run(() => _resourceManager.Add(x.Type, x.Sum)));
 
-            foreach (var resourceGroup in resourceGroups)
-            {
-                _resourceManager.Add(resourceGroup.Type, resourceGroup.Sum);
-            }
+            return Task.WhenAll(updateResourceTasks);
         }
     }
 }

@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    public class BaseTest<TService>
+    public abstract class BaseTest<TService>
     {
         protected TService Service;
 

@@ -31,7 +31,7 @@ namespace Tests.Tests.Services
             _districtManagerMock = new Mock<IDistrictManager>();
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
-                .ReturnsAsync(new List<ResourceEffectModel>());
+                .Returns(new List<ResourceEffectModel>());
 
             Service = new ResourceService(
                 _resourceManagerMock.Object,
@@ -125,7 +125,7 @@ namespace Tests.Tests.Services
             var effect = CreateResourceEffectModel(resourceType, TestResourceCount);
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
-                .ReturnsAsync(new List<ResourceEffectModel>() {effect});
+                .Returns(new List<ResourceEffectModel>() {effect});
             
             await Service.Calculate();
             _resourceManagerMock.Verify(x => x.Add(resourceType, TestResourceCount), Times.Once);
@@ -137,7 +137,7 @@ namespace Tests.Tests.Services
             var effect = CreateResourceEffectModel(resourceType, TestResourceCount);
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
-                .ReturnsAsync(new List<ResourceEffectModel>() {effect, effect});
+                .Returns(new List<ResourceEffectModel>() {effect, effect});
             
             await Service.Calculate();
             _resourceManagerMock.Verify(x => x.Add(resourceType, TestResourceCount * 2), Times.Once);
@@ -154,7 +154,7 @@ namespace Tests.Tests.Services
             
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
-                .ReturnsAsync(new List<ResourceEffectModel>() {firstEffect, secondEffect});
+                .Returns(new List<ResourceEffectModel>() {firstEffect, secondEffect});
             
             await Service.Calculate();
             _resourceManagerMock.Verify(x => x.Add(firstResourceType, TestResourceCount), Times.Once);
@@ -168,7 +168,7 @@ namespace Tests.Tests.Services
             
             _districtManagerMock
                 .Setup(x => x.GetResourceEffectModels())
-                .ReturnsAsync(new List<ResourceEffectModel>() {effect});
+                .Returns(new List<ResourceEffectModel>() {effect});
 
             _effectManagerMock
                 .Setup(x => x.GetResourceEffects())
