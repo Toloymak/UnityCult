@@ -1,12 +1,15 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Managers.Managers;
+using Models.Models;
+using Models.Models.Districts;
+using Models.Models.Effects;
 
 namespace Services.Services
 {
     public interface IResourceService
     {
-        Task Calculate();
+        Task Calculate(DistrictStorage districtStorage, EffectStorage effectStorage, ResourcesStorage resourcesStorage);
     }
 
     public class ResourceService : IResourceService
@@ -24,10 +27,10 @@ namespace Services.Services
             _districtManager = districtManager;
         }
 
-        public Task Calculate()
+        public Task Calculate(DistrictStorage districtStorage, EffectStorage effectStorage, ResourcesStorage resourcesStorage)
         {
-            var effects = _effectManager.GetResourceEffects();
-            var districtEffects = _districtManager.GetResourceEffectModels();
+            var effects = _effectManager.GetResourceEffects(effectStorage);
+            var districtEffects = _districtManager.GetResourceEffectModels(districtStorage);
 
             var updateResourceTasks = effects
                 .Concat(districtEffects)
@@ -38,7 +41,7 @@ namespace Services.Services
                         Type = x.Key,
                         Sum = x.Sum(r => r.Amount)
                     })
-               .Select(x => Task.Run(() => _resourceManager.Add(x.Type, x.Sum)));
+               .Select(x => Task.Run(() => _resourceManager.Add(resourcesStorage, x.Type, x.Sum)));
 
             return Task.WhenAll(updateResourceTasks);
         }

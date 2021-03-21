@@ -5,9 +5,9 @@ using Models.Enums;
 
 namespace Models.Models
 {
-    public class ResourcesModel : ConcurrentDictionary<ResourceType, int>
+    public class ResourcesStorage : ConcurrentDictionary<ResourceType, int>
     {
-        public ResourcesModel()
+        public ResourcesStorage()
             : base(new ConcurrentDictionary<ResourceType, int>())
         {
             foreach (var resourceType in Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>())

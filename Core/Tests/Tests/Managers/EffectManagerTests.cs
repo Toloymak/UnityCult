@@ -13,13 +13,13 @@ namespace Tests.Tests.Managers
 {
     public class EffectManagerTests : BaseTest<EffectManager>
     {
-        private EffectStorageModel _effectStorageModel;
+        private EffectStorage _effectStorage;
         
         [SetUp]
         public void SetUp()
         {
-            _effectStorageModel = new EffectStorageModel();
-            Service = new EffectManager(_effectStorageModel);
+            _effectStorage = new EffectStorage();
+            Service = new EffectManager(_effectStorage);
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace Tests.Tests.Managers
             var effectModel = Fixture.Create<EffectModel>();
             Service.Add(effectModel);
 
-            var addedEffect = _effectStorageModel.Effects.FirstOrDefault();
+            var addedEffect = _effectStorage.Effects.FirstOrDefault();
             Assert.NotNull(addedEffect);
             Assert.AreEqual(effectModel.Id, addedEffect.Key);
             Assert.AreEqual(effectModel, addedEffect.Value);
@@ -41,10 +41,10 @@ namespace Tests.Tests.Managers
             
             Service.Add(effectModel);
 
-            var resourceEffects = _effectStorageModel.ResourceEffects.FirstOrDefault();
+            var resourceEffects = _effectStorage.ResourceEffects.FirstOrDefault();
             Assert.AreEqual(resourceEffects, new KeyValuePair<Guid,EffectModel>());
             
-            var addedEffect = _effectStorageModel.Effects.FirstOrDefault();
+            var addedEffect = _effectStorage.Effects.FirstOrDefault();
             Assert.NotNull(addedEffect);
             Assert.AreEqual(effectModel.Id, addedEffect.Key);
             Assert.AreEqual(effectModel, addedEffect.Value);
@@ -62,12 +62,12 @@ namespace Tests.Tests.Managers
 
             Service.Add(effectModel);
 
-            var resourceEffects = _effectStorageModel.ResourceEffects.FirstOrDefault();
+            var resourceEffects = _effectStorage.ResourceEffects.FirstOrDefault();
             Assert.NotNull(resourceEffects);
             Assert.AreEqual(effectModel.Id, resourceEffects.Key);
             Assert.AreEqual(effectModel, resourceEffects.Value);
             
-            var addedEffect = _effectStorageModel.Effects.FirstOrDefault();
+            var addedEffect = _effectStorage.Effects.FirstOrDefault();
             Assert.NotNull(addedEffect);
             Assert.AreEqual(effectModel.Id, addedEffect.Key);
             Assert.AreEqual(effectModel, addedEffect.Value);
@@ -88,7 +88,7 @@ namespace Tests.Tests.Managers
             var resourceModel = Fixture.Create<ResourceEffectModel>();
             var existingEffect = CreateEffect(resourceModel);
 
-            _effectStorageModel.ResourceEffects.TryAdd(existingEffect.Id, existingEffect);
+            _effectStorage.ResourceEffects.TryAdd(existingEffect.Id, existingEffect);
             
             var result = Service.GetResourceEffects();
             
@@ -107,7 +107,7 @@ namespace Tests.Tests.Managers
             
             var existingEffect = CreateEffect(firstResourceModel, secondResourceModel);
 
-            _effectStorageModel.ResourceEffects.TryAdd(existingEffect.Id, existingEffect);
+            _effectStorage.ResourceEffects.TryAdd(existingEffect.Id, existingEffect);
             
             var result = Service.GetResourceEffects();
             
@@ -127,8 +127,8 @@ namespace Tests.Tests.Managers
             var existingEffect1 = CreateEffect(firstResourceModel);
             var existingEffect2 = CreateEffect(secondResourceModel);
 
-            _effectStorageModel.ResourceEffects.TryAdd(existingEffect1.Id, existingEffect1);
-            _effectStorageModel.ResourceEffects.TryAdd(existingEffect2.Id, existingEffect2);
+            _effectStorage.ResourceEffects.TryAdd(existingEffect1.Id, existingEffect1);
+            _effectStorage.ResourceEffects.TryAdd(existingEffect2.Id, existingEffect2);
 
             var result = Service.GetResourceEffects();
 
@@ -142,8 +142,8 @@ namespace Tests.Tests.Managers
         {
             await Service.RemoveNotActual(new TimeSpan());
 
-            Assert.IsEmpty(_effectStorageModel.Effects);
-            Assert.IsEmpty(_effectStorageModel.ResourceEffects);
+            Assert.IsEmpty(_effectStorage.Effects);
+            Assert.IsEmpty(_effectStorage.ResourceEffects);
         }
         
         [TestCase("0:00", "0:10")]
@@ -156,13 +156,13 @@ namespace Tests.Tests.Managers
                 .With(x => x.Period, period)
                 .Create();
 
-            _effectStorageModel.Effects.TryAdd(effect.Id, effect);
-            _effectStorageModel.ResourceEffects.TryAdd(effect.Id, effect);
+            _effectStorage.Effects.TryAdd(effect.Id, effect);
+            _effectStorage.ResourceEffects.TryAdd(effect.Id, effect);
             
             await Service.RemoveNotActual(currentTime);
 
-            Assert.IsNotEmpty(_effectStorageModel.Effects);
-            Assert.IsNotEmpty(_effectStorageModel.ResourceEffects);
+            Assert.IsNotEmpty(_effectStorage.Effects);
+            Assert.IsNotEmpty(_effectStorage.ResourceEffects);
         }
         
         [TestCase("0:10", "0:00")]
@@ -174,11 +174,11 @@ namespace Tests.Tests.Managers
                 .With(x => x.Period, period)
                 .Create();
 
-            _effectStorageModel.Effects.TryAdd(effect.Id, effect);
+            _effectStorage.Effects.TryAdd(effect.Id, effect);
             
             await Service.RemoveNotActual(currentTime);
 
-            Assert.IsEmpty(_effectStorageModel.Effects);
+            Assert.IsEmpty(_effectStorage.Effects);
         }
         
         [TestCase("0:10", "0:00")]
@@ -190,13 +190,13 @@ namespace Tests.Tests.Managers
                 .With(x => x.Period, period)
                 .Create();
 
-            _effectStorageModel.Effects.TryAdd(effect.Id, effect);
-            _effectStorageModel.ResourceEffects.TryAdd(effect.Id, effect);
+            _effectStorage.Effects.TryAdd(effect.Id, effect);
+            _effectStorage.ResourceEffects.TryAdd(effect.Id, effect);
             
             await Service.RemoveNotActual(currentTime);
 
-            Assert.IsEmpty(_effectStorageModel.Effects);
-            Assert.IsEmpty(_effectStorageModel.ResourceEffects);
+            Assert.IsEmpty(_effectStorage.Effects);
+            Assert.IsEmpty(_effectStorage.ResourceEffects);
         }
 
         private ResourceEffectModel CreateResourceEffect(ResourceType resourceType)

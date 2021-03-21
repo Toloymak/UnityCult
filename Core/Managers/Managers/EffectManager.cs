@@ -10,23 +10,20 @@ namespace Managers.Managers
 {
     public interface IEffectManager
     {
-        IList<ResourceEffectModel> GetResourceEffects();
-        void Add(EffectModel effectModel);
-        Task RemoveNotActual(TimeSpan currentTime);
+        IList<ResourceEffectModel> GetResourceEffects(EffectStorage effectStorage);
+        void Add(EffectStorage effectStorage, EffectModel effectModel);
+        Task RemoveNotActual(EffectStorage effectStorage, TimeSpan currentTime);
     }
 
     public class EffectManager : IEffectManager
     {
-        private readonly EffectStorageModel _effectStorage;
-
-        public EffectManager(EffectStorageModel effectStorage)
+        public EffectManager()
         {
-            _effectStorage = effectStorage;
         }
 
-        public IList<ResourceEffectModel> GetResourceEffects()
+        public IList<ResourceEffectModel> GetResourceEffects(EffectStorage effectStorage)
         {
-            var effects = _effectStorage
+            var effects = effectStorage
                 .ResourceEffects
                 .SelectMany(x => x.Value.ResourceEffects)
                 .ToList();
@@ -34,35 +31,35 @@ namespace Managers.Managers
             return effects;
         }
 
-        public void Add(EffectModel effectModel)
+        public void Add(EffectStorage effectStorage, EffectModel effectModel)
         {
-            _effectStorage.Effects
+            effectStorage.Effects
                 .AddOrUpdate(effectModel.Id, effectModel, (guid, model) => model);
 
             if (effectModel.ResourceEffects.Any())
             {
-                _effectStorage.ResourceEffects
+                effectStorage.ResourceEffects
                     .AddOrUpdate(effectModel.Id, effectModel, (guid, model) => model);
             }
         }
 
-        public async Task RemoveNotActual(TimeSpan currentTime)
+        public async Task RemoveNotActual(EffectStorage effectStorage, TimeSpan currentTime)
         {
-            var removeExpiredTasks = _effectStorage
+            var removeExpiredTasks = effectStorage
                 .Effects
                 .Select(x =>
-                    Task.Run(() => RemoveExpiredEffects(x.Value, currentTime)));
+                    Task.Run(() => RemoveExpiredEffects(effectStorage, x.Value, currentTime)));
 
             await Task.WhenAll(removeExpiredTasks);
         }
 
-        private void RemoveExpiredEffects(EffectModel effect, TimeSpan currentTime)
+        private void RemoveExpiredEffects(EffectStorage effectStorage, EffectModel effect, TimeSpan currentTime)
         {
             if (!effect.IsExpired(currentTime))
                 return;
             
-            _effectStorage.Effects.TryRemove(effect.Id, out _);
-            _effectStorage.ResourceEffects.TryRemove(effect.Id, out _);
+            effectStorage.Effects.TryRemove(effect.Id, out _);
+            effectStorage.ResourceEffects.TryRemove(effect.Id, out _);
         }
     }
 }

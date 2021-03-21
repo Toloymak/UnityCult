@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Models.Models.Effects
 {
@@ -22,6 +23,22 @@ namespace Models.Models.Effects
                 return false;
 
             return currentTime - StartTime > Period;
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.Append(Name);
+            builder.Append(": ");
+            foreach (var resourceEffect in ResourceEffects)
+            {
+                builder.Append(resourceEffect.ResourceType.ToString());
+                builder.Append(':');
+                builder.Append(resourceEffect.Amount.ToString());
+                builder.Append('|');
+            }
+
+            return builder.ToString();
         }
     }
 }

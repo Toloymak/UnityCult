@@ -6,54 +6,47 @@ namespace Managers.Managers
 {
     public interface IResourceManager
     {
-        void Add(ResourceType resourceType, int count);
-        bool TryTake((ResourceType, int)[] resources);
+        void Add(ResourcesStorage resourcesStorage, ResourceType resourceType, int count);
+        bool TryTake(ResourcesStorage resourcesStorage, (ResourceType, int)[] resources);
     }
 
     public class ResourceManager : IResourceManager
     {
-        private readonly ResourcesModel _resourcesModel;
-        
-        public ResourceManager(ResourcesModel resourcesModel)
-        {
-            _resourcesModel = resourcesModel;
-        }
-        
-        public void Add(ResourceType resourceType, int count)
+        public void Add(ResourcesStorage resourcesStorage, ResourceType resourceType, int count)
         {
             // ReSharper disable once InconsistentlySynchronizedField
-            _resourcesModel.AddOrUpdate(resourceType, count, (type, i) => i + count);
+            resourcesStorage.AddOrUpdate(resourceType, count, (type, i) => i + count);
         }
 
-        public bool TryTake((ResourceType, int)[] resources)
+        public bool TryTake(ResourcesStorage resourcesStorage, (ResourceType, int)[] resources)
         {
-            lock (_resourcesModel.TakeResourceLocker)
+            lock (resourcesStorage.TakeResourceLocker)
             {
-                if (!IsEnoughResources(resources))
+                if (!IsEnoughResources(resourcesStorage, resources))
                     return false;
 
-                TakeResources(resources);
+                TakeResources(resourcesStorage, resources);
                 
                 return true;
             }
         }
 
-        private bool IsEnoughResources(IEnumerable<(ResourceType, int)> resources)
+        private bool IsEnoughResources(ResourcesStorage resourcesStorage, IEnumerable<(ResourceType, int)> resources)
         {
             foreach (var (type, amount) in resources)
             {
-                if (_resourcesModel[type] < amount)
+                if (resourcesStorage[type] < amount)
                     return false;
             }
 
             return true;
         }
         
-        private void TakeResources(IEnumerable<(ResourceType, int)> resources)
+        private void TakeResources(ResourcesStorage resourcesStorage, IEnumerable<(ResourceType, int)> resources)
         {
             foreach (var (resourceType, amount) in resources)
             {
-                Add(resourceType, -amount);
+                Add(resourcesStorage, resourceType, -amount);
             }
         }
     }
