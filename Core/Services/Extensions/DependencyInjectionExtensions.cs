@@ -12,7 +12,8 @@ namespace Services.Extensions
                .AddScoped<IResourceService, ResourceService>()
                .AddScoped<IPlayerGenerateService, PlayerGenerateService>()
                .AddScoped<IWorldGenerationService, WorldGenerationService>()
-               .AddScoped<IProcedureService, ProcedureService>();
+               .AddScoped<IProcedureService, ProcedureService>()
+               .AddScoped<ITimeService, TimeService>();
         }
 
         public static IServiceCollection RegisterMangers(this IServiceCollection services)

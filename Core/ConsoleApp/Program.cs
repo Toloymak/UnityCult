@@ -26,7 +26,7 @@ namespace ConsoleApp
             _playerModel = _gameModel.Players[_gameModel.PlayerId];
             
 #pragma warning disable 4014
-            Task.Run(PrintContent);
+            Task.Run(Execute);
 #pragma warning restore 4014
             
             while (true)
@@ -35,16 +35,20 @@ namespace ConsoleApp
             }
         }
 
-        private static async Task PrintContent()
+        private static async Task Execute()
         {
+            var lastProcedureTime = DateTime.Now;
             while (true)
             {
-                await Task.Delay(1000);
+                await Task.Delay(300);
+                _gameModel.TimeModel.GameTime += DateTime.Now - lastProcedureTime;
+                lastProcedureTime = DateTime.Now;
+                
                 await _procedureService.ProcessStep(_gameModel);
                 
                 Console.Clear();
                 Console.WriteLine(new string('=', 15));
-                Console.WriteLine(DateTime.Now.ToString("hh:mm:ss t z"));
+                Console.WriteLine(_gameModel.TimeModel.GameTime.ToString("g"));
                 Console.WriteLine(_playerModel.Name);
                 Console.WriteLine(new string('=', 15));
 

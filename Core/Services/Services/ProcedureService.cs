@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Managers.Managers;
 using Models.Models;
 
 namespace Services.Services
@@ -25,7 +23,7 @@ namespace Services.Services
 
         public async Task ProcessStep(GameStateModel gameState)
         {
-            if (_timeService.IsNextStep(gameState))
+            if (_timeService.IsNextStep(gameState.TimeModel))
             {
                 await Task.WhenAll(gameState
                                       .Players.Select(x => x.Value)

@@ -4,7 +4,10 @@ namespace Models.Models
 {
     public class TimeModel
     {
-        public TimeSpan ProcedurePeriod { get; set; }
+        // 1 sec
+        private static readonly TimeSpan DefaultProcedurePeriod = new TimeSpan(0, 0, 1);
+
+        public TimeSpan ProcedurePeriod { get; set; } = DefaultProcedurePeriod;
         public TimeSpan GameTime { get; set; }
         public TimeSpan LastProcure { get; set; }
     }

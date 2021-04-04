@@ -4,14 +4,20 @@ namespace Services.Services
 {
     public interface ITimeService
     {
-        bool IsNextStep(GameStateModel gameStateModel);
+        bool IsNextStep(TimeModel timeModel);
     }
 
     public class TimeService : ITimeService
     {
-        public bool IsNextStep(GameStateModel gameStateModel)
+        public bool IsNextStep(TimeModel timeModel)
         {
-            return true;
+            if (timeModel.GameTime - timeModel.LastProcure > timeModel.ProcedurePeriod)
+            {
+                timeModel.LastProcure = timeModel.GameTime;
+                return true;
+            }
+            
+            return false;
         }
     }
 }
