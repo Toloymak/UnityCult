@@ -1,0 +1,79 @@
+﻿@page "/"
+@using Models.Models.Player
+@using Models.Models
+@using Services.Services
+@using Web.WebServices
+@inject IWorldGenerationService WorldGenerationService;
+@inject IProcedureService ProcedureService;
+@inject GameStateModel GameStateModel
+
+
+<MudGrid>
+    <MudItem>
+        Game time: @_gameTime?.ToString(@"hh\:mm\:ss")
+    </MudItem>
+    <MudItem>
+        @_gameModel?.Players[_gameModel.PlayerId].Name
+    </MudItem>
+</MudGrid>
+
+@code
+{
+    private GameStateModel _gameModel;
+    private PlayerStorageModel _playerModel;
+
+    private TimeSpan? _gameTime = new TimeSpan();
+    private int _counter;
+
+
+    [Parameter]
+    public double Interval { get; set; } = 1;
+    
+    protected override async void OnInitialized()
+    {
+        _counter = 0;
+        _gameModel = GameStateModel;
+        _playerModel = _gameModel.Players[_gameModel.PlayerId];
+        _gameTime = _gameModel.TimeModel.GameTime;
+
+        
+        StartExecuteTask();
+        StartUpdateUiTask();
+
+        await base.OnInitializedAsync();
+    }
+
+    private void StartExecuteTask()
+    {
+        Task.Run(async () =>
+        {
+            while (true)
+            {
+                await Task.Delay(500);
+                _counter++;
+                await Execute();
+            }
+        });
+    }
+
+    private void StartUpdateUiTask()
+    {
+        Task.Run(async () =>
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                await InvokeAsync(StateHasChanged);
+            }
+        });
+    }
+
+    private async Task Execute()
+    {
+        _gameModel.TimeModel.GameTime += TimeHelper.GetDeltaTime();
+
+        await ProcedureService.ProcessStep(_gameModel);
+
+        _gameTime = _gameModel.TimeModel.GameTime;
+    }
+}
