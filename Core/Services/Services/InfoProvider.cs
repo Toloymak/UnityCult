@@ -1,26 +1,20 @@
 ﻿using System.Collections.Generic;
 using Models.Enums;
 using Models.Models;
+using Models.Models.Player;
 
 namespace Services.Services
 {
     public interface IInfoProvider
     {
-        IDictionary<ResourceType, int> GetResources();
+        IDictionary<ResourceType, int> GetResources(PlayerStorageModel playerStorageModel);
     }
     
     public class InfoProvider : IInfoProvider
     {
-        private readonly ResourcesStorage _resourcesStorage;
-
-        public InfoProvider(ResourcesStorage resourcesStorage)
+        public IDictionary<ResourceType, int> GetResources(PlayerStorageModel playerStorageModel)
         {
-            _resourcesStorage = resourcesStorage;
-        }
-
-        public IDictionary<ResourceType, int> GetResources()
-        {
-            return _resourcesStorage;
+            return playerStorageModel.ResourcesStorage;
         }
     }
 }

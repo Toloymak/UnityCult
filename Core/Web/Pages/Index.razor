@@ -1,59 +1,59 @@
 ﻿@page "/"
-@using Models.Models.Player
 @using Models.Models
 @using Services.Services
-@using Web.WebServices
+@using Models.Models.Player
 @inject IWorldGenerationService WorldGenerationService;
 @inject IProcedureService ProcedureService;
-@inject GameStateModel GameStateModel
+@inject GameStateModel GameStateModel;
+@inject IInfoProvider InfoProvider;
 
 
 <MudGrid>
-    <MudItem>
-        Game time: @_gameTime?.ToString(@"hh\:mm\:ss")
+    <MudItem xs="3">
+        <MudPaper>
+            <MudItem xs="3">
+                Game time:
+            </MudItem>
+            <MudItem xs="3">
+                @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
+            </MudItem>
+        </MudPaper>
     </MudItem>
-    <MudItem>
-        @_gameModel?.Players[_gameModel.PlayerId].Name
+    <MudItem xs="6">
+        <MudPaper>
+            <MudItem>
+                Resources:
+            </MudItem>
+
+            @foreach (var resource in InfoProvider.GetResources(_playerStorageModel))
+            {
+                <MudItem>
+                    <MudElement Style="display: inline-block; width: 20%;">@resource.Key</MudElement>
+                    <MudElement>@resource.Value</MudElement>
+                </MudItem>
+            }
+        </MudPaper>
     </MudItem>
+
 </MudGrid>
 
 @code
 {
     private GameStateModel _gameModel;
-    private PlayerStorageModel _playerModel;
 
-    private TimeSpan? _gameTime = new TimeSpan();
-    private int _counter;
-
+    private PlayerStorageModel _playerStorageModel;
 
     [Parameter]
     public double Interval { get; set; } = 1;
     
     protected override async void OnInitialized()
     {
-        _counter = 0;
         _gameModel = GameStateModel;
-        _playerModel = _gameModel.Players[_gameModel.PlayerId];
-        _gameTime = _gameModel.TimeModel.GameTime;
+        _playerStorageModel = _gameModel?.Players[_gameModel.PlayerId];
 
-        
-        StartExecuteTask();
         StartUpdateUiTask();
 
         await base.OnInitializedAsync();
-    }
-
-    private void StartExecuteTask()
-    {
-        Task.Run(async () =>
-        {
-            while (true)
-            {
-                await Task.Delay(500);
-                _counter++;
-                await Execute();
-            }
-        });
     }
 
     private void StartUpdateUiTask()
@@ -66,14 +66,5 @@
                 await InvokeAsync(StateHasChanged);
             }
         });
-    }
-
-    private async Task Execute()
-    {
-        _gameModel.TimeModel.GameTime += TimeHelper.GetDeltaTime();
-
-        await ProcedureService.ProcessStep(_gameModel);
-
-        _gameTime = _gameModel.TimeModel.GameTime;
     }
 }

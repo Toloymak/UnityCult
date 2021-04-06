@@ -7,6 +7,7 @@ using Models.Models;
 using MudBlazor.Services;
 using Services.Extensions;
 using Services.Services;
+using Web.WebServices;
 
 namespace Web
 {
@@ -27,15 +28,24 @@ namespace Web
             services.AddServerSideBlazor();
             services.AddMudServices();
             
-            services.RegisterMangers().RegisterServices();
+            services
+               .RegisterMangers()
+               .RegisterServices();
 
+            var game = GetGameStateModel(services);
+            
+            services.AddSingleton(game);
+            services.AddHostedService<ExecuteBackgroundJob>();
+        }
+
+        private static GameStateModel GetGameStateModel(IServiceCollection services)
+        {
             var game = services
                .BuildServiceProvider()
                .GetService<IWorldGenerationService>()
                .GenerateGame()
                .Result;
-            
-            services.AddSingleton(game);
+            return game;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
