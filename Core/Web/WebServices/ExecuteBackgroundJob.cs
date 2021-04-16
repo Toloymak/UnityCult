@@ -24,9 +24,16 @@ namespace Web.WebServices
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(100, stoppingToken);
-                
-                _gameStateModel.TimeModel.GameTime += TimeHelper.GetDeltaTime();
-                await _procedureService.ProcessStep(_gameStateModel);   
+
+                if (!_gameStateModel.TimeModel.IsStopped)
+                {
+                    _gameStateModel.TimeModel.GameTime += TimeHelper.GetDeltaTime();
+                    await _procedureService.ProcessStep(_gameStateModel);  
+                }
+                else
+                {
+                    TimeHelper.GetDeltaTime();
+                }
             }
         }
     }

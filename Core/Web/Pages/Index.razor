@@ -2,24 +2,13 @@
 @using Models.Models
 @using Services.Services
 @using Models.Models.Player
-@inject IWorldGenerationService WorldGenerationService;
-@inject IProcedureService ProcedureService;
 @inject GameStateModel GameStateModel;
+@inject ITimeService TimeService;
 @inject IInfoProvider InfoProvider;
 
 
 <MudGrid>
-    <MudItem xs="3">
-        <MudPaper>
-            <MudItem xs="3">
-                Game time:
-            </MudItem>
-            <MudItem xs="3">
-                @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
-            </MudItem>
-        </MudPaper>
-    </MudItem>
-    <MudItem xs="6">
+    <MudItem md="2">
         <MudPaper>
             <MudItem>
                 Resources:
@@ -28,24 +17,68 @@
             @foreach (var resource in InfoProvider.GetResources(_playerStorageModel))
             {
                 <MudItem>
-                    <MudElement Style="display: inline-block; width: 20%;">@resource.Key</MudElement>
+                    <MudElement Style="display: inline-block; width: 75%;">@resource.Key</MudElement>
                     <MudElement>@resource.Value</MudElement>
                 </MudItem>
             }
         </MudPaper>
     </MudItem>
+    
+        <MudItem md="2">
+            <MudPaper>
+                <MudItem Style="display: block;">
+                    <MudElement>
+                        Game time:
+                    </MudElement>
+                    <MudElement Style="float: right;">
+                        @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
+                    </MudElement>
+                </MudItem>
+    
+                <MudButton @onclick="StartStop"
+                           Variant="Variant.Filled"
+                           FullWidth="true"
+                           Style="display: block;"
+                           Color="@(GameStateModel.TimeModel.IsStopped ? Color.Success : Color.Secondary)">
+                    @(GameStateModel.TimeModel.IsStopped ? "Start" : "Stop")
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+</MudGrid>
 
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=12</MudPaper>
+    </MudItem>
+    <MudItem xs="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6</MudPaper>
+    </MudItem>
+    <MudItem xs="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6</MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
+    </MudItem>
+    <MudItem xs="3">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
+    </MudItem>
 </MudGrid>
 
 @code
 {
     private GameStateModel _gameModel;
-
     private PlayerStorageModel _playerStorageModel;
 
     [Parameter]
     public double Interval { get; set; } = 1;
-    
+
     protected override async void OnInitialized()
     {
         _gameModel = GameStateModel;
@@ -66,5 +99,13 @@
                 await InvokeAsync(StateHasChanged);
             }
         });
+    }
+
+    private void StartStop()
+    {
+        if (_gameModel.TimeModel.IsStopped)
+            TimeService.StartTimer(_gameModel.TimeModel);
+        else
+            TimeService.StopTimer(_gameModel.TimeModel);
     }
 }

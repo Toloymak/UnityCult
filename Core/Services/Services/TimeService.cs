@@ -1,10 +1,13 @@
-﻿using Models.Models;
+﻿using System;
+using Models.Models;
 
 namespace Services.Services
 {
     public interface ITimeService
     {
         bool IsNextStep(TimeModel timeModel);
+        void StopTimer(TimeModel timeModel);
+        void StartTimer(TimeModel timeModel);
     }
 
     public class TimeService : ITimeService
@@ -18,6 +21,16 @@ namespace Services.Services
             }
             
             return false;
+        }
+
+        public void StopTimer(TimeModel timeModel)
+        {
+            timeModel.IsStopped = true;
+        }
+
+        public void StartTimer(TimeModel timeModel)
+        {
+            timeModel.IsStopped = false;
         }
     }
 }

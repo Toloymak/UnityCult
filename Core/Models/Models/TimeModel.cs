@@ -10,5 +10,7 @@ namespace Models.Models
         public TimeSpan ProcedurePeriod { get; set; } = DefaultProcedurePeriod;
         public TimeSpan GameTime { get; set; }
         public TimeSpan LastProcure { get; set; }
+        
+        public bool IsStopped { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace Models.Models
             {
                 GameTime = new TimeSpan(),
                 LastProcure = new TimeSpan(),
+                IsStopped = false
             };
         }
     }
