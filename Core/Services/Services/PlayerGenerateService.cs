@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Models.Models.Player;
+using Models.Models.Players;
 
 namespace Services.Services
 {

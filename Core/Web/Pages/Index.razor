@@ -1,7 +1,8 @@
 ﻿@page "/"
 @using Models.Models
+@using Models.Models.Players
+@using Models.Models.Villages
 @using Services.Services
-@using Models.Models.Player
 @inject GameStateModel GameStateModel;
 @inject ITimeService TimeService;
 @inject IInfoProvider InfoProvider;
@@ -23,29 +24,55 @@
             }
         </MudPaper>
     </MudItem>
-    
-        <MudItem md="2">
-            <MudPaper>
-                <MudItem Style="display: block;">
-                    <MudElement>
-                        Game time:
-                    </MudElement>
-                    <MudElement Style="float: right;">
-                        @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
-                    </MudElement>
-                </MudItem>
-    
-                <MudButton @onclick="StartStop"
-                           Variant="Variant.Filled"
-                           FullWidth="true"
-                           Style="display: block;"
-                           Color="@(GameStateModel.TimeModel.IsStopped ? Color.Success : Color.Secondary)">
-                    @(GameStateModel.TimeModel.IsStopped ? "Start" : "Stop")
-                </MudButton>
-            </MudPaper>
-        </MudItem>
+
+    <MudItem md="2">
+        <MudPaper>
+            <MudItem Style="display: block;">
+                <MudElement>
+                    Game time:
+                </MudElement>
+                <MudElement Style="float: right;">
+                    @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
+                </MudElement>
+            </MudItem>
+            <MudItem Style="display: block;">
+                <MudElement>
+                    Procedure time:
+                </MudElement>
+                <MudElement Style="float: right;">
+                    @_gameModel.TimeModel.ProcedureTime.TotalMilliseconds
+                </MudElement>
+            </MudItem>
+
+            <MudButton @onclick="StartStop"
+                       Variant="Variant.Filled"
+                       FullWidth="true"
+                       Style="display: block;"
+                       Color="@(GameStateModel.TimeModel.IsStopped ? Color.Success : Color.Secondary)">
+                @(GameStateModel.TimeModel.IsStopped ? "Start" : "Stop")
+            </MudButton>
+        </MudPaper>
+    </MudItem>
 </MudGrid>
 
+<MudGrid>
+    @foreach (var row in InfoProvider.GetMap(_playerStorageModel).Cells)
+    {
+        <MudItem>
+            @foreach (var cell in row)
+            {
+                <MudButton
+                    Variant="Variant.Outlined"
+                    Color="Color.Success"
+                    @onclick="() => ClickCell(cell)"
+                    Class="d-flex align-center mud-width-full py-6"
+                    Style="margin: 10px;">
+                    @cell.Position
+                </MudButton>
+            }
+        </MudItem>
+    }
+</MudGrid>
 
 <MudGrid>
     <MudItem xs="12">
@@ -107,5 +134,10 @@
             TimeService.StartTimer(_gameModel.TimeModel);
         else
             TimeService.StopTimer(_gameModel.TimeModel);
+    }
+
+    private void ClickCell(VillageCellModel cellModel)
+    {
+        Console.WriteLine(cellModel.Position);
     }
 }

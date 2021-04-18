@@ -9,7 +9,9 @@ namespace Services.Services
 {
     public interface IResourceService
     {
-        Task Calculate(DistrictStorage districtStorage, EffectStorage effectStorage, ResourcesStorage resourcesStorage);
+        Task Calculate(DistrictStorage districtStorage,
+                       EffectStorage effectStorage,
+                       ResourcesStorage resourcesStorage);
     }
 
     public class ResourceService : IResourceService
@@ -27,7 +29,9 @@ namespace Services.Services
             _districtManager = districtManager;
         }
 
-        public Task Calculate(DistrictStorage districtStorage, EffectStorage effectStorage, ResourcesStorage resourcesStorage)
+        public Task Calculate(DistrictStorage districtStorage,
+                              EffectStorage effectStorage,
+                              ResourcesStorage resourcesStorage)
         {
             var effects = _effectManager.GetResourceEffects(effectStorage);
             var districtEffects = _districtManager.GetResourceEffectModels(districtStorage);

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using Models.Models.Player;
+using Models.Models.Players;
 
 namespace Models.Models
 {

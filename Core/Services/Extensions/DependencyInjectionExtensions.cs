@@ -1,5 +1,6 @@
 ﻿using Managers.Managers;
 using Microsoft.Extensions.DependencyInjection;
+using Models.Models.Villages;
 using Services.Services;
 
 namespace Services.Extensions
@@ -21,6 +22,7 @@ namespace Services.Extensions
         {
             return services
                .AddScoped<IDistrictManager, DistrictManager>()
+               .AddScoped<IVillageMapManager, VillageMapManager>()
                .AddScoped<IEffectManager, EffectManager>()
                .AddScoped<IResourceManager, ResourceManager>()
                .AddScoped<IStorageManager, StorageManager>();

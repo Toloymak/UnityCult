@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Models.Models;
 using Models.Models.Districts;
@@ -7,19 +8,30 @@ namespace Managers.Managers
 {
     public interface IDistrictManager
     {
-        ICollection<ResourceEffectModel> GetResourceEffectModels(DistrictStorage districtStorage);
+        IEnumerable<ResourceEffectModel> GetResourceEffectModels(DistrictStorage districtStorage);
+        void AddDistrict(DistrictStorage storage, DistrictModel districtModel);
     }
 
     public class DistrictManager : IDistrictManager
     {
-        public ICollection<ResourceEffectModel> GetResourceEffectModels(DistrictStorage districtStorage)
+        public IEnumerable<ResourceEffectModel> GetResourceEffectModels(DistrictStorage districtStorage)
         {
             var effects = districtStorage
-               .DistrictWithResourceEffects
+               .Districts
                .SelectMany(x => x.Value.Effects.ResourceEffects)
                .ToArray();
 
             return effects;
+        }
+
+        public void AddDistrict(DistrictStorage storage, DistrictModel districtModel)
+        {
+            if (districtModel.Id == default)
+                districtModel.Id = Guid.NewGuid();
+
+            storage.Districts.AddOrUpdate(districtModel.Id,
+                                          districtModel,
+                                          (guid, model) => districtModel);
         }
     }
 }

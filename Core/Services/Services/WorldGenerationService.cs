@@ -8,7 +8,7 @@ using Managers.Managers;
 using Models.Enums;
 using Models.Models;
 using Models.Models.Effects;
-using Models.Models.Player;
+using Models.Models.Players;
 
 namespace Services.Services
 {
@@ -19,14 +19,23 @@ namespace Services.Services
 
     public class WorldGenerationService : IWorldGenerationService
     {
+        private const int DefaultPlayerCount = 500;
+        
+        private const int DefaultMapXSize = 5;
+        private const int DefaultMapYSize = 5;
+
+        
         private readonly IPlayerGenerateService _playerGenerateService;
         private readonly IEffectManager _effectManager;
+        private readonly IVillageMapManager _villageMapManager;
 
         public WorldGenerationService(IPlayerGenerateService playerGenerateService,
-                                      IEffectManager effectManager)
+                                      IEffectManager effectManager,
+                                      IVillageMapManager villageMapManager)
         {
             _playerGenerateService = playerGenerateService;
             _effectManager = effectManager;
+            _villageMapManager = villageMapManager;
         }
 
         public async Task<GameStateModel> GenerateGame()
@@ -35,13 +44,24 @@ namespace Services.Services
             
             await CreatePlayers(gameModel);
             await AddDefaultEffects(gameModel);
+            await AddVillages(gameModel);
 
             return gameModel;
         }
 
+        private Task AddVillages(GameStateModel gameModel)
+        {
+            return Task.WhenAll(gameModel.Players.Select(player => Task.Run(() =>
+            {
+                player.Value.VillageMap =
+                    _villageMapManager.GetNewMap(DefaultMapXSize, DefaultMapYSize);
+            })));
+        }
+
         private async Task CreatePlayers(GameStateModel gameModel)
         {
-            var computerPlayerTasks = _playerGenerateService.GenerateComputerPlayers(10);
+            var computerPlayerTasks = _playerGenerateService
+               .GenerateComputerPlayers(DefaultPlayerCount);
             var humanPlayer = _playerGenerateService.GenerateHumanPlayers();
             gameModel.PlayerId = humanPlayer.Id;
 

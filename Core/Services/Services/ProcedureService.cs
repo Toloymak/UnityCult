@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Models.Models;
 
@@ -25,12 +26,18 @@ namespace Services.Services
         {
             if (_timeService.IsNextStep(gameState.TimeModel))
             {
+                var stopwatch = new Stopwatch();
+                stopwatch.Start();
+                
                 await Task.WhenAll(gameState
                                       .Players.Select(x => x.Value)
                                       .Select(player =>
                                                   _resourceService.Calculate(player.DistrictStorage,
                                                                              player.EffectStorage,
                                                                              player.ResourcesStorage)));
+                
+                stopwatch.Stop();
+                gameState.TimeModel.ProcedureTime = stopwatch.Elapsed;
             }
         }
     }

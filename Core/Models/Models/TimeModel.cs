@@ -12,5 +12,8 @@ namespace Models.Models
         public TimeSpan LastProcure { get; set; }
         
         public bool IsStopped { get; set; }
+        
+        
+        public TimeSpan ProcedureTime { get; set; }
     }
 }

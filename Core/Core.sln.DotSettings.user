@@ -4,4 +4,6 @@
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=06abc640_002D4efa_002D4bbc_002Db986_002D433587f64684/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Calculate_Success_NoException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Home\UnityCult\Core\Tests" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=122754f3_002D979b_002D43e5_002Da315_002D04b5a87f65e3_0023ConsoleApp/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=8340b0e0_002D5d3b_002D40a3_002Db489_002D9122b48f067a_0023Tests/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

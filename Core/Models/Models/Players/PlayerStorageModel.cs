@@ -1,14 +1,16 @@
 ﻿using System;
 using Models.Models.Districts;
 using Models.Models.Effects;
+using Models.Models.Villages;
 
-namespace Models.Models.Player
+namespace Models.Models.Players
 {
     public class PlayerStorageModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
 
+        public VillageMapModel VillageMap { get; set; }
         public DistrictStorage DistrictStorage { get; set; }
         public EffectStorage EffectStorage { get; set; }
         public ResourcesStorage ResourcesStorage { get; set; }
