@@ -15,7 +15,8 @@ namespace Services.Extensions
                .AddScoped<IWorldGenerationService, WorldGenerationService>()
                .AddScoped<IProcedureService, ProcedureService>()
                .AddScoped<ITimeService, TimeService>()
-               .AddScoped<IInfoProvider, InfoProvider>();
+               .AddScoped<IInfoProvider, InfoProvider>()
+               .AddScoped<IBuildingService, BuildingService>();
         }
 
         public static IServiceCollection RegisterMangers(this IServiceCollection services)

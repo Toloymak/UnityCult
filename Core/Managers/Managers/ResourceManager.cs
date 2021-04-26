@@ -7,7 +7,7 @@ namespace Managers.Managers
     public interface IResourceManager
     {
         void Add(ResourcesStorage resourcesStorage, ResourceType resourceType, int count);
-        bool TryTake(ResourcesStorage resourcesStorage, (ResourceType, int)[] resources);
+        bool TryTake(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources);
     }
 
     public class ResourceManager : IResourceManager
@@ -18,7 +18,7 @@ namespace Managers.Managers
             resourcesStorage.AddOrUpdate(resourceType, count, (type, i) => i + count);
         }
 
-        public bool TryTake(ResourcesStorage resourcesStorage, (ResourceType, int)[] resources)
+        public bool TryTake(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources)
         {
             lock (resourcesStorage.TakeResourceLocker)
             {
@@ -31,22 +31,22 @@ namespace Managers.Managers
             }
         }
 
-        private bool IsEnoughResources(ResourcesStorage resourcesStorage, IEnumerable<(ResourceType, int)> resources)
+        private bool IsEnoughResources(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources)
         {
-            foreach (var (type, amount) in resources)
+            foreach (var resource in resources)
             {
-                if (resourcesStorage[type] < amount)
+                if (resourcesStorage[resource.Key] < resource.Value)
                     return false;
             }
 
             return true;
         }
         
-        private void TakeResources(ResourcesStorage resourcesStorage, IEnumerable<(ResourceType, int)> resources)
+        private void TakeResources(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources)
         {
-            foreach (var (resourceType, amount) in resources)
+            foreach (var resource in resources)
             {
-                Add(resourcesStorage, resourceType, -amount);
+                Add(resourcesStorage, resource.Key, -resource.Value);
             }
         }
     }

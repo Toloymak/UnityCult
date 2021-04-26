@@ -1,11 +1,14 @@
 ﻿@page "/"
 @using Models.Models
+@using Models.Models.Districts
 @using Models.Models.Players
+@using Models.Models.Technologies
 @using Models.Models.Villages
 @using Services.Services
 @inject GameStateModel GameStateModel;
 @inject ITimeService TimeService;
 @inject IInfoProvider InfoProvider;
+@inject IBuildingService BuildingService;
 
 
 <MudGrid>
@@ -58,7 +61,7 @@
 <MudGrid>
     @foreach (var row in InfoProvider.GetMap(_playerStorageModel).Cells)
     {
-        <MudItem>
+        <MudItem Style="width: 120px">
             @foreach (var cell in row)
             {
                 <MudButton
@@ -66,42 +69,37 @@
                     Color="Color.Success"
                     @onclick="() => ClickCell(cell)"
                     Class="d-flex align-center mud-width-full py-6"
-                    Style="margin: 10px;">
-                    @cell.Position
+                    Style="margin: 10px; height: 80px;">
+                    @cell.Position <br>
+                    @cell.District?.Name
                 </MudButton>
             }
         </MudItem>
     }
 </MudGrid>
 
-<MudGrid>
-    <MudItem xs="12">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=12</MudPaper>
+@if (_districtForBuilding != null)
+{
+    <MudItem Style="max-width: 400px;">
+        @foreach (var districtModel in _districtForBuilding)
+        {
+            <MudButton Variant="Variant.Outlined"
+                       FullWidth="true"
+                       Style="display: block;"
+                       OnClick="() => BuildDistrict(districtModel)">
+                @districtModel.Name
+            </MudButton>
+        }
     </MudItem>
-    <MudItem xs="6">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6</MudPaper>
-    </MudItem>
-    <MudItem xs="6">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=6</MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-    </MudItem>
-    <MudItem xs="3">
-        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-    </MudItem>
-</MudGrid>
+}
 
 @code
 {
     private GameStateModel _gameModel;
     private PlayerStorageModel _playerStorageModel;
+
+    private IList<DistrictModel> _districtForBuilding;
+    private VillageCellModel _selectedCell;
 
     [Parameter]
     public double Interval { get; set; } = 1;
@@ -138,6 +136,27 @@
 
     private void ClickCell(VillageCellModel cellModel)
     {
-        Console.WriteLine(cellModel.Position);
+        _districtForBuilding = BuildingService.GetAvailableDistricts(_playerStorageModel.VillageMap,
+                                                                     new TechnologyModel(),
+                                                                     _playerStorageModel.ResourcesStorage,
+                                                                     cellModel);
+        _selectedCell = cellModel;
+    }
+    
+    private void BuildDistrict(DistrictModel districtModel)
+    {
+        var result = BuildingService.BuildDistrict(_selectedCell,
+                                                   districtModel,
+                                                   _playerStorageModel.ResourcesStorage);
+
+        if (result)
+        {
+            _selectedCell = null;
+            _districtForBuilding = null;
+        }
+        else
+        {
+            throw new Exception("Oops!");
+        }
     }
 }
