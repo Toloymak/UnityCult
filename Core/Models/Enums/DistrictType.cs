@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Models.Attributes;
 
 namespace Models.Enums
 {
@@ -50,30 +50,4 @@ namespace Models.Enums
         [DistrictDescription("todo", "todo")]
         Headquarters5 = 14,
     }
-
-    public class TechnologyConditionsAttribute : Attribute
-    {
-        public TechnologyConditionsAttribute(params TechnologyTypes[] technologyTypes)
-        {
-            
-        }
-    }
-
-    public class RootDistrictAttribute : Attribute
-    {
-        public RootDistrictAttribute(DistrictType districtType)
-        {
-            
-        }
-    }
-
-    public class DistrictDescriptionAttribute : Attribute
-    {
-        public DistrictDescriptionAttribute(string name, string description)
-        {
-            
-        }
-    }
-    
-        
 }

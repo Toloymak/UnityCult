@@ -26,12 +26,9 @@ namespace Managers.Managers
 
         public void AddDistrict(DistrictStorage storage, DistrictModel districtModel)
         {
-            if (districtModel.Id == default)
-                districtModel.Id = Guid.NewGuid();
-
-            storage.Districts.AddOrUpdate(districtModel.Id,
-                                          districtModel,
-                                          (guid, model) => districtModel);
+            // storage.Districts.AddOrUpdate(districtModel.Id,
+            //                               districtModel,
+            //                               (guid, model) => districtModel);
         }
     }
 }

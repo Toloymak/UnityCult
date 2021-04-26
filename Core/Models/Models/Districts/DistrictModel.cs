@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using Models.Enums;
 
 namespace Models.Models.Districts
 {
     public class DistrictModel
     {
-        public long TypeId { get; set; }
+        
+        public DistrictType Type { get; set; }
         public string Name { get; set; }
         
         public string Description { get; set; }
