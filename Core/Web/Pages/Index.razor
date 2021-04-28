@@ -11,52 +11,7 @@
 @inject IBuildingService BuildingService;
 
 
-<MudGrid>
-    <MudItem md="2">
-        <MudPaper>
-            <MudItem>
-                Resources:
-            </MudItem>
 
-            @foreach (var resource in InfoProvider.GetResources(_playerStorageModel))
-            {
-                <MudItem>
-                    <MudElement Style="display: inline-block; width: 75%;">@resource.Key</MudElement>
-                    <MudElement>@resource.Value</MudElement>
-                </MudItem>
-            }
-        </MudPaper>
-    </MudItem>
-
-    <MudItem md="2">
-        <MudPaper>
-            <MudItem Style="display: block;">
-                <MudElement>
-                    Game time:
-                </MudElement>
-                <MudElement Style="float: right;">
-                    @_gameModel.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
-                </MudElement>
-            </MudItem>
-            <MudItem Style="display: block;">
-                <MudElement>
-                    Procedure time:
-                </MudElement>
-                <MudElement Style="float: right;">
-                    @_gameModel.TimeModel.ProcedureTime.TotalMilliseconds
-                </MudElement>
-            </MudItem>
-
-            <MudButton @onclick="StartStop"
-                       Variant="Variant.Filled"
-                       FullWidth="true"
-                       Style="display: block;"
-                       Color="@(GameStateModel.TimeModel.IsStopped ? Color.Success : Color.Secondary)">
-                @(GameStateModel.TimeModel.IsStopped ? "Start" : "Stop")
-            </MudButton>
-        </MudPaper>
-    </MudItem>
-</MudGrid>
 
 <MudGrid>
     @foreach (var row in InfoProvider.GetMap(_playerStorageModel).Cells)
@@ -124,14 +79,6 @@
                 await InvokeAsync(StateHasChanged);
             }
         });
-    }
-
-    private void StartStop()
-    {
-        if (_gameModel.TimeModel.IsStopped)
-            TimeService.StartTimer(_gameModel.TimeModel);
-        else
-            TimeService.StopTimer(_gameModel.TimeModel);
     }
 
     private void ClickCell(VillageCellModel cellModel)

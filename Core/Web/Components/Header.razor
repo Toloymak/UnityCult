@@ -1,0 +1,64 @@
+﻿@using Models.Models
+@using Models.Models.Players
+@using Services.Services
+@inject IInfoProvider _infoProvider;
+@inject ITimeService _timeService;
+
+<header style="background: #594ae2; padding:10px; overflow: auto;display: flex; color: #f7f6fe;">
+    <div style="cursor: default; margin-top: auto; margin-bottom: auto">
+        @foreach (var resource in _infoProvider.GetResources(PlayerStorage))
+        {
+            <div style="display: flex; width: 140px; float: left; margin-left: 5px; margin-right: 5px; white-space: nowrap;">
+                <div title="@resource.Key"
+                     style="
+                     font-size: 18px;
+                     text-overflow: ellipsis;
+                     white-space: nowrap;
+                     overflow: hidden;">
+                    @resource.Key
+                </div>
+                <div style="margin-top: auto; margin-bottom: auto; margin-left: auto">
+                    @resource.Value |
+                </div>
+            </div>
+        }
+    </div>
+
+    <div style="margin-left: auto;">
+        <div style="float: left">
+            <div style="font-size: 18px; font-weight: 600; cursor: default">
+                @GameState.TimeModel.GameTime.ToString(@"hh\:mm\:ss")
+            </div>
+            <div style="text-align: center; cursor: default" title="for one procedure">
+                @GameState.TimeModel.ProcedureTime.TotalMilliseconds.ToString("F1") ms
+            </div>
+        </div>
+        <div style="float: right; min-width: 200px; margin-left: 10px;">
+            <MudButton @onclick="StartStop"
+                       FullWidth="true"
+                       Variant="Variant.Filled"
+                       Color="@(GameState.TimeModel.IsStopped ? Color.Success : Color.Secondary)">
+                @(GameState.TimeModel.IsStopped ? "Start" : "Stop")
+            </MudButton>
+        </div>
+    </div>
+</header>
+
+
+@code {
+
+    [Parameter]
+    public GameStateModel GameState { get; set; }
+
+    [Parameter]
+    public PlayerStorageModel PlayerStorage { get; set; }
+
+    private void StartStop()
+    {
+        if (GameState.TimeModel.IsStopped)
+            _timeService.StartTimer(GameState.TimeModel);
+        else
+            _timeService.StopTimer(GameState.TimeModel);
+    }
+
+}
