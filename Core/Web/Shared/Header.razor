@@ -4,14 +4,19 @@
 @inject IInfoProvider _infoProvider;
 @inject ITimeService _timeService;
 
-<header style="background: #594ae2; padding:10px; overflow: auto;display: flex; color: #f7f6fe;">
+<header class="top-row px-4" style="background: #594ae2; padding:10px; display: flex; color: #f7f6fe;">
     <div style="cursor: default; margin-top: auto; margin-bottom: auto">
         @foreach (var resource in _infoProvider.GetResources(PlayerStorage))
         {
-            <div style="display: flex; width: 140px; float: left; margin-left: 5px; margin-right: 5px; white-space: nowrap;">
+            <div style="display: flex;
+             width: 100px;
+             float: left;
+             margin-left: 5px;
+             margin-right: 5px;
+             white-space: nowrap;">
                 <div title="@resource.Key"
                      style="
-                     font-size: 18px;
+                     font-size: 14px;
                      text-overflow: ellipsis;
                      white-space: nowrap;
                      overflow: hidden;">

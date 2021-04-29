@@ -1,15 +1,17 @@
 ﻿@using Models.Models.Players
 @using Models.Models
 @using Services.Services
-@using Web.Components
 @inherits LayoutComponentBase
 @inject GameStateModel _gameState;
 @inject IInfoProvider _infoProvider;
 @inject ITimeService _timeService;
 
 <div class="page">
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
     <div class="main">
-            <Header GameState="_gameState" PlayerStorage="_playerStorage"></Header>
+        <Header GameState="_gameState" PlayerStorage="_playerStorage"></Header>
 
         <div class="content px-4">
             @Body
