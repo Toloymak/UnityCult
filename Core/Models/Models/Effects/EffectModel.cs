@@ -7,10 +7,7 @@ namespace Models.Models.Effects
     public class EffectModel
     {
         public Guid Id { get; set; }
-        
-        public long EffectTypeId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         
         public TimeSpan? Period { get; set; }
         public TimeSpan StartTime { get; set; }
@@ -30,12 +27,17 @@ namespace Models.Models.Effects
             var builder = new StringBuilder();
             builder.Append(Name);
             builder.Append(": ");
+            var isFirst = true;
             foreach (var resourceEffect in ResourceEffects)
             {
+                if (!isFirst)
+                    builder.Append(" ; ");
+                else
+                    isFirst = false;
+                
                 builder.Append(resourceEffect.ResourceType.ToString());
                 builder.Append(':');
                 builder.Append(resourceEffect.Amount.ToString());
-                builder.Append('|');
             }
 
             return builder.ToString();

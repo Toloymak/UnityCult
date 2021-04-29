@@ -40,11 +40,12 @@ namespace Services.Services
         {
             var allDistricts = EnumHelper.GetAllEnumValues<DistrictType>();
 
-            var type = typeof(DistrictType);
             var districts = allDistricts
                .Select(x => new DistrictAttributeModel(x))
-               .Where(x => x.RootDistrictAttribute?.RootDistrict == null
-                      || x.RootDistrictAttribute?.RootDistrict == villageCellModel?.District?.Type)
+               .Where(x => 
+                          villageCellModel?.District == null 
+                              ? x.RootDistrictAttribute?.RootDistrict == null
+                              : x.RootDistrictAttribute?.RootDistrict == villageCellModel.District?.Type)
                .Select(x => new DistrictModel()
                 {
                     Name = x.DistrictDescriptionAttribute.Name,

@@ -1,0 +1,44 @@
+﻿@page "/Effects"
+@using Services.Services
+@using Models.Models.Players
+@using Models.Models
+@inject IInfoProvider _infoProvider
+@inject GameStateModel _gameStateModel;
+
+<h2>
+    Effects
+</h2>
+<MudGrid>
+    @foreach (var effect in _infoProvider.GetEffects(_playerStorage))
+    {
+        <MudItem>
+            <MudPaper Style="padding: 3px 5px 3px 5px;">
+                @effect
+            </MudPaper>
+        </MudItem>
+    }
+</MudGrid>
+
+<h2 style="margin-top: 20px">
+    District effects
+</h2>
+<MudGrid>
+    @foreach (var effect in _infoProvider.GetDistrictEffects(_playerStorage))
+    {
+        <MudItem>
+            <MudPaper Style="padding: 3px 5px 3px 5px;">
+                @effect
+            </MudPaper>
+        </MudItem>
+    }
+</MudGrid>
+
+@code {
+    private PlayerStorageModel _playerStorage;
+
+    protected override void OnInitialized()
+    {
+        _playerStorage = _gameStateModel.GetCurrentPlayer;
+    }
+
+}

@@ -4,31 +4,7 @@
 @inject IInfoProvider _infoProvider;
 @inject ITimeService _timeService;
 
-<header class="top-row px-4" style="background: #594ae2; padding:10px; display: flex; color: #f7f6fe;">
-    <div style="cursor: default; margin-top: auto; margin-bottom: auto">
-        @foreach (var resource in _infoProvider.GetResources(PlayerStorage))
-        {
-            <div style="display: flex;
-             width: 100px;
-             float: left;
-             margin-left: 5px;
-             margin-right: 5px;
-             white-space: nowrap;">
-                <div title="@resource.Key"
-                     style="
-                     font-size: 14px;
-                     text-overflow: ellipsis;
-                     white-space: nowrap;
-                     overflow: hidden;">
-                    @resource.Key
-                </div>
-                <div style="margin-top: auto; margin-bottom: auto; margin-left: auto">
-                    @resource.Value |
-                </div>
-            </div>
-        }
-    </div>
-
+<header class="px-4" style="background: #594ae2; padding:10px; display: flex; color: #f7f6fe;">
     <div style="margin-left: auto;">
         <div style="float: left">
             <div style="font-size: 18px; font-weight: 600; cursor: default">
@@ -54,9 +30,6 @@
 
     [Parameter]
     public GameStateModel GameState { get; set; }
-
-    [Parameter]
-    public PlayerStorageModel PlayerStorage { get; set; }
 
     private void StartStop()
     {

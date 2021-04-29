@@ -4,50 +4,51 @@ namespace Models.Enums
 {
     public enum DistrictType
     {
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Academy1", "todo")]
         WarriorAcademy1 = 0,
         [RootDistrict(WarriorAcademy1)]
         [TechnologyConditions]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Academy2", "todo")]
         WarriorAcademy2 = 1,
         [RootDistrict(WarriorAcademy2)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Academy3", "todo")]
         WarriorAcademy3 = 2,
         [RootDistrict(WarriorAcademy3)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Academy4", "todo")]
         WarriorAcademy4 = 3,
         [RootDistrict(WarriorAcademy4)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Academy5", "todo")]
         WarriorAcademy5 = 4,
         
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Residential1", "todo")]
+        [DistrictResourceEffect(ResourceType.Energy, 5)]
         ResidentialArea1 = 5,
-        [RootDistrict(ResidentialArea2)]
-        [DistrictDescription("todo", "todo")]
+        [RootDistrict(ResidentialArea1)]
+        [DistrictDescription("Residential2", "todo")]
         ResidentialArea2 = 6,
         [RootDistrict(ResidentialArea3)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Residential3", "todo")]
         ResidentialArea3 = 7,
         [RootDistrict(ResidentialArea3)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Residential4", "todo")]
         ResidentialArea4 = 8,
         [RootDistrict(ResidentialArea4)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Residential5", "todo")]
         ResidentialArea5 = 9,
         
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Headquarters1", "todo")]
         Headquarters1 = 10,
         [RootDistrict(Headquarters1)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Headquarters2", "todo")]
         Headquarters2 = 11,
         [RootDistrict(Headquarters2)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Headquarters3", "todo")]
         Headquarters3 = 12,
         [RootDistrict(Headquarters3)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Headquarters4", "todo")]
         Headquarters4 = 13,
         [RootDistrict(Headquarters4)]
-        [DistrictDescription("todo", "todo")]
+        [DistrictDescription("Headquarters5", "todo")]
         Headquarters5 = 14,
     }
 }

@@ -20,5 +20,7 @@ namespace Models.Models
                 IsStopped = false
             };
         }
+
+        public PlayerStorageModel GetCurrentPlayer => Players[PlayerId];
     }
 }
