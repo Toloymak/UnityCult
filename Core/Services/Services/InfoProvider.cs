@@ -14,7 +14,7 @@ namespace Services.Services
         IDictionary<ResourceType, int> GetResources(PlayerStorageModel playerStorageModel);
         VillageMapModel GetMap(PlayerStorageModel playerStorage);
         ICollection<EffectModel> GetEffects(PlayerStorageModel playerStorage);
-        ICollection<ResourceEffectModel> GetDistrictEffects(PlayerStorageModel playerStorage);
+        ICollection<EffectModel> GetDistrictEffects(PlayerStorageModel playerStorage);
     }
     
     public class InfoProvider : IInfoProvider
@@ -34,13 +34,14 @@ namespace Services.Services
             return playerStorage.EffectStorage.Effects.Select(x => x.Value).ToList();
         }
 
-        public ICollection<ResourceEffectModel> GetDistrictEffects(PlayerStorageModel playerStorage)
+        public ICollection<EffectModel> GetDistrictEffects(PlayerStorageModel playerStorage)
         {
-            return playerStorage.DistrictStorage
+            return playerStorage
+               .DistrictStorage
                .Districts
                .Select(x => x.Value)
-               .Where(x => x.ResourceEffects.Any())
-               .SelectMany(x => x.ResourceEffects)
+               .Where(x => x.Effects.Any())
+               .SelectMany(x => x.Effects)
                .ToList();
         }
     }

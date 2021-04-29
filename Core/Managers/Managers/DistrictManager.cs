@@ -18,7 +18,8 @@ namespace Managers.Managers
         {
             var effects = districtStorage
                .Districts
-               .SelectMany(x => x.Value.ResourceEffects)
+               .SelectMany(x => x.Value.Effects)
+               .SelectMany(x => x.ResourceEffects)
                .ToArray();
 
             return effects;

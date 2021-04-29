@@ -1,6 +1,6 @@
 ﻿namespace Models.Enums
 {
-    public enum TechnologyTypes
+    public enum TechnologyType
     {
         
     }

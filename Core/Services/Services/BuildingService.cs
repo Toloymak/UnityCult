@@ -4,7 +4,9 @@ using System.Linq;
 using Business.Attributes;
 using Common.Helpers;
 using Managers.Managers;
+using Models.Consts;
 using Models.Enums;
+using Models.Extensions;
 using Models.Models;
 using Models.Models.Districts;
 using Models.Models.Technologies;
@@ -38,21 +40,12 @@ namespace Services.Services
                                                           ResourcesStorage resourcesStorage,
                                                           VillageCellModel villageCellModel = null)
         {
-            var allDistricts = EnumHelper.GetAllEnumValues<DistrictType>();
-
-            var districts = allDistricts
-               .Select(x => new DistrictAttributeModel(x))
+            var districts = DistrictConsts
+               .AllDistricts
                .Where(x => 
                           villageCellModel?.District == null 
-                              ? x.RootDistrictAttribute?.RootDistrict == null
-                              : x.RootDistrictAttribute?.RootDistrict == villageCellModel.District?.Type)
-               .Select(x => new DistrictModel()
-                {
-                    Name = x.DistrictDescriptionAttribute.Name,
-                    Description = x.DistrictDescriptionAttribute.Description,
-                    Type = x.Type,
-                    Price = new Dictionary<ResourceType, int>() 
-                })
+                              ? x.RootDistrict == DistrictType.None
+                              : x.RootDistrict == villageCellModel.District?.Type)
                .ToList();
 
             return districts;
