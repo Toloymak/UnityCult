@@ -32,7 +32,7 @@ namespace Services.Services
                 await Task.WhenAll(gameState
                                       .Players.Select(x => x.Value)
                                       .Select(player =>
-                                                  _resourceService.Calculate(player.DistrictStorage,
+                                                  _resourceService.AddEffectResources(player.DistrictStorage,
                                                                              player.EffectStorage,
                                                                              player.ResourcesStorage)));
                 

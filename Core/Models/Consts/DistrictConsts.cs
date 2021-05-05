@@ -37,7 +37,9 @@ namespace Models.Consts
                 RequiredTechnologies = new HashSet<TechnologyType>(),
                 Price = new Dictionary<ResourceType, int>()
                 {
-
+                    {ResourceType.OrdinarySoulStone, 1000},
+                    {ResourceType.Energy, 1000},
+                    {ResourceType.MysticMetal, 100}
                 },
                 Effects = new List<EffectModel>()
                 {
@@ -105,11 +107,10 @@ namespace Models.Consts
                 RequiredTechnologies = new HashSet<TechnologyType>(),
                 Price = new Dictionary<ResourceType, int>()
                 {
-
+                    {ResourceType.Energy, 100},
                 },
                 Effects = new List<EffectModel>()
                 {
-
                 },
             },
             new DistrictModel()
@@ -157,7 +158,8 @@ namespace Models.Consts
                 RequiredTechnologies = new HashSet<TechnologyType>(),
                 Price = new Dictionary<ResourceType, int>()
                 {
-
+                    {ResourceType.Food, 500},
+                    {ResourceType.OrdinarySoulStone, 100}
                 },
                 Effects = new List<EffectModel>()
                 {

@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
 using System.Threading.Tasks;
 using Managers.Managers;
 using Models.Enums;
@@ -28,14 +27,17 @@ namespace Services.Services
         private readonly IPlayerGenerateService _playerGenerateService;
         private readonly IEffectManager _effectManager;
         private readonly IVillageMapManager _villageMapManager;
+        private readonly IResourceManager _resourceManager;
 
         public WorldGenerationService(IPlayerGenerateService playerGenerateService,
                                       IEffectManager effectManager,
-                                      IVillageMapManager villageMapManager)
+                                      IVillageMapManager villageMapManager,
+                                      IResourceManager resourceManager)
         {
             _playerGenerateService = playerGenerateService;
             _effectManager = effectManager;
             _villageMapManager = villageMapManager;
+            _resourceManager = resourceManager;
         }
 
         public async Task<GameStateModel> GenerateGame()
@@ -44,6 +46,7 @@ namespace Services.Services
             
             await CreatePlayers(gameModel);
             await AddDefaultEffects(gameModel);
+            await AddDefaultResources(gameModel);
             await AddVillages(gameModel);
 
             return gameModel;
@@ -113,6 +116,30 @@ namespace Services.Services
                     })));
                 }));
 
+            return Task.WhenAll(tasks);
+        }
+        
+        private Task AddDefaultResources(GameStateModel gameModel)
+        {
+            var defaultResources = new Dictionary<ResourceType, int>()
+            {
+                {ResourceType.Food, 500},
+                {ResourceType.Energy, 500},
+                {ResourceType.OrdinarySoulStone, 1000}
+            };
+            
+            var tasks = gameModel.Players
+               .Select(x => x.Value)
+               .Select(player => Task.Run(() =>
+                {
+                    foreach (var defaultResource in defaultResources)
+                    {
+                        _resourceManager.Add(player.ResourcesStorage,
+                                             defaultResource.Key,
+                                             defaultResource.Value);
+                    }
+                }));
+            
             return Task.WhenAll(tasks);
         }
     }

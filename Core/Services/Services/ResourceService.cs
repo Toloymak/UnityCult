@@ -9,7 +9,7 @@ namespace Services.Services
 {
     public interface IResourceService
     {
-        Task Calculate(DistrictStorage districtStorage,
+        Task AddEffectResources(DistrictStorage districtStorage,
                        EffectStorage effectStorage,
                        ResourcesStorage resourcesStorage);
     }
@@ -29,7 +29,7 @@ namespace Services.Services
             _districtManager = districtManager;
         }
 
-        public Task Calculate(DistrictStorage districtStorage,
+        public Task AddEffectResources(DistrictStorage districtStorage,
                               EffectStorage effectStorage,
                               ResourcesStorage resourcesStorage)
         {

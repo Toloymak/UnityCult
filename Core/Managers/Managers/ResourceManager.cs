@@ -8,6 +8,7 @@ namespace Managers.Managers
     {
         void Add(ResourcesStorage resourcesStorage, ResourceType resourceType, int count);
         bool TryTake(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources);
+        bool IsEnoughResources(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources);
     }
 
     public class ResourceManager : IResourceManager
@@ -31,7 +32,7 @@ namespace Managers.Managers
             }
         }
 
-        private bool IsEnoughResources(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources)
+        public bool IsEnoughResources(ResourcesStorage resourcesStorage, IDictionary<ResourceType, int> resources)
         {
             foreach (var resource in resources)
             {

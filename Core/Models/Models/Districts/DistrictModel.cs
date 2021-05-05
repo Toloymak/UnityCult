@@ -15,6 +15,8 @@ namespace Models.Models.Districts
         public HashSet<TechnologyType> RequiredTechnologies { get; set; }
         public IDictionary<ResourceType, int> Price { get; set; }
         public ICollection<EffectModel> Effects { get; set; }
+        
+        public bool IsEnoughMoney { get; set; }
 
         public DistrictModel()
         {

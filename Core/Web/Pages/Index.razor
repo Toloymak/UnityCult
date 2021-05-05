@@ -41,7 +41,8 @@
             <MudButton Variant="Variant.Outlined"
                        FullWidth="true"
                        Style="display: block;"
-                       OnClick="() => BuildDistrict(districtModel)">
+                       OnClick="() => BuildDistrict(districtModel)"
+                       Disabled="!districtModel.IsEnoughMoney">
                 @districtModel.Name
             </MudButton>
         }

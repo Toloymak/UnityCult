@@ -48,6 +48,11 @@ namespace Services.Services
                               : x.RootDistrict == villageCellModel.District?.Type)
                .ToList();
 
+            foreach (var district in districts)
+            {
+                district.IsEnoughMoney = _resourceManager.IsEnoughResources(resourcesStorage, district.Price);
+            }
+
             return districts;
         }
 
