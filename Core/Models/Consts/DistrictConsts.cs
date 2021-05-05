@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Models.Enums;
+using Models.Models;
 using Models.Models.Districts;
 using Models.Models.Effects;
 
@@ -200,10 +201,71 @@ namespace Models.Consts
             }
         };
         
+        private static readonly IList<DistrictModel> Farms = new List<DistrictModel>()
+        {
+            new DistrictModel()
+            {
+                Type = DistrictType.Farm1,
+                Name = DistrictType.Farm1.ToString(),
+                Description = ToDo,
+                RootDistrict = DistrictType.None,
+                RequiredTechnologies = new HashSet<TechnologyType>(),
+                Price = new Dictionary<ResourceType, int>()
+                {
+                    {ResourceType.Food, 500},
+                    {ResourceType.OrdinarySoulStone, 100}
+                },
+                Effects = new List<EffectModel>()
+                {
+                    new EffectModel()
+                    {
+                        Name = "Farm effect",
+                        ResourceEffects = new List<ResourceEffectModel>()
+                        {
+                            new ResourceEffectModel()
+                            {
+                                Amount = 10,
+                                ResourceType = ResourceType.Food
+                            }
+                        }
+                    }
+                }
+            },
+            new DistrictModel()
+            {
+                Type = DistrictType.Farm2,
+                Name = DistrictType.Farm2.ToString(),
+                Description = ToDo,
+                RootDistrict = DistrictType.Farm1,
+                RequiredTechnologies = new HashSet<TechnologyType>(),
+                Price = new Dictionary<ResourceType, int>()
+                {
+                    {ResourceType.Food, 1000},
+                    {ResourceType.OrdinarySoulStone, 500}
+                },
+                Effects = new List<EffectModel>()
+                {
+                    new EffectModel()
+                    {
+                        Name = "Farm effect",
+                        ResourceEffects = new List<ResourceEffectModel>()
+                        {
+                            new ResourceEffectModel()
+                            {
+                                Amount = 30,
+                                ResourceType = ResourceType.Food
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        
         public static readonly IList<DistrictModel> AllDistricts =
             Headquarters
                .Concat(WarriorAcademy)
                .Concat(Residential)
+               .Concat(Farms)
                .ToArray();
     }
 }

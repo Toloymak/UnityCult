@@ -37,11 +37,11 @@ namespace Services.Services
         public ICollection<EffectModel> GetDistrictEffects(PlayerStorageModel playerStorage)
         {
             return playerStorage
-               .DistrictStorage
-               .Districts
-               .Select(x => x.Value)
-               .Where(x => x.Effects.Any())
-               .SelectMany(x => x.Effects)
+               .VillageMap
+               .Cells
+               .SelectMany(x => x)
+               .Where(x => x.District != null && x.District.Effects.Any())
+               .SelectMany(x => x.District.Effects)
                .ToList();
         }
     }

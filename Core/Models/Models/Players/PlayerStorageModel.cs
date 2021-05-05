@@ -11,7 +11,6 @@ namespace Models.Models.Players
         public string Name { get; set; }
 
         public VillageMapModel VillageMap { get; set; }
-        public DistrictStorage DistrictStorage { get; set; }
         public EffectStorage EffectStorage { get; set; }
         public ResourcesStorage ResourcesStorage { get; set; }
 
@@ -20,7 +19,6 @@ namespace Models.Models.Players
             Id = Guid.NewGuid();
             Name = name;
             
-            DistrictStorage = new DistrictStorage();
             EffectStorage = new EffectStorage();
             ResourcesStorage = new ResourcesStorage();
         }

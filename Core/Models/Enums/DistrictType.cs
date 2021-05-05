@@ -21,5 +21,8 @@
         Headquarters3 = 13,
         Headquarters4 = 14,
         Headquarters5 = 15,
+        
+        Farm1 = 16,
+        Farm2 = 17,
     }
 }

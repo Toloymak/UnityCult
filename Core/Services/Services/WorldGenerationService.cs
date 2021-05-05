@@ -94,14 +94,9 @@ namespace Services.Services
                     {
                         new ResourceEffectModel()
                         {
-                            Amount = 3,
+                            Amount = 1,
                             ResourceType = ResourceType.Energy
                         },
-                        new ResourceEffectModel()
-                        {
-                            Amount = 10,
-                            ResourceType = ResourceType.Food
-                        }
                     }
                 }
             };

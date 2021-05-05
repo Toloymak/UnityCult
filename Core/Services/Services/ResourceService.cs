@@ -4,14 +4,15 @@ using Managers.Managers;
 using Models.Models;
 using Models.Models.Districts;
 using Models.Models.Effects;
+using Models.Models.Villages;
 
 namespace Services.Services
 {
     public interface IResourceService
     {
-        Task AddEffectResources(DistrictStorage districtStorage,
-                       EffectStorage effectStorage,
-                       ResourcesStorage resourcesStorage);
+        Task AddEffectResources(VillageMapModel villageMapModel,
+                                EffectStorage effectStorage,
+                                ResourcesStorage resourcesStorage);
     }
 
     public class ResourceService : IResourceService
@@ -29,12 +30,12 @@ namespace Services.Services
             _districtManager = districtManager;
         }
 
-        public Task AddEffectResources(DistrictStorage districtStorage,
-                              EffectStorage effectStorage,
-                              ResourcesStorage resourcesStorage)
+        public Task AddEffectResources(VillageMapModel villageMapModel,
+                                       EffectStorage effectStorage,
+                                       ResourcesStorage resourcesStorage)
         {
             var effects = _effectManager.GetResourceEffects(effectStorage);
-            var districtEffects = _districtManager.GetResourceEffectModels(districtStorage);
+            var districtEffects = _districtManager.GetResourceEffectModels(villageMapModel);
 
             var updateResourceTasks = effects
                 .Concat(districtEffects)
