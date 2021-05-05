@@ -1,6 +1,7 @@
 ﻿using System;
 using Models.Models.Districts;
 using Models.Models.Effects;
+using Models.Models.People;
 using Models.Models.Villages;
 
 namespace Models.Models.Players
@@ -13,6 +14,7 @@ namespace Models.Models.Players
         public VillageMapModel VillageMap { get; set; }
         public EffectStorage EffectStorage { get; set; }
         public ResourcesStorage ResourcesStorage { get; set; }
+        public PeopleStorage PeopleStorage { get; set; }
 
         public PlayerStorageModel(string name)
         {
@@ -21,6 +23,7 @@ namespace Models.Models.Players
             
             EffectStorage = new EffectStorage();
             ResourcesStorage = new ResourcesStorage();
+            PeopleStorage = new PeopleStorage();
         }
     }
 }
