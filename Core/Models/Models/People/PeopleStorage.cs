@@ -5,11 +5,11 @@ namespace Models.Models.People
 {
     public class PeopleStorage
     {
-        public IDictionary<Guid, PeopleModel> People { get; set; }
+        public IDictionary<Guid, PersonModel> People { get; set; }
 
         public PeopleStorage()
         {
-            People = new Dictionary<Guid, PeopleModel>();
+            People = new Dictionary<Guid, PersonModel>();
         }
     }
 }
