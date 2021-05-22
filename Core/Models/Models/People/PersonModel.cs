@@ -9,6 +9,8 @@ namespace Models.Models.People
         
         public string Name { get; set; }
         
+        // public PersonAssignmentModel Assignment { get; set; }
+        
         public SkillsModel Skills { get; }
         public LevelModel Level { get; }
         public HealthModel Health { get; }
@@ -24,6 +26,7 @@ namespace Models.Models.People
             Chakra = new ChakraModel();
             SpecificSkills = new SpecificSkillsModel();
             Abilities = new HashSet<AbilityModel>();
+            // Assignment = new PersonAssignmentModel();
         }
     }
 }

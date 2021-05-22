@@ -7,6 +7,7 @@ using Managers.Managers;
 using Models.Enums;
 using Models.Models;
 using Models.Models.Effects;
+using Models.Models.People;
 using Models.Models.Players;
 
 namespace Services.Services
@@ -47,6 +48,7 @@ namespace Services.Services
             await CreatePlayers(gameModel);
             await AddDefaultEffects(gameModel);
             await AddDefaultResources(gameModel);
+            await AddDefaultPeople(gameModel);
             await AddVillages(gameModel);
 
             return gameModel;
@@ -135,6 +137,37 @@ namespace Services.Services
                     }
                 }));
             
+            return Task.WhenAll(tasks);
+        }
+
+        public Task AddDefaultPeople(GameStateModel gameModel)
+        {
+            var tasks = gameModel.Players
+               .Select(x => x.Value)
+               .Select(player => Task.Run(() =>
+                {
+                    player.PeopleStorage.People.Add(
+                        Guid.NewGuid(),
+                        new PersonModel()
+                        {
+                            Name = "Warrior",
+                            Health = { CurrentHp = 100, MaxHp = 100, DefaultRegeneration = 3},
+                            Skills = { Agility = 10, Endurance = 10, Strength = 10, Intelligence = 10},
+                            Level = { Level = 1, CurrentExp = 0, NexLevelExp = 1000}
+                        });
+                    
+                    player.PeopleStorage.People.Add(
+                        Guid.NewGuid(),
+                        new PersonModel()
+                        {
+                            Name = "Farmer",
+                            Health = { CurrentHp = 50, MaxHp = 50, DefaultRegeneration = 1},
+                            Skills = { Agility = 10, Endurance = 10, Strength = 10, Intelligence = 10},
+                            Level = { Level = 1, CurrentExp = 0, NexLevelExp = 1000},
+                            SpecificSkills = { Farming = 10}
+                        });
+                }));
+
             return Task.WhenAll(tasks);
         }
     }

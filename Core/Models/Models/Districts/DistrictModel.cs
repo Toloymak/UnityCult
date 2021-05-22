@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Models.Enums;
 using Models.Models.Effects;
+using Models.Models.People;
 
 namespace Models.Models.Districts
 {
@@ -10,6 +11,8 @@ namespace Models.Models.Districts
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public SkillsModel DefaultPerformanceSkills { get; set; }
+        
         public DistrictType RootDistrict { get; set; }
         
         public HashSet<TechnologyType> RequiredTechnologies { get; set; }
@@ -24,6 +27,7 @@ namespace Models.Models.Districts
             RequiredTechnologies = new HashSet<TechnologyType>();
             Price = new Dictionary<ResourceType, int>();
             Effects = new List<EffectModel>();
+            DefaultPerformanceSkills = new SkillsModel();
         }
     }
 }

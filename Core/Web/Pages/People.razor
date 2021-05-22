@@ -1,5 +1,67 @@
 ﻿@page "/People"
+@using Services.Services
+@using Models.Models
+@using Models.Models.Players
+
+@inject IInfoProvider _infoProvider
+@inject GameStateModel _gameStateModel;
 
 <h2>
     People
 </h2>
+
+<MudSimpleTable Hover="true" Striped="true">
+    <thead>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            hp
+        </th>
+        <th>
+            xp
+        </th>
+        <th>
+            skills
+        </th>
+        <th>
+            specific skills
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var personModel in _infoProvider.GetPeople(_playerStorage))
+    {
+        <tr>
+            <td>
+                @personModel.Name (@personModel.Health)
+            </td>
+            <td>
+                @personModel.Health
+            </td>
+            <td>
+                @personModel.Level
+            </td>
+            <td>
+                @personModel.Skills
+            </td>
+            <td>
+                @personModel.SpecificSkills
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</MudSimpleTable>
+
+
+@code {
+    private PlayerStorageModel _playerStorage;
+
+    protected override void OnInitialized()
+    {
+        _playerStorage = _gameStateModel.GetCurrentPlayer;
+    }
+
+}

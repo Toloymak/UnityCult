@@ -4,6 +4,7 @@ using System.Linq;
 using Models.Enums;
 using Models.Models;
 using Models.Models.Effects;
+using Models.Models.People;
 using Models.Models.Players;
 using Models.Models.Villages;
 
@@ -15,6 +16,8 @@ namespace Services.Services
         VillageMapModel GetMap(PlayerStorageModel playerStorage);
         ICollection<EffectModel> GetEffects(PlayerStorageModel playerStorage);
         ICollection<EffectModel> GetDistrictEffects(PlayerStorageModel playerStorage);
+        ICollection<PersonModel> GetPeople(PlayerStorageModel playerStorage);
+
     }
     
     public class InfoProvider : IInfoProvider
@@ -43,6 +46,11 @@ namespace Services.Services
                .Where(x => x.District != null && x.District.Effects.Any())
                .SelectMany(x => x.District.Effects)
                .ToList();
+        }
+
+        public ICollection<PersonModel> GetPeople(PlayerStorageModel playerStorage)
+        {
+            return playerStorage.PeopleStorage.People.Select(x => x.Value).ToList();
         }
     }
 }

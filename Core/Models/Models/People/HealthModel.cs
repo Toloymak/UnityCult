@@ -6,5 +6,10 @@
         public float MaxHp { get; set; }
         
         public float DefaultRegeneration { get; set; }
+
+        public override string ToString()
+        {
+            return $"{CurrentHp}/{MaxHp}";
+        }
     }
 }
