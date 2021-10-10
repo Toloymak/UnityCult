@@ -1,0 +1,75 @@
+﻿@page "/Tasks"
+@using Models.Models.Tasks
+@using Models.Models.People
+@using Models.Models
+@using Models.Enums
+
+<h2>
+    Tasks
+</h2>
+
+<MudSimpleTable Hover="true" Striped="true">
+    <thead>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Desription
+        </th>
+        <th>
+            Respurces
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var task in _availableTasks)
+    {
+        <tr>
+            <td>
+                @task.Title
+            </td>
+            <td>
+                @task.Description
+            </td>
+            <td>
+                @task.Reward?.ToString()
+            </td>
+        </tr>
+    }
+    </tbody>
+</MudSimpleTable>
+
+@code
+{
+    private IList<TaskModel> _availableTasks;
+    private IList<TaskModel> _progressTasks;
+    private IList<TaskModel> _finishedTasks;
+
+    protected override void OnInitialized()
+    {
+        _availableTasks = new List<TaskModel>()
+        {
+            new(){
+                Title = "Task1",
+                Description = "Desc of the task",
+                Reward = new ResourceTaskReward()
+                {
+                    Resources = new Dictionary<ResourceType, int>
+                    {
+                        { ResourceType.Food, 23}
+                    },
+                    People = new List<PersonModel>()
+                    {
+                        new PersonModel()
+                        {
+                            Name = "Bob M."}
+                    }
+                }
+            }
+        };
+        _progressTasks = new List<TaskModel>();
+        _finishedTasks = new List<TaskModel>();
+        base.OnInitialized();
+    }
+}
