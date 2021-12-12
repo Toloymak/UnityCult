@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{97CBA957-2EA7-422F-9272-765FDCC8753E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Village", "Village", "{0C7C3411-8E7F-406A-9DB1-4DBFADA69D14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village.Logic", "Village\Village.Logic\Village.Logic.csproj", "{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village.Models", "Village\Village.Models\Village.Models.csproj", "{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,11 +57,23 @@ Global
 		{97CBA957-2EA7-422F-9272-765FDCC8753E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97CBA957-2EA7-422F-9272-765FDCC8753E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97CBA957-2EA7-422F-9272-765FDCC8753E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {345450B0-32F7-4537-A2B1-C50506F80C9C}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C752B17B-6AB4-4EAA-B7D7-B8B64949D5FB} = {0C7C3411-8E7F-406A-9DB1-4DBFADA69D14}
+		{1B4BE4C2-D279-4F4E-9AFD-A3FB0695883F} = {0C7C3411-8E7F-406A-9DB1-4DBFADA69D14}
 	EndGlobalSection
 EndGlobal
